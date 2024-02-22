@@ -5,7 +5,7 @@ import Apparel3 from "../../assets/images/Suit.png";
 import Apparel4 from "../../assets/images/Jeans.png";
 import Apparel5 from "../../assets/images/Trouser.png";
 
-import Accordion from "../product-listing/Accordion";
+// import Accordion from "../product-listing/Accordion";
 import { Selling } from "../../components/molecules/Selling";
 
 const apparel = [

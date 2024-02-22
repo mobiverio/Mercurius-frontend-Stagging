@@ -4,7 +4,7 @@ import Img1 from "../../assets/images/pro1.png";
 import Img2 from "../../assets/images/pro2.png";
 import Img3 from "../../assets/images/pro3.png";
 import Img4 from "../../assets/images/pro4.png";
-import Profile from "../../assets/images/img2.png";
+// import Profile from "../../assets/images/img2.png";
 
 const DATA = [
   {
