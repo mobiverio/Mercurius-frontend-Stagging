@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Review } from "./pages/product-single/Review";
+// import { Review } from "./pages/product-single/Review";
 import CartIndex from "./pages/cart/CartIndex";
 import { Product } from "./pages/product-single/Product";
 
