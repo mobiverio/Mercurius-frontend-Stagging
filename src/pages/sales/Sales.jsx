@@ -21,17 +21,13 @@ const apparel = [
 const Sales = () => {
   return (
     <div className="my-4 p-2 sm:px-12">
-      <div
-        className="w-full min-h-[150px] sm:min-h-[500px] rounded flex justify-center my-4"
-        style={{
-          background: `url(${Sale})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <p className="w-2/4 sm:w-1/5 max-h-[40px] sm:max-h-[100px] rounded-[100%] bg-red-600 mt-2 sm:mt-12 flex justify-center items-center font-serif font-bold sm:text-2xl text-white">
-          Mega Sales
-        </p>
+      <div className="relative w-full rounded text-center">
+        <img className="w-full h-full -z-10" src={Sale} alt="Promo sales" />
+        <div className=" mx-auto">
+          <p className="w-2/4 sm:w-1/5 max-h-[40px] sm:max-h-[100px] rounded-[100%] bg-red-600 mt-2 sm:mt-12 flex justify-center items-center font-serif font-bold sm:text-2xl text-white absolute top-0">
+            Mega Sales
+          </p>
+        </div>
       </div>
       <div className="my-4">
         <p className="font-semibold text-[1.2rem]">Category Offers</p>
@@ -55,15 +51,12 @@ const Sales = () => {
       </div>
       <div className="my-4">
         <p className="font-semibold text-[1.2rem]">Special Offers</p>
-        <div
-          className="w-full min-h-[120px] sm:min-h-[500px] rounded flex justify-end items-end sm:items-center md:items-start"
-          style={{
-            background: `url(${Flash})`,
-            backgroundSize: "contain",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        >
+        <div className="aspect-video rounded relative border">
+          <img
+            className="absolute insew-full h-full t-0 -z-10"
+            src={Flash}
+            alt="flash sale banner"
+          />
           <CountDown />
         </div>
       </div>
