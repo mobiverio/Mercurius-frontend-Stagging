@@ -40,7 +40,7 @@ const CountDown = () => {
     };
   });
   return (
-    <div className="absolute top-0 right-2 sm:right-4 w-fit flex flex-row justify-between items-stretch gap-1 p-2 sm:p-4 md:text-4xl text-[#333] md:mr-8 sm:mt-12 mt-4">
+    <div className="w-fit flex flex-row justify-between items-stretch gap-1 p-2 sm:p-4 md:text-4xl text-[#333] md:mr-8 sm:mt-12 mt-4">
       <div className="p-1 sm:p-4 bg-black/70 text-white font-bold sm:font-normal sm:text-3xl rounded font-mono flex items-end">
         {countdownDay} <span className="text-[.7rem] sm:text-2xl">days</span>
       </div>

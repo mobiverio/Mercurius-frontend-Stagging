@@ -23,9 +23,9 @@ const Sales = () => {
     <div className="my-4 p-2 sm:px-12">
       <div className="relative w-full rounded text-center">
         <img className="w-full h-full -z-10" src={Sale} alt="Promo sales" />
-        <div className=" mx-auto">
-          <p className="w-2/4 sm:w-1/5 max-h-[40px] sm:max-h-[100px] rounded-[100%] bg-red-600 mt-2 sm:mt-12 flex justify-center items-center font-serif font-bold sm:text-2xl text-white absolute top-0">
-            Mega Sales
+        <div className="absolute top-0 z-10 w-full flex items-center justify-center">
+          <p className="w-1/2 sm:w-1/4 rounded-[100%] bg-red-600 mt-2 sm:mt-12 flex justify-center items-center font-serif font-bold sm:text-2xl text-white py-2 md:py-4 px-5">
+            Mega&nbsp;Sales
           </p>
         </div>
       </div>
@@ -51,13 +51,15 @@ const Sales = () => {
       </div>
       <div className="my-4">
         <p className="font-semibold text-[1.2rem]">Special Offers</p>
-        <div className="aspect-video rounded relative border">
+        <div className="relative aspect-[16/7]">
           <img
-            className="absolute insew-full h-full t-0 -z-10"
+            className="absolute w-full top-0 -z-10"
             src={Flash}
             alt="flash sale banner"
           />
-          <CountDown />
+          <div className="flex justify-end items-end sm:items-center md:items-start">
+            <CountDown />
+          </div>
         </div>
       </div>
       <div className="my-4">
