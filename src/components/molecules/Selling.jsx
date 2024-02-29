@@ -115,8 +115,7 @@ export const Selling = function ({ products }) {
   console.log(products);
   return (
     <div className="">
-      {/* <p className="font-semibold text-[1.2rem]">{title}</p> */}
-      <div className="grid grid-cols-2 sm:grid-cols-[repeat(5,minmax(0,300px))] gap-2">
+      <div className="grid grid-cols-2 sm:grid-cols-[repeat(3,minmax(0,300px))] md:grid-cols-[repeat(5,minmax(0,300px))] gap-2">
         {products?.map((product, i) => {
           return (
             // <Link to="/product-view">
@@ -131,7 +130,7 @@ export const Selling = function ({ products }) {
                 <p className="text-sm font-semibold">{product.price}</p>
                 <p className="text-sm font-semibold">{product.color}</p>
                 <button className="text-sm text-white bg-[#1b1b1b] hover:bg-[#1e1e1ebb]/70 p-2 mt-2 rounded-md">
-                  Add to Cart
+                  Add&nbsp;to&nbsp;Cart
                 </button>
               </div>
             </div>
