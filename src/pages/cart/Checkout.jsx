@@ -33,23 +33,27 @@ const Checkout = () => {
     setToggle(toggle);
   };
   return (
-    <main className="my-4 mx-12">
+    <main className="my-2 px-2 md:px-12">
       <div className="flex flex-col md:flex-row justify-between gap-8">
-        <div className="border basis-1/2 py-4 px-8 rounded-xl">
-          <h2 className="font-semibold text-[1.2rem] my-4">Summary</h2>
+        <div className="sm:border basis-1/2 p-2 sm:py-4 sm:px-8 rounded-xl">
+          <h2 className="font-semibold text-[1.2rem] mb-4">Summary</h2>
           {/* All Items to Checkout */}
           <div className="overflow-y-auto">
             {products.map((items, i) => {
               return (
                 <div
                   key={i}
-                  className="py-2 px-3 bg-gray-100 flex flex-row flex-nowrap justify-between items-center rounded-xl my-2"
+                  className="py-2 px-3 bg-gray-100 flex flex-row flex-nowrap justify-between items-center lg:rounded-xl my-2"
                 >
-                  <div className="flex flex-row flex-nowrap justify-start gap-x-6 items-center">
-                    <img className="w-[12%]" src={items.img} alt="" />
-                    <p className="font-semibold">{items.desc}</p>
+                  <div className="flex flex-row flex-nowrap justify-start gap-x-2 sm:gap-x-4 items-center">
+                    <img className="w-[20%]" src={items.img} alt="" />
+                    <p className="font-semibold text-[.8rem] sm:text-[1rem] text-center w-[70%]">
+                      {items.desc}
+                    </p>
                   </div>
-                  <p className="font-semibold">{items.price}</p>
+                  <p className="font-semibold text-sm sm:text-[1rem]">
+                    {items.price}
+                  </p>
                 </div>
               );
             })}
@@ -95,15 +99,17 @@ const Checkout = () => {
           </div>
         </div>
         {/* Payment Mode Details */}
-        <div className="basis-1/2 py-4 px-8 rounded-xl">
+        <div className="basis-1/2 p-2 sm:py-4 sm:px-8 rounded-xl">
           <h2 className="font-semibold text-[1.2rem] my-4">Payment</h2>
-          <ul className="flex flex-row gap-6 border-b border-solid">
+          <ul className="flex flex-row gap-4 sm:gap-6 border-b border-solid">
             <li
               role="button"
-              className={toggle === 0 ? "border-b-2 border-black" : ""}
+              className={`${
+                toggle === 0 ? "border-b-2 border-black" : ""
+              } text-sm`}
               onClick={() => updatetoggle(0)}
             >
-              Credit Card
+              Credit&nbsp;Card
             </li>
             <li
               role="button"
@@ -117,10 +123,10 @@ const Checkout = () => {
               className={toggle === 2 ? "border-b-2 border-black" : ""}
               onClick={() => updatetoggle(2)}
             >
-              PayPal Credit
+              PayPal&nbsp;Credit
             </li>
           </ul>
-          <div className="flex items-center justify-center text-6xl">
+          <div className="flex items-center justify-center text-2xl md:text-6xl">
             {toggle === 0 && <CreditCard />}
             {toggle === 1 && <PayPal />}
             {toggle === 2 && <PayPalCredit />}

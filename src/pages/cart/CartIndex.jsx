@@ -1,5 +1,5 @@
 import React from "react";
-import { Footer } from "../../components/molecules/Footers";
+import Footer from "../../components/molecules/Footers";
 import Header from "../../components/molecules/Header";
 // import Cart from "./Cart";
 // import Delivery from "./Delivery";
@@ -14,7 +14,7 @@ export default function CartIndex() {
       {/* <Delivery /> */}
       {/* <PickUp /> */}
       {/* <Cart /> */}
-      {/*<Footer /> */}
+      <Footer />
     </>
   );
 }
