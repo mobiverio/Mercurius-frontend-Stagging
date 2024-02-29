@@ -24,7 +24,7 @@ export default function Index() {
     const delay = setTimeout(() => {
       setLoading(false); // Once data is loaded, set loading to false
       clearTimeout(delay);
-    }, 1000); // Simulated 2-second delay
+    }, 2000); // Simulated 2-second delay
   }, []);
 
 
