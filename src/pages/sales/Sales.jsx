@@ -64,6 +64,13 @@ const Sales = () => {
       </div>
       <div className="my-4">
         <p className="font-semibold text-[1.2rem]">Flash Sales</p>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum earum
+          placeat eum molestias ducimus iste quos illum nisi sit, sunt fugit
+          reiciendis dolorum nobis facilis exercitationem minus, molestiae
+          veritatis! Amet aperiam sit suscipit eum vitae, deserunt maxime
+          excepturi itaque tempore.
+        </p>
         <Selling />
       </div>
     </div>
