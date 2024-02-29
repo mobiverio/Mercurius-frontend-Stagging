@@ -35,7 +35,7 @@ const Checkout = () => {
   return (
     <main className="my-2 px-2 md:px-12">
       <div className="flex flex-col md:flex-row justify-between gap-8">
-        <div className="sm:border basis-1/2 p-2 sm:py-4 sm:px-8 rounded-xl">
+        <div className="sm:border basis-1/2 p-2 sm:py-4 sm:px-8 rounded">
           <h2 className="font-semibold text-[1.2rem] mb-4">Summary</h2>
           {/* All Items to Checkout */}
           <div className="overflow-y-auto">
