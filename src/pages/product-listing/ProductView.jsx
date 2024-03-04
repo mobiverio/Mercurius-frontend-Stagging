@@ -6,53 +6,51 @@ import { BsStar, BsPlus, BsDash, BsCart3 } from "react-icons/bs";
 export const ProductView = () => {
   const [counter, setCounter] = useState(0);
   return (
-    <div className="mx-12">
+    <div className="p-2 sm:mx-12">
       <div className="flex flex-col md:flex-row bg-white/70">
         {/* Product */}
-        <div className="w-[45%] flex flex-row justify-start items-center gap-4">
-          <div className="w-fit flex flex-col gap-1 p-2">
+        <div className="w-full sm:w-[45%] flex flex-col-reverse sm:flex-row justify-start items-center gap-4 sm:gap-2">
+          <div className="w-fit flex flex-row sm:flex-col justify-center sm:justify-start gap-3 p-2 sm:min-h-[85%]">
             <img
-              className="rounded-l-md border-gray w-24 cursor-pointer"
+              className="rounded sm:rounded-l-md border-gray w-1/12 sm:w-20 cursor-pointer"
               src={Model}
               alt="/"
             />
             <img
-              className="rounded-l-md border-gray w-24 cursor-pointer"
+              className="rounded sm:rounded-l-md border-gray w-1/12 sm:w-20 cursor-pointer"
               src={Model}
               alt="/"
             />
             <img
-              className="rounded-l-md border-gray w-24 cursor-pointer"
+              className="rounded sm:rounded-l-md border-gray w-1/12 sm:w-20 cursor-pointer"
               src={Model}
               alt="/"
             />
             <img
-              className="rounded-l-md border-gray w-24 cursor-pointer"
+              className="rounded sm:rounded-l-md border-gray w-1/12 sm:w-20 cursor-pointer"
               src={Model}
               alt="/"
             />
             <img
-              className="rounded-l-md border-gray w-24 cursor-pointer"
+              className="rounded sm:rounded-l-md border-gray w-1/12 sm:w-20 cursor-pointer"
               src={Model}
               alt="/"
             />
           </div>
-          <div className="flex justify-center items-center h-[90%] px-2">
+          <div className="w-full flex justify-center items-center h-[85%] px-2">
             <img className="w-full h-full" src={Model} alt="/" />
           </div>
         </div>
         {/* Pricing */}
-        <div className="w-[54%] p-2">
-          <div className="mt-4">
-            <h3 className="text-4xl font-semibold mb-2">Beige Cargo Pant</h3>
+        <div className="w-full sm:w-[54%] sm:p-2 text-sm">
+          <div className="sm:mt-4">
+            <h3 className="text-2xl sm:text-4xl font-semibold mb-2">
+              Beige Cargo Pant
+            </h3>
             {<p className="text-[#333]">Brand: Nike</p>}
             <p className="flex items-center gap-x-1 text-[#333]">
               Rating:
               <span className="flex ">
-                <BsStar />
-                <BsStar />
-                <BsStar />
-                <BsStar />
                 <BsStar />
               </span>
               <span className="text-[.75rem] text-slate-400">128 ratings</span>
@@ -73,70 +71,70 @@ export const ProductView = () => {
           <div className="w-fit my-3">
             <p className="text-slate-600 font-semibold">Choose a Color</p>
             <div className="flex flex-row justify-between items-center gap-4">
-              <div className="w-8 h-8 cursor-pointer bg-[#ECDECC] rounded-full"></div>
-              <div className="w-8 h-8 cursor-pointer bg-[#00003C] rounded-full"></div>
-              <div className="w-8 h-8 cursor-pointer bg-[#BBC1F8] rounded-full"></div>
-              <div className="w-8 h-8 cursor-pointer bg-[#FFD3F8] rounded-full"></div>
+              <div className="w-6 h-6 cursor-pointer bg-[#ECDECC] rounded-full"></div>
+              <div className="w-6 h-6 cursor-pointer bg-[#00003C] rounded-full"></div>
+              <div className="w-6 h-6 cursor-pointer bg-[#BBC1F8] rounded-full"></div>
+              <div className="w-6 h-6 cursor-pointer bg-[#FFD3F8] rounded-full"></div>
             </div>
           </div>
 
-          <div className="w-fit my-3">
+          <div className="my-3 ">
             <p className="text-slate-600 font-semibold">Choose a Size</p>
-            <div className="w-fit flex flex-row justify-between items-center gap-4">
+            <div className="w-fit flex flex-row justify-between items-center gap-2 text-[.7rem]">
               <label
-                className="bg-slate-200 flex items-center gap-x-1 py-2 px-3 rounded-md cursor-pointer"
+                className="bg-slate-200 flex items-center gap-x-2 py-1 px-2 rounded-md cursor-pointer"
                 htmlFor="sm"
               >
                 <input
-                  className="w-4 h-4 cursor-pointer"
+                  className="w-2 h-2 cursor-pointer"
                   type="radio"
                   name="size"
                   id="sm"
                 />{" "}
-                Small
+                SM
               </label>
               <label
-                className="bg-slate-200 flex items-center gap-x-1 py-2 px-3 rounded-md cursor-pointer"
+                className="bg-slate-200 flex items-center gap-x-2 py-1 px-2 rounded-md cursor-pointer"
                 htmlFor="md"
               >
                 <input
-                  className="w-4 h-4 cursor-pointer"
+                  className="w-2 h-2 cursor-pointer"
                   type="radio"
                   name="size"
                   id="md"
                 />{" "}
-                Medium
+                M
               </label>
               <label
-                className="bg-slate-200 flex items-center gap-x-1 py-2 px-3 rounded-md cursor-pointer"
+                className="bg-slate-200 flex items-center gap-x-2 py-1 px-2 rounded-md cursor-pointer"
                 htmlFor="lg"
               >
                 <input
-                  className="w-4 h-4 cursor-pointer"
+                  className="w-2 h-2 cursor-pointer"
                   type="radio"
                   name="size"
                   id="lg"
                 />{" "}
-                Large
+                L
               </label>
               <label
-                className="bg-slate-200 flex items-center gap-x-1 py-2 px-3 rounded-md cursor-pointer"
+                className="bg-slate-200 flex items-center gap-x-2 py-1 px-2 rounded-md cursor-pointer"
                 htmlFor="xl"
               >
                 <input
-                  className="w-4 h-4 cursor-pointer"
+                  className="w-2 h-2 cursor-pointer"
                   type="radio"
                   name="size"
                   id="xl"
                 />{" "}
-                Extra Large
+                XL
               </label>
               <label
-                className="bg-slate-200 flex items-center gap-x-1 py-2 px-3 rounded-md cursor-pointer"
+                className="bg-slate-200 flex items-center gap-x-2 py-1 px-2 rounded-md cursor-pointer"
                 htmlFor="xxl"
               >
                 <input
-                  className="w-4 h-4 cursor-pointer"
+                  className="w-2 h-2 cursor-pointer"
                   type="radio"
                   name="size"
                   id="xxl"
