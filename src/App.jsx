@@ -7,7 +7,7 @@ import Index from "./pages/landingpage";
 import ProductIndex from "./pages/product-listing/ProductIndex";
 import Signup from "./pages/auth/Signup";
 import Signin from "./pages/auth/Signin";
-import ForgetPassword from "./pages/auth/ForgetPassword";
+import ResetPassword from "./pages/auth/ResetPassword";
 import NewIndex from "./pages/newIn/NewIndex";
 import ApparelIndex from "./pages/apparel/ApparelIndex";
 import AccessoriesIndex from "./pages/accessories/AccessoriesIndex";
@@ -27,7 +27,7 @@ function App() {
           <Route path="/product-view" element={<ProductIndex />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/forgetPassword" element={<ForgetPassword />} />
+          <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/productDesc" element={<ProductDescription />} />
 
           {/* Categories */}
