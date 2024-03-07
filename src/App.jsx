@@ -7,6 +7,7 @@ import Index from "./pages/landingpage";
 import ProductIndex from "./pages/product-listing/ProductIndex";
 import Signup from "./pages/auth/Signup";
 import Signin from "./pages/auth/Signin";
+import CreatePassword from "./pages/auth/CreatePassword";
 import ResetPassword from "./pages/auth/ResetPassword";
 import NewIndex from "./pages/newIn/NewIndex";
 import ApparelIndex from "./pages/apparel/ApparelIndex";
@@ -27,6 +28,7 @@ function App() {
           <Route path="/product-view" element={<ProductIndex />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/createPassword" element={<CreatePassword />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/productDesc" element={<ProductDescription />} />
 

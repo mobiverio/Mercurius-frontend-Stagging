@@ -1,5 +1,5 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Register() {
   return (
@@ -31,7 +31,7 @@ export default function Register() {
                 Reset Password
               </button>
               <button className="text-[#00003C] hover:underline font-semibold w-full">
-                Sign In
+                <Link to="/signin">Sign In</Link>
               </button>
             </form>
           </div>
