@@ -31,9 +31,13 @@ export const Product = function () {
   return (
     <>
       <Header />
-      <div className="mx-6 md:mx-12 flex flex-row gap-x-4 mt-12 scrollbar-hide">
-        <Accordion />
-        <Selling products={products} />
+      <div className="mx-6 md:mx-12 flex flex-row md:gap-x-4 my-8 scrollbar-hide">
+        <div className="md:w-1/4">
+          <Accordion />
+        </div>
+        <div className="w-full md:w-3/4">
+          <Selling products={products} />
+        </div>
       </div>
       <Footer />
     </>
