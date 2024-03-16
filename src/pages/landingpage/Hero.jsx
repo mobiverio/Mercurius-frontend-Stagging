@@ -42,14 +42,14 @@ export const Slider = function ({
 
   return (
     <div className="relative w-full h-[470px] m-auto bg-white/40 group px-6 md:px-12 mt-1">
-      <div className="w-full h-full duration-1000 bg-cover bg-no-repeat flex flex-col justify-center items-center sm:items-start gap-1 px-4 sm:pl-[3rem] bg-black/95 rounded-t">
+      <div className="w-full h-full duration-1000 bg-cover bg-no-repeat flex flex-col justify-center items-center sm:items-start gap-1 px-4 sm:pl-[5rem] bg-black/95 rounded-t">
         <img
-          src={slides[currentIndex].img}
+          src={slides[currentIndex].src}
           alt="/"
           className="hidden sm:block absolute right-[10%] w-[0] md:w-[25%] xl:max-w-[16%] xxl-max-w-[15%] bottom-0"
         />
         <div className="w-full lg:w-1/2">
-          <h3 className="font-semibold leading-tight text-[1.2rem] md:text-2xl sm:text-5xl w-full md:w-[70%] text-[#fff] text-center sm:text-left">
+          <h3 className="font-semibold leading-tight text-[1.2rem] sm:text-2xl md:text-5xl w-full md:w-[70%] text-[#fff] text-center sm:text-left">
             {slides[currentIndex].title}
           </h3>
           <p className="w-[80%] mx-auto sm:mx-0 semibold leading-8 text-[1.1rem] text-[#fff] text-center sm:text-left">
@@ -107,7 +107,7 @@ export const ItemSelling = function () {
   };
 
   return (
-    <div className="relative flex items-center my-4 sm:px-12 mx-2 sm:mx-12 bg-blue-200">
+    <div className="relative flex items-center my-4 mx-6 md:mx-12 bg-blue-200">
       <BsChevronCompactLeft
         size={30}
         className="cursor-pointer block absolute h-full p-2 text-white w-[4%] left-0"
@@ -119,11 +119,8 @@ export const ItemSelling = function () {
       >
         <div className="flex flex-row flex-nowrap items-center justify-center gap-4 py-4 px-8">
           {items.map((item) => (
-            <Link to="/product">
-              <figure
-                key={item.id}
-                className="flex items-center hover:scale-105 duration-300 ease-in-out"
-              >
+            <Link key={item.id} to="/product">
+              <figure className="flex items-center hover:scale-105 duration-300 ease-in-out">
                 <img
                   className="max-w-[90px] min-h-[100px] rounded-xl inline-block p-2 cursor-pointer "
                   src={item.url}
