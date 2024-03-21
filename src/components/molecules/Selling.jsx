@@ -1,6 +1,6 @@
 import React from "react";
 import { BsHeart } from "react-icons/bs";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import Accessories from "../../assets/images/accessories.png";
 import Ipad from "../../assets/images/ipad.png";
@@ -10,41 +10,34 @@ import Laptop from "../../assets/images/laptops.png";
 import Watch from "../../assets/images/watches.png";
 
 export const Selling = function ({ products }) {
-  console.log(products);
   return (
     <div className="">
       <div className="grid grid-cols-2 sm:grid-cols-[repeat(3,minmax(0,300px))] md:grid-cols-[repeat(5,minmax(0,300px))] gap-2">
         {products?.map((product, i) => {
           return (
-            // <Link to="/product-view">
-            <div
-              key={product.id}
-              className="w-full"
-              onClick={() => {
-                console.log(product.id);
-              }}
-            >
-              <div
-                key={i}
-                className="relative p-4 bg-[#f6f6f6] w-full min-h-[100%] flex flex-col items-center justify-center"
-              >
-                <BsHeart className="w-4 h-4 self-end cursor-pointer text-black/40" />
-                <img
-                  className=" min-w-[100px] max-w-[120px] min-h-[100px] max-h-[100px] my-4"
-                  src={product.src || product.image}
-                  alt="product "
-                />
-                <p className="w-[80%] text-center text-sm">{product.name}</p>
-                <p className="text-sm font-semibold">{`$${product.price}`}</p>
-                <p className="text-sm font-semibold">
-                  {product?.color || product?.title?.slice}
-                </p>
-                <button className="relative -bottom-2 text-sm text-white bg-[#1b1b1b] hover:bg-[#1e1e1ebb]/70 p-2 mt-2 rounded-md">
-                  Add&nbsp;to&nbsp;Cart
-                </button>
+            <Link to={`/product-view/${product.id}`}>
+              <div key={product.id} className="w-full">
+                <div
+                  key={i}
+                  className="relative p-4 bg-[#f6f6f6] w-full min-h-[100%] flex flex-col items-center justify-center"
+                >
+                  <BsHeart className="w-4 h-4 self-end cursor-pointer text-black/40" />
+                  <img
+                    className=" min-w-[100px] max-w-[120px] min-h-[100px] max-h-[100px] my-4"
+                    src={product.src || product.image}
+                    alt="product "
+                  />
+                  <p className="w-[80%] text-center text-sm">{product.name}</p>
+                  <p className="text-sm font-semibold">{`$${product.price}`}</p>
+                  <p className="text-sm font-semibold">
+                    {product?.color || product?.title?.slice}
+                  </p>
+                  <button className="relative -bottom-2 text-sm text-white bg-[#1b1b1b] hover:bg-[#1e1e1ebb]/70 p-2 mt-2 rounded-md">
+                    Add&nbsp;to&nbsp;Cart
+                  </button>
+                </div>
               </div>
-            </div>
-            // </Link>
+            </Link>
           );
         })}
       </div>

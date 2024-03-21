@@ -17,21 +17,29 @@ import {
 } from "../../components/molecules/categories";
 import BrandsIndex from "../brands/AllBrands";
 import Loader from "../../components/molecules/Loader";
+import { getProductsLimited } from "../../api/Axios";
 export default function Index() {
+  const [newArrivals, setNewArrivals] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Assume you have some asynchronous operation here (e.g., fetching data)
-    // For demo purposes, we'll simulate a delay with setTimeout
-    const delay = setTimeout(() => {
-      setLoading(false); // Once data is loaded, set loading to false
-      clearTimeout(delay);
-    }, 2000); // Simulated 2-second delay
+    const fetchProducts = async () => {
+      try {
+        const data = await getProductsLimited();
+        setNewArrivals(data);
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
   }, []);
 
   if (loading) {
     return <Loader />;
   }
+  console.log("there, newArrivals", newArrivals);
   return (
     <>
       <Header />
@@ -41,7 +49,7 @@ export default function Index() {
       <MaleFemaleCategory />
       <div className="my-4 mx-6 md:mx-12">
         <p className="font-semibold text-[1.2rem]">New Arrivals</p>
-        <Selling products={contents} />
+        <Selling products={newArrivals} />
       </div>
       <BrandsIndex />
       <div className="my-4 mx-6 md:mx-12">

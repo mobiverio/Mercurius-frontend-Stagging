@@ -8,11 +8,9 @@ import { getProducts } from "../../api/Axios";
 import { useParams } from 'react-router-dom';
 
 export const Product = function () {
-  let { productId } = useParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  
-  console.log(productId);
+
 
   useEffect(() => {
     const fetchProducts = async () => {

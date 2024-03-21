@@ -119,7 +119,7 @@ export const ItemSelling = function () {
       >
         <div className="flex flex-row flex-nowrap items-center justify-center gap-4 py-4 px-8">
           {items?.map((item) => (
-            <Link key={item.id} to="/product">
+            <Link key={item.id} to={`/product/${item.id}`}>
               <figure className="flex items-center hover:scale-105 duration-300 ease-in-out">
                 <img
                   className="max-w-[90px] min-h-[100px] rounded-xl inline-block p-2 cursor-pointer "

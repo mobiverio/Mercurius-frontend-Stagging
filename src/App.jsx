@@ -25,7 +25,7 @@ function App() {
           <Route index element={<Index />} />
           <Route path="/cart" element={<CartIndex />} />
           <Route path="/product/:productId" element={<Product />} />
-          <Route path="/product-view" element={<ProductIndex />} />
+          <Route path="/product-view/:singleProduct" element={<ProductIndex />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/createPassword" element={<CreatePassword />} />
