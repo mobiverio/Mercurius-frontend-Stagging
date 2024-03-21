@@ -3,13 +3,16 @@ import Accordion from "../product-listing/Accordion";
 import Footer from "../../components/molecules/Footers";
 import Header from "../../components/molecules/Header";
 import { Selling } from "../../components/molecules/Selling";
-
 import Loader from "../../components/molecules/Loader";
-
 import { getProducts } from "../../api/Axios";
+import { useParams } from 'react-router-dom';
+
 export const Product = function () {
+  let { productId } = useParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  
+  console.log(productId);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -38,6 +41,7 @@ export const Product = function () {
         <div className="w-full md:w-3/4">
           <Selling products={products} />
         </div>
+        <h1>Product</h1>
       </div>
       <Footer />
     </>

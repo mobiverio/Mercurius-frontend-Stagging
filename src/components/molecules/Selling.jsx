@@ -17,7 +17,13 @@ export const Selling = function ({ products }) {
         {products?.map((product, i) => {
           return (
             // <Link to="/product-view">
-            <div key={product.id} className="w-full">
+            <div
+              key={product.id}
+              className="w-full"
+              onClick={() => {
+                console.log(product.id);
+              }}
+            >
               <div
                 key={i}
                 className="relative p-4 bg-[#f6f6f6] w-full min-h-[100%] flex flex-col items-center justify-center"
@@ -31,7 +37,7 @@ export const Selling = function ({ products }) {
                 <p className="w-[80%] text-center text-sm">{product.name}</p>
                 <p className="text-sm font-semibold">{`$${product.price}`}</p>
                 <p className="text-sm font-semibold">
-                  {product.color || product.title.slice}
+                  {product?.color || product?.title?.slice}
                 </p>
                 <button className="relative -bottom-2 text-sm text-white bg-[#1b1b1b] hover:bg-[#1e1e1ebb]/70 p-2 mt-2 rounded-md">
                   Add&nbsp;to&nbsp;Cart
@@ -53,7 +59,7 @@ export const BestSelling = function ({ products }) {
         <h3 className="text-[1.1rem] font-semibold">Best Selling</h3>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-        {products.map((product, i) => {
+        {products?.map((product, i) => {
           return (
             <div
               key={i}

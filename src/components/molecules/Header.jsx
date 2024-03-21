@@ -108,7 +108,7 @@ export default function Header() {
                   />
                 </div> */}
                 <div className="justify-self-center">
-                  {navigation.map((item) => (
+                  {navigation?.map((item) => (
                     <a
                       key={item.name}
                       href={item.href}

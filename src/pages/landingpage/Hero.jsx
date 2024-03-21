@@ -118,7 +118,7 @@ export const ItemSelling = function () {
         className="w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth hide_bar"
       >
         <div className="flex flex-row flex-nowrap items-center justify-center gap-4 py-4 px-8">
-          {items.map((item) => (
+          {items?.map((item) => (
             <Link key={item.id} to="/product">
               <figure className="flex items-center hover:scale-105 duration-300 ease-in-out">
                 <img

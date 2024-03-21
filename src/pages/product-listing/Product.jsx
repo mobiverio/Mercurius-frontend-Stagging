@@ -11,6 +11,7 @@ export const Products = function () {
       </div>
       <div className="basis-[80%]">
         <Selling />
+        
       </div>
     </div>
   );
