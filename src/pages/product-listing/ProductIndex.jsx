@@ -1,20 +1,16 @@
 import React from "react";
-
 import { ProductView, ProductDescription } from "./ProductView";
 import { Review } from "../product-single/Review";
-import Header from "../../components/molecules/Header";
 import { BestSelling } from "../../components/molecules/Selling";
-import Footer from "../../components/molecules/Footers";
+import { bests } from "../../db_local/store";
 
 export default function ProductIndex() {
   return (
     <>
-      <Header />
       <ProductView />
       <ProductDescription />
       <Review />
-      <BestSelling />
-      <Footer />
+      <BestSelling products={bests} />
     </>
   );
 }

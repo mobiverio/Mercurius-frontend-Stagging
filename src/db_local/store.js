@@ -30,6 +30,60 @@ import Brand10 from "../assets/images/Zara.png";
 import Brand11 from "../assets/images/Dell.png";
 import Brand12 from "../assets/images/Nike.png";
 
+import Apparel1 from "../assets/images/Blouse.png";
+import Apparel2 from "../assets/images/Coat.png";
+import Apparel3 from "../assets/images/Suit.png";
+import Jewelry from "../assets/images/ring.png";
+
+export const apparel = [
+  { id: 1, src: Apparel1, product: "Appliances" },
+  { id: 2, src: Apparel2, product: "Accessories" },
+  { id: 3, src: Apparel3, product: "Jewelries" },
+];
+
+export const accessories = [
+  {
+    id: 1,
+    src: Jewelry,
+    name: "Stainless steel ring",
+    color: "Gold",
+    price: "$90",
+    discountPrice: "$100",
+  },
+  {
+    id: 2,
+    src: Jewelry,
+    name: "Stainless steel ring",
+    color: "Gold",
+    price: "$90",
+    discountPrice: "$100",
+  },
+  {
+    id: 3,
+    src: Jewelry,
+    name: "Stainless steel ring",
+    color: "Gold",
+    price: "$90",
+    discountPrice: "$100",
+  },
+  {
+    id: 4,
+    src: Jewelry,
+    name: "Stainless steel ring",
+    color: "Gold",
+    price: "$90",
+    discountPrice: "$100",
+  },
+  {
+    id: 5,
+    src: Jewelry,
+    name: "Stainless steel ring",
+    color: "Gold",
+    price: "$90",
+    discountPrice: "$100",
+  },
+];
+
 export const bests = [
   {
     id: 9,
