@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import Accordion from "../product-listing/Accordion";
 import { Selling } from "../../components/molecules/Selling";
 
-import Loader from "../../components/molecules/Loader";
+// import Loader from "../../components/molecules/Loader";
 
 // import { getProducts } from "../../api/Axios";
 import { contents } from "../../db_local/store";
