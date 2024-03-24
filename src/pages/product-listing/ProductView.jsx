@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Model from "../../assets/images/img3.png";
+// import Model from "../../assets/images/img3.png";
 import "../../styles/Styles.css";
 import { Link } from "react-router-dom";
 import {
