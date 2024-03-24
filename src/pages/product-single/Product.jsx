@@ -1,25 +1,27 @@
 import { useState, useEffect } from "react";
 import Accordion from "../product-listing/Accordion";
 import { Selling } from "../../components/molecules/Selling";
-
 import Loader from "../../components/molecules/Loader";
+import { getProducts } from "../../api/Axios";
+import { useParams } from 'react-router-dom';
 
-// import { getProducts } from "../../api/Axios";
-import { contents } from "../../db_local/store";
+
 export const Product = function () {
   // const [products, setProducts] = useState([]);
   // const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     try {
-  //       const data = await getProducts();
-  //       setProducts(data);
-  //       setLoading(false);
-  //     } catch (error) {
-  //       setLoading(false);
-  //     }
-  //   };
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await getProducts();
+        setProducts(data);
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+      }
+    };
+
 
   //   fetchProducts();
   // }, []);
@@ -36,6 +38,7 @@ export const Product = function () {
         <div className="w-full md:w-3/4">
           <Selling products={contents} />
         </div>
+        <h1>Product</h1>
       </div>
     </>
   );
