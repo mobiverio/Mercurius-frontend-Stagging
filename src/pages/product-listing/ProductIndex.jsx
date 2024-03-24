@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
+
 import { ProductView, ProductDescription } from "./ProductView";
 import { Review } from "../product-single/Review";
-import Header from "../../components/molecules/Header";
 import { BestSelling } from "../../components/molecules/Selling";
 import Footer from "../../components/molecules/Footers";
 import { useParams } from "react-router-dom";
 import { getSingleProduct } from "../../api/Axios";
 import Loader from "../../components/molecules/Loader";
+
 
 export default function ProductIndex() {
   const { singleProduct } = useParams();
@@ -34,7 +35,6 @@ export default function ProductIndex() {
 
   return (
     <>
-      <Header />
       {product && (
         <>
           <ProductView product={product} />
@@ -43,7 +43,7 @@ export default function ProductIndex() {
         </>
       )}
       <BestSelling />
-      <Footer />
+
     </>
   );
 }
