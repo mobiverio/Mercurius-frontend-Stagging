@@ -33,7 +33,8 @@ const Accessories = () => {
         <h2 className="font-semibold text-[1.2rem] my-4">Shop by brands</h2>
         <div className="my-4 grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-4">
           {brands
-            .filter((items) => items.category === "clothing")?.map((items) => {
+            .filter((items) => items.category === "clothing")
+            ?.map((items) => {
               return (
                 <div
                   className="mx-auto w-full flex items-center shadow hover:scale-105 cursor-pointer transition"

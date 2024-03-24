@@ -59,9 +59,13 @@ export const BestSelling = function ({ products }) {
               className="w-full p-4 bg-[#f6f6f6] flex flex-col items-center justify-center"
             >
               <BsHeart className="w-4 h-4 self-end cursor-pointer text-black/40" />
-              <img className="w-[50%] my-4" src={product.src} alt="" />
+              <img
+                className="min-w-[100px] max-w-[120px] min-h-[100px] max-h-[100px] my-4"
+                src={product.src || product.image}
+                alt="/"
+              />
               <p className="w-[80%] text-center text-sm">{product.name}</p>
-              <p className="text-sm font-semibold">{product.price}</p>
+              <p className="text-sm font-semibold">{`$${product.price}`}</p>
               <button className="text-sm text-white bg-[#1e1e1e] hover:bg-[#1e1e1ebb]/70 p-2 mt-2 rounded-md">
                 Add to Cart
               </button>

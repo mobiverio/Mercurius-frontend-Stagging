@@ -49,7 +49,7 @@ export default function Index() {
       <div className="my-4 mx-6 md:mx-12">
         <Gadget />
       </div>
-      <BestSelling products={bests} />
+      <BestSelling products={newArrivals} />
       <BigSale />
     </>
   );

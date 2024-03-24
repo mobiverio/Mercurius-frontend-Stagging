@@ -35,6 +35,7 @@ export const getSingleProduct = async (productId) => {
     throw error;
   }
 };
+
 export const getCategories = async () => {
   try {
     const response = await api.get("/categories");
