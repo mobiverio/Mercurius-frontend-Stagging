@@ -31,9 +31,9 @@ export const Selling = function ({ products }) {
                 <p className="w-[80%] text-center text-sm">{product.name}</p>
                 <p className="text-sm font-semibold">{`$${product.price}`}</p>
                 <p className="text-sm font-semibold">
-                  {product.color || product.title.slice}
+                  {product.color || product.title}
                 </p>
-                <button className="relative -bottom-2 text-sm text-white bg-[#1b1b1b] hover:bg-[#1e1e1ebb]/70 p-2 mt-2 rounded-md">
+                <button className="relative -bottom-1 text-sm text-white bg-[#1b1b1b] hover:bg-[#1e1e1ebb]/70 p-2 mt-2 rounded-md">
                   Add&nbsp;to&nbsp;Cart
                 </button>
               </div>
