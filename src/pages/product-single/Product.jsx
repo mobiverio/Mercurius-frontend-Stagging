@@ -1,32 +1,31 @@
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Accordion from "../product-listing/Accordion";
 import { Selling } from "../../components/molecules/Selling";
+import Loader from "../../components/molecules/Loader";
+import { getProducts } from "../../api/Axios";
+import { useParams } from "react-router-dom";
 
-// import Loader from "../../components/molecules/Loader";
-
-// import { getProducts } from "../../api/Axios";
-import { contents } from "../../db_local/store";
 export const Product = function () {
-  // const [products, setProducts] = useState([]);
-  // const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     try {
-  //       const data = await getProducts();
-  //       setProducts(data);
-  //       setLoading(false);
-  //     } catch (error) {
-  //       setLoading(false);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await getProducts();
+        setProducts(data);
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+      }
+    };
 
-  //   fetchProducts();
-  // }, []);
+    fetchProducts();
+  }, []);
 
-  // if (loading) {
-  //   return <Loader />;
-  // }
+  if (loading) {
+    return <Loader />;
+  }
   return (
     <>
       <div className="mx-6 md:mx-12 flex flex-row md:gap-x-4 my-8 scrollbar-hide">
@@ -34,7 +33,8 @@ export const Product = function () {
           <Accordion />
         </div>
         <div className="w-full md:w-3/4">
-          <Selling products={contents} />
+          <h1>Product</h1>
+          <Selling products={products} />
         </div>
       </div>
     </>

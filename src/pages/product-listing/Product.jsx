@@ -11,7 +11,7 @@ export const Products = function () {
         <Accordion />
       </div>
       <div className="basis-[80%]">
-        <Selling products={contents} />
+        <Selling />
       </div>
     </div>
   );

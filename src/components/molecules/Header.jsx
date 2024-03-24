@@ -108,17 +108,11 @@ export default function Header() {
                   />
                 </div> */}
                 <div className="justify-self-center">
-                  {navigation.map((item, isActive) => (
+                  {navigation?.map((item) => (
                     <NavLink
                       key={item.name}
                       to={item.href}
                       className={`px-3 py-2 font-medium`}
-                      // className={classNames(
-                      //   item.current
-                      //     ? "border-b-2 border-black transition-all"
-                      //     : "text-black hover:border-b-2 hover:border-black",
-                      //   "px-3 py-2 font-medium"
-                      // )}
                       aria-current={item.current ? "page" : undefined}
                     >
                       {item.name}
