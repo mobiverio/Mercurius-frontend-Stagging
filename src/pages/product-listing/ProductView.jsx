@@ -12,7 +12,6 @@ import {
 
 export const ProductView = ({ product }) => {
   const [counter, setCounter] = useState(0);
-  console.log(product);
   return (
     <div className="p-2 md:mx-12">
       <div className="flex flex-col md:flex-row bg-white/70">

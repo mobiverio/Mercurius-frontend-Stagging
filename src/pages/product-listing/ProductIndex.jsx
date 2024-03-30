@@ -8,14 +8,14 @@ import { getSingleProduct } from "../../api/Axios";
 import Loader from "../../components/molecules/Loader";
 
 export default function ProductIndex() {
-  const { singleProduct } = useParams();
+  const singleProduct = useParams();
   const [product, setProduct] = useState(null); // State to hold the product
   const [loading, setLoading] = useState(true); // State to manage loading state
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const data = await getSingleProduct(singleProduct); // Pass singleProduct to getSingleProduct function
+        const data = await getSingleProduct(singleProduct.productId); // Pass singleProduct to getSingleProduct function
         setProduct(data);
         setLoading(false);
       } catch (error) {
