@@ -18,13 +18,13 @@ const navigation = [
   { name: "Sales", href: "/sales", current: false },
 ];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+// function classNames(...classes) {
+//   return classes.filter(Boolean).join(" ");
+// }
 
 export default function Header() {
   return (
-    <Disclosure as="nav" className="relative shadow">
+    <Disclosure as="nav" className="sticky top-0 z-40 shadow bg-white/90">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
