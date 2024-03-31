@@ -4,8 +4,15 @@ import { Link } from "react-router-dom";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
+  const [type, setType] = useState("password");
   const handlePassword = () => {
-    setShowPassword(!showPassword);
+    if (type === "password") {
+      setShowPassword(true);
+      setType("text");
+    } else {
+      setShowPassword(false);
+      setType("password");
+    }
   };
   return (
     <main className="w-full h-screen text-sm">
@@ -41,7 +48,7 @@ export default function Register() {
 
                 <input
                   className="border w-full my-4 rounded-xl px-4 py-3 outline-none"
-                  type="password"
+                  type={type}
                   placeholder="Create Password"
                 />
               </div>
@@ -62,7 +69,7 @@ export default function Register() {
 
                 <input
                   className="border w-full my-4 rounded-xl px-4 py-3 outline-none"
-                  type="password"
+                  type={type}
                   placeholder="Confirm Password"
                 />
               </div>

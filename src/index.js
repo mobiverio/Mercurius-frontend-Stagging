@@ -24,6 +24,13 @@ import ResetPassword from "./pages/auth/ResetPassword.jsx";
 import CreatePassword from "./pages/auth/CreatePassword.jsx";
 
 const router = createBrowserRouter([
+  //Authentication Pages
+  { path: "/signin", element: <SignIn /> },
+  { path: "/signup", element: <SignUp /> },
+  { path: "/resetPassword", element: <ResetPassword /> },
+  { path: "/createPassword", element: <CreatePassword /> },
+
+  //Authenticated Pages
   {
     path: "/",
     element: <App />,
@@ -42,11 +49,6 @@ const router = createBrowserRouter([
       { path: "/brands/:id", element: <BrandProducts /> },
     ],
   },
-
-  { path: "/signin", element: <SignIn /> },
-  { path: "/signup", element: <SignUp /> },
-  { path: "/resetPassword", element: <ResetPassword /> },
-  { path: "/createPassword", element: <CreatePassword /> },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
