@@ -100,7 +100,6 @@ export const ItemSelling = function () {
     const slider = document.getElementById("slider");
     slider.scrollLeft = slider.scrollLeft - 400;
   };
-
   const rightSlide = function () {
     const slider = document.getElementById("slider");
     slider.scrollLeft = slider.scrollLeft + 400;
@@ -108,12 +107,7 @@ export const ItemSelling = function () {
 
   return (
     <div className="relative flex items-center my-4 mx-6 md:mx-12 bg-blue-200">
-      <BsChevronCompactLeft
-        size={30}
-        className="cursor-pointer block absolute h-full p-2 text-white w-[4%] left-0"
-        onClick={leftSlide}
-      />
-      <div
+      {/* <div
         id="slider"
         className="w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth hide_bar"
       >
@@ -136,10 +130,42 @@ export const ItemSelling = function () {
             </Link>
           ))}
         </div>
+      </div> */}
+      <div
+        className="py-3 px-6 overflow-y-auto hide_bar scroll-smooth"
+        id="slider"
+      >
+        <ul className="flex flex-row gap-4 items-center">
+          {items?.map((item) => (
+            <Link key={item.id} to={`/product/${item.id}`}>
+              <li className="min-w-[200px]">
+                <figure className="flex items-center justify-center">
+                  <img
+                    className="max-w-[90px] min-h-[100px] rounded-xl inline-block p-2 cursor-pointer "
+                    src={item.url}
+                    alt="/"
+                  />
+                  <figcaption className="px-2 py-1 -mt-3">
+                    <h3 className="text-sm font-semibold leading-tight">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm leading-tight">{item.pitch}</p>
+                  </figcaption>
+                </figure>
+              </li>
+            </Link>
+          ))}
+        </ul>
       </div>
+
+      <BsChevronCompactLeft
+        size={30}
+        className="cursor-pointer block absolute h-full p-2 text-white/70 w-[4%] left-0"
+        onClick={leftSlide}
+      />
       <BsChevronCompactRight
         size={30}
-        className="cursor-pointer block absolute h-full p-2 text-white w-[4%] right-0"
+        className="cursor-pointer block absolute h-full p-2 text-white/70 w-[4%] right-0"
         onClick={rightSlide}
       />
     </div>
