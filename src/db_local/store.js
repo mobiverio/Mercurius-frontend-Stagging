@@ -34,7 +34,19 @@ import Apparel1 from "../assets/images/Blouse.png";
 import Apparel2 from "../assets/images/Coat.png";
 import Apparel3 from "../assets/images/Suit.png";
 import Jewelry from "../assets/images/ring.png";
-import { getCategories } from "../api/Axios";
+// import { getCategories } from "../api/Axios";
+
+import Galaxy from "../assets/images/Galaxy.png";
+import Canon from "../assets/images/Canon.png";
+import Chromebook from "../assets/images/Chromebook.png";
+import Sanyo from "../assets/images/Sanyo.png";
+
+export const gadgets = [
+  { id: 1, name: "Phone", img: Galaxy },
+  { id: 2, name: "Computer", img: Chromebook },
+  { id: 3, name: "Camera", img: Canon },
+  { id: 4, name: "TV", img: Sanyo },
+];
 
 export const apparel = [
   { id: 1, src: Apparel1, product: "Appliances" },

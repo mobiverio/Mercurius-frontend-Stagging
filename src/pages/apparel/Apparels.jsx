@@ -18,6 +18,7 @@ import Brand9 from "../../assets/images/Adidas.png";
 import Brand10 from "../../assets/images/Zara.png";
 import Brand11 from "../../assets/images/Dell.png";
 import Brand12 from "../../assets/images/Nike.png";
+import { Link } from "react-router-dom";
 const brands = [
   {
     id: 1,
@@ -144,12 +145,11 @@ const Apparels = () => {
             .filter((items) => items.category === "clothing")
             .map((items) => {
               return (
-                <div
-                  className="mx-auto w-full flex items-center shadow hover:scale-105 cursor-pointer transition"
-                  key={items.id}
-                >
-                  <img className="block mx-auto" src={items.src} alt="/" />
-                </div>
+                <Link key={items.id} to={`/brands/${items.id}`}>
+                  <div className="mx-auto w-full min-h-[150px] flex items-center shadow hover:scale-105 cursor-pointer transition">
+                    <img className="block mx-auto" src={items.src} alt="/" />
+                  </div>
+                </Link>
               );
             })}
         </div>

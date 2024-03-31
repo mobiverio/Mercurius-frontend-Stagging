@@ -34,7 +34,6 @@ export default function Index() {
   if (loading) {
     return <Loader />;
   }
-  // console.log("there, newArrivals", newArrivals);
   return (
     <>
       <Slider autoSlideInterval={1000} autoSlide={true} />
