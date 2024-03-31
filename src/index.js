@@ -15,6 +15,7 @@ import SalesIndex from "./pages/sales/SalesIndex.jsx";
 import CartIndex from "./pages/cart/CartIndex";
 import ProductIndex from "./pages/product-listing/ProductIndex.jsx";
 import { Product } from "./pages/product-single/Product.jsx";
+import BrandProducts from "./pages/brands/BrandProducts.jsx";
 
 //Auth Screens
 // import SignIn from "./pages/auth/Signin.jsx";
@@ -36,8 +37,9 @@ const router = createBrowserRouter([
       { path: "/gadgets", element: <GadgetIndex /> },
       { path: "/sales", element: <SalesIndex /> },
       { path: "/cart", element: <CartIndex /> },
-      { path: "/product-view", element: <ProductIndex /> },
-      { path: "/product", element: <Product /> },
+      { path: "/product-view/:productId", element: <ProductIndex /> },
+      { path: "/product/:id", element: <Product /> },
+      { path: "/brands/:id", element: <BrandProducts /> },
     ],
   },
 ]);

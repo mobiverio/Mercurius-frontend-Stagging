@@ -15,7 +15,7 @@ export const Selling = function ({ products }) {
       <div className="grid grid-cols-2 sm:grid-cols-[repeat(3,minmax(0,300px))] md:grid-cols-[repeat(5,minmax(0,300px))] gap-2">
         {products?.map((product, i) => {
           return (
-            <Link to={`/product-view/${product.id}`}>
+            <Link key={i} to={`/product-view/${product.id}`}>
               <div key={product.id} className="w-full">
                 <div
                   key={i}

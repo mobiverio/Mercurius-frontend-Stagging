@@ -34,6 +34,7 @@ import Apparel1 from "../assets/images/Blouse.png";
 import Apparel2 from "../assets/images/Coat.png";
 import Apparel3 from "../assets/images/Suit.png";
 import Jewelry from "../assets/images/ring.png";
+import { getCategories } from "../api/Axios";
 
 export const apparel = [
   { id: 1, src: Apparel1, product: "Appliances" },
@@ -120,61 +121,73 @@ export const brands = [
     id: 1,
     src: Brand1,
     category: "gadget",
+    categories: ["Phones", "TV", "Appliance"],
   },
   {
     id: 2,
     src: Brand2,
     category: "gadget",
+    categories: ["Phones", "TV", "Appliance"],
   },
   {
     id: 3,
     src: Brand3,
     category: "gadget",
+    categories: ["Phones", "TV", "Appliance"],
   },
   {
     id: 4,
     src: Brand4,
     category: "clothing",
+    categories: ["Men", "Women", "Kids"],
   },
   {
     id: 5,
     src: Brand5,
     category: "gadget",
+    categories: ["Phones", "TV", "Appliance"],
   },
   {
     id: 6,
     src: Brand6,
     category: "gadget",
+    categories: ["Phones", "TV", "Appliance"],
   },
   {
     id: 7,
     src: Brand7,
     category: "gadget",
+    categories: ["Phones", "TV", "Appliance"],
   },
   {
     id: 8,
     src: Brand8,
     category: "clothing",
+    categories: ["Men", "Women", "Kids"],
   },
   {
     id: 9,
     src: Brand9,
     category: "clothing",
+    categories: ["Men", "Women", "Kids"],
   },
   {
     id: 10,
     src: Brand10,
     category: "clothing",
+    categories: ["Men", "Women", "Kids"],
   },
   {
     id: 11,
     src: Brand11,
     category: "gadget",
+    categories: ["Phones", "TV", "Appliance"],
   },
   {
     id: 12,
     src: Brand12,
     category: "clothing",
+    categories: ["Men", "Women", "Kids"],
   },
 ];
 
