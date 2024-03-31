@@ -1,6 +1,7 @@
 import React from "react";
 import { Selling } from "../../components/molecules/Selling";
 import { apparel, brands, accessories } from "../../db_local/store";
+import { Link } from "react-router-dom";
 
 const Accessories = () => {
   return (
@@ -36,12 +37,11 @@ const Accessories = () => {
             .filter((items) => items.category === "clothing")
             ?.map((items) => {
               return (
-                <div
-                  className="mx-auto w-full flex items-center shadow hover:scale-105 cursor-pointer transition"
-                  key={items.id}
-                >
-                  <img className="block mx-auto" src={items.src} alt="/" />
-                </div>
+                <Link key={items.id} to={`/brands/${items.id}`}>
+                  <div className="mx-auto w-full min-h-[150px] flex items-center shadow hover:scale-105 cursor-pointer transition">
+                    <img className="block mx-auto" src={items.src} alt="/" />
+                  </div>
+                </Link>
               );
             })}
         </div>

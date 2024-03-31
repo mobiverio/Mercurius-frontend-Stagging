@@ -107,30 +107,6 @@ export const ItemSelling = function () {
 
   return (
     <div className="relative flex items-center my-4 mx-6 md:mx-12 bg-blue-200">
-      {/* <div
-        id="slider"
-        className="w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth hide_bar"
-      >
-        <div className="flex flex-row flex-nowrap items-center justify-center gap-4 py-4 px-8">
-          {items?.map((item) => (
-            <Link key={item.id} to={`/product/${item.id}`}>
-              <figure className="flex items-center hover:scale-105 duration-300 ease-in-out">
-                <img
-                  className="max-w-[90px] min-h-[100px] rounded-xl inline-block p-2 cursor-pointer "
-                  src={item.url}
-                  alt="/"
-                />
-                <figcaption className="px-2 py-1 -mt-3">
-                  <h3 className="text-sm font-semibold leading-tight">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm leading-tight">{item.pitch}</p>
-                </figcaption>
-              </figure>
-            </Link>
-          ))}
-        </div>
-      </div> */}
       <div
         className="py-3 px-6 overflow-y-auto hide_bar scroll-smooth"
         id="slider"
