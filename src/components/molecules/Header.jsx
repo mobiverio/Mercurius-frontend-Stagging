@@ -7,7 +7,6 @@ import {
   BsPerson,
   BsSearch,
   BsCart3,
-  // BsChevronDown,
 } from "react-icons/bs";
 
 const navigation = [
@@ -83,7 +82,6 @@ export default function Header() {
                       My&nbsp;Account
                     </p>
                   </Link>
-                  {/* <a href="#"></a> */}
                 </div>
                 <div className="">
                   <Link
@@ -133,12 +131,13 @@ export default function Header() {
                   key={item.name}
                   as="a"
                   href={item.href}
-                  className={classNames(
-                    item.current
-                      ? "border-b-2 border-black transition-all"
-                      : "text-black hover:border-b-2 hover:border-black",
-                    "block px-3 py-2 text-base font-medium"
-                  )}
+                  className={`block text-base px-3 py-2 font-medium`}
+                  // className={classNames(
+                  //   item.current
+                  //     ? "border-b-2 border-black transition-all"
+                  //     : "text-black hover:border-b-2 hover:border-black",
+                  //   "block px-3 py-2 text-base font-medium"
+                  // )}
                   aria-current={item.current ? "page" : undefined}
                 >
                   {item.name}
