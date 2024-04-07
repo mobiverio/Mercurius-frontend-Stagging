@@ -31,7 +31,7 @@ export default function Register() {
         <h1 className="text-3xl">Mercurius</h1>
         <p className="">Elegance Redefined. Innovation Redesigned</p>
       </div>
-      <div className="shadow-md w-1/3 mx-auto flex flex-col justify-center items-center px-4 py-8 rounded">
+      <div className="shadow-md md:w-1/3 mx-auto flex flex-col justify-center items-center px-4 py-8 rounded">
         <div className="w-full">
           <form>
             <label className="font-semibold text-[1.4rem]" htmlFor="signIn">
@@ -88,7 +88,7 @@ export default function Register() {
           </form>
         </div>
       </div>
-      <p className="text-[.7rem] w-1/4 mx-auto my-4 leading-tight">
+      <p className="text-[.7rem] md:w-1/4 mx-auto my-4 leading-tight py-6 text-center md:text-left">
         Protected by reCAPTCHA and subject to the{" "}
         <Link>
           <span className="font-bold cursor-pointer">Mercurius</span>
