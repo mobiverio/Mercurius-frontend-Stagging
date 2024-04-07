@@ -1,5 +1,6 @@
 import React from "react";
-import { BsHeart } from "react-icons/bs";
+import "../../styles/Styles.css";
+import { FiHeart } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 import Accessories from "../../assets/images/accessories.png";
@@ -15,13 +16,13 @@ export const Selling = function ({ products }) {
       <div className="grid grid-cols-2 sm:grid-cols-[repeat(3,minmax(0,300px))] md:grid-cols-[repeat(5,minmax(0,300px))] gap-2">
         {products?.map((product, i) => {
           return (
-            <Link key={i} to={`/product-view/${product.id}`}>
-              <div key={product.id} className="w-full">
-                <div
-                  key={i}
-                  className="relative p-4 bg-[#f6f6f6] w-full min-h-[100%] flex flex-col items-center justify-center"
-                >
-                  <BsHeart className="w-4 h-4 self-end cursor-pointer text-black/40" />
+            <div key={product.id} className="w-full">
+              <div
+                key={i}
+                className="relative p-4 bg-[#f6f6f6] w-full min-h-[100%] flex flex-col items-center justify-center"
+              >
+                <FiHeart className="w-4 h-4 self-end cursor-pointer text-black/40" />
+                <Link key={i} to={`/product-view/${product.id}`}>
                   <img
                     className=" min-w-[100px] max-w-[120px] min-h-[100px] max-h-[100px] my-4"
                     src={product.src || product.image}
@@ -32,12 +33,12 @@ export const Selling = function ({ products }) {
                   <p className="text-sm font-semibold">
                     {product?.color || product?.title?.slice}
                   </p>
-                  <button className="relative -bottom-2 text-sm text-white bg-[#1b1b1b] hover:bg-[#1e1e1ebb]/70 p-2 mt-2 rounded-md">
-                    Add&nbsp;to&nbsp;Cart
-                  </button>
-                </div>
+                </Link>
+                <button className="relative -bottom-2 text-sm text-white bg-[#1b1b1b] hover:bg-[#1e1e1ebb]/70 p-2 mt-2 rounded-md">
+                  Add&nbsp;to&nbsp;Cart
+                </button>
               </div>
-            </Link>
+            </div>
           );
         })}
       </div>
@@ -58,7 +59,7 @@ export const BestSelling = function ({ products }) {
               key={i}
               className="w-full p-4 bg-[#f6f6f6] flex flex-col items-center justify-center"
             >
-              <BsHeart className="w-4 h-4 self-end cursor-pointer text-black/40" />
+              <FiHeart className="w-4 h-4 self-end cursor-pointer text-black/40" />
               <img
                 className="min-w-[100px] max-w-[120px] min-h-[100px] max-h-[100px] my-4"
                 src={product.src || product.image}
