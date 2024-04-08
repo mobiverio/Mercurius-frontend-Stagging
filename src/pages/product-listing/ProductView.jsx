@@ -16,21 +16,21 @@ export const ProductView = ({ product }) => {
     <div className="p-2 md:mx-12">
       <div className="flex flex-col md:flex-row bg-white/70">
         {/* Product */}
-        <div className="w-full md:w-[45%] flex flex-col-reverse md:flex-row justify-start items-center sm:gap-3">
-          <div className="w-fit flex flex-row md:flex-col justify-center sm:justify-start gap-3 p-2 sm:min-h-[85%]">
+        <div className="w-full md:w-[45%] flex flex-col-reverse md:flex-row items-center sm:gap-3">
+          <div className="w-fit flex flex-row md:flex-col justify-center items-center gap-3 p-2">
             {[...Array(3)].map((_, index) => (
               <img
                 key={index}
-                className="rounded sm:rounded-l-md border-gray w-1/12 sm:w-20 cursor-pointer"
+                className="rounded sm:rounded-l-md border-gray w-1/12 sm:w-16 cursor-pointer"
                 src={product?.image}
                 alt="/"
               />
             ))}
           </div>
 
-          <div className="w-full flex justify-center items-center h-[85%] sm:px-2">
+          <div className="w-full flex justify-center items-start md:items-around sm:px-2">
             <img
-              className="max-w-full max-h-full lg:max-h-[400px]"
+              className="w-[35%] md:min-w-[80%] md:max-h-full lg:max-h-[400px]"
               src={product?.image}
               alt="/"
             />
@@ -39,7 +39,7 @@ export const ProductView = ({ product }) => {
         {/* Pricing */}
         <div className="w-full md:w-[54%] sm:p-2 text-sm">
           <div className="sm:mt-4">
-            <h3 className="text-2xl sm:text-4xl font-semibold mb-2">
+            <h3 className="text-sm sm:text-3xl font-semibold mb-2">
               {product?.title}
             </h3>
             {<p className="text-[#333]">Brand: Nike</p>}
@@ -70,8 +70,8 @@ export const ProductView = ({ product }) => {
             <p className="text-[#333] text-sm">+$2.00 delivery fee to Lagos</p>
           </div>
 
-          <div className="w-fit my-3">
-            <p className="text-slate-600 font-semibold">Choose a Color</p>
+          <div className="w-[60%] sm:w-fit my-3">
+            <p className="text-slate-600 font-semibold my-2">Choose a Color</p>
             <div className="flex flex-row justify-between items-center gap-4">
               <div className="w-6 h-6 cursor-pointer bg-[#ECDECC] rounded-full"></div>
               <div className="w-6 h-6 cursor-pointer bg-[#00003C] rounded-full"></div>
@@ -81,7 +81,7 @@ export const ProductView = ({ product }) => {
           </div>
 
           <div className="my-3 ">
-            <p className="text-slate-600 font-semibold">Choose a Size</p>
+            <p className="text-slate-600 font-semibold my-2">Choose a Size</p>
             <div className="w-fit flex flex-row justify-between items-center gap-2 text-[.7rem]">
               <label
                 className="bg-slate-200 flex items-center gap-x-2 py-1 px-2 rounded-md cursor-pointer"
@@ -146,8 +146,8 @@ export const ProductView = ({ product }) => {
             </div>
           </div>
 
-          <div className="w-fit sm:1/6 text-slate-500 my-3">
-            <p className="text-slate-600 font-semibold">Choose Quantity</p>
+          <div className="w-fit sm:w-3/6 text-slate-500 my-3">
+            <p className="text-slate-600 font-semibold my-2">Choose Quantity</p>
 
             <p className="flex flex-row justify-between items-center border rounded-md w-full h-8">
               <BsDash

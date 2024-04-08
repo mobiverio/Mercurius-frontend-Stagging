@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useForm, Controller } from "react-hook-form";
+
 import { BsEyeSlash, BsEye } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa6";
@@ -17,6 +19,7 @@ export default function Register() {
       setType("password");
     }
   };
+
   return (
     <main className="w-full h-screen text-sm">
       <div className="flex justify-end items-start p-2">
