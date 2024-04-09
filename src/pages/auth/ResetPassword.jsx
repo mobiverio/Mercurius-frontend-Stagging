@@ -22,7 +22,7 @@ export default function Register() {
               <div>
                 <input
                   className="border w-full my-4 rounded-xl px-4 py-3 outline-none"
-                  type="text"
+                  type="email"
                   placeholder="email address"
                   autoFocus
                 />

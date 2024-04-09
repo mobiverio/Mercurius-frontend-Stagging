@@ -34,13 +34,16 @@ export default function Register() {
       <div className="shadow-md md:w-1/3 mx-auto flex flex-col justify-center items-center px-4 py-8 rounded">
         <div className="w-full">
           <form>
-            <label className="font-semibold text-[1.4rem]" htmlFor="signIn">
+            <label
+              className="font-semibold text-sm sm:text-[1.4rem]"
+              htmlFor="signIn"
+            >
               Sign In
             </label>
             <div>
               <input
                 className="border w-full my-4 rounded-xl px-4 py-3 outline-none"
-                type="text"
+                type="email"
                 placeholder="email address"
                 autoFocus
               />
