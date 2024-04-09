@@ -17,11 +17,11 @@ export default function Register() {
   return (
     <main className="w-full h-screen text-sm">
       <div className="flex flex-col items-center justify-center">
-        <div className="w-fit mx-auto text-center mb-4 font-mono mt-8">
+        <div className="w-fit mx-auto text-center mb-4 font-mono mt-20">
           <h1 className="text-3xl">Mercurius</h1>
           <p className="">Elegance Redefined. Innovation Redesigned</p>
         </div>
-        <div className="shadow-md md:w-1/3 mx-auto flex flex-col justify-center items-center px-4 py-8 rounded">
+        <div className="shadow-md lg:w-1/3 mx-auto flex flex-col justify-center items-center px-4 py-8 rounded">
           <div className="w-full">
             <form>
               <label className="font-semibold text-[1.4rem]" htmlFor="signIn">
