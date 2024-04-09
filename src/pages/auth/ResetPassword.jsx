@@ -1,7 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import * as yup from "yup";
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export default function Register() {
+  const schema = yup.object().shape({
+    email: yup
+      .string()
+      .email("Invalid email format")
+      .required("Please enter your email address"),
+  });
+  const {
+    control,
+    reset,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: { email: "" },
+    mode: "onChange",
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
+
   return (
     <main className="w-full h-screen text-sm">
       <div className="flex flex-col items-center justify-center">
@@ -11,7 +36,7 @@ export default function Register() {
         </div>
         <div className="shadow-md md:w-1/3 mx-auto flex flex-col justify-center items-center px-4 py-8 rounded">
           <div className="w-full">
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <label className="font-semibold text-[1.4rem]" htmlFor="signIn">
                 Forgot Password?
               </label>
@@ -19,13 +44,25 @@ export default function Register() {
                 No worries! Just enter your email and we’ll send you a reset
                 password link.
               </p>
-              <div>
-                <input
-                  className="border w-full my-4 rounded-xl px-4 py-3 outline-none"
-                  type="email"
-                  placeholder="email address"
-                  autoFocus
+              <div className="relative">
+                <Controller
+                  name="email"
+                  control={control}
+                  rules={{ required: "Please enter your email address" }}
+                  render={({ field: { value, onChange } }) => (
+                    <input
+                      className="border w-full my-4 rounded-xl px-4 py-3 outline-none"
+                      type="email"
+                      placeholder="email address"
+                      autoFocus
+                      value={value}
+                      onChange={onChange}
+                    />
+                  )}
                 />
+                <span className="text-red-400 text-sm absolute -bottom-3 right-2">
+                  {errors?.email?.message}
+                </span>
               </div>
               <button className="bg-[#00003C] text-white font-semibold w-full my-4 rounded-xl px-4 py-3 outline-none">
                 Reset Password

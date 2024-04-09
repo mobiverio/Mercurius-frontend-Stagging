@@ -81,9 +81,6 @@ export default function Register() {
                     autoFocus
                     value={value}
                     onChange={onChange}
-                    // error={Boolean(errors.firstName)}
-                    // {...(errors.firstName &&
-                    //   handleError(errors.firstName.message))}
                   />
                 )}
               />
@@ -154,11 +151,6 @@ export default function Register() {
                     placeholder="password"
                     value={value}
                     onChange={onChange}
-                    // {...{ required: true }}
-                    error={Boolean(errors.password)}
-                    {...(errors.password ? (
-                      <span>Invalid password</span>
-                    ) : null)}
                   />
                 )}
               />
@@ -172,7 +164,6 @@ export default function Register() {
             <button
               className="bg-[#00003C] text-white font-semibold w-full my-4 rounded-xl px-4 py-3 outline-none"
               type="submit"
-              // disabled={isSubmitting}
             >
               Sign In
             </button>
