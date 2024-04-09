@@ -30,11 +30,11 @@ export default function Register() {
   return (
     <main className="w-full h-screen text-sm">
       <div className="flex flex-col items-center justify-center">
-        <div className="w-fit mx-auto text-center mb-4 font-mono mt-8">
+        <div className="w-fit mx-auto text-center mb-4 font-mono mt-20">
           <h1 className="text-3xl">Mercurius</h1>
           <p className="">Elegance Redefined. Innovation Redesigned</p>
         </div>
-        <div className="shadow-md md:w-1/3 mx-auto flex flex-col justify-center items-center px-4 py-8 rounded">
+        <div className="shadow-md lg:w-1/3 mx-auto flex flex-col justify-center items-center px-4 py-8 rounded">
           <div className="w-full">
             <form onSubmit={handleSubmit(onSubmit)}>
               <label className="font-semibold text-[1.4rem]" htmlFor="signIn">
@@ -52,7 +52,7 @@ export default function Register() {
                   render={({ field: { value, onChange } }) => (
                     <input
                       className="border w-full my-4 rounded-xl px-4 py-3 outline-none"
-                      type="email"
+                      type="text"
                       placeholder="email address"
                       autoFocus
                       value={value}
@@ -60,7 +60,7 @@ export default function Register() {
                     />
                   )}
                 />
-                <span className="text-red-400 text-sm absolute -bottom-3 right-2">
+                <span className="text-red-400 text-sm absolute -bottom-2 right-2">
                   {errors?.email?.message}
                 </span>
               </div>

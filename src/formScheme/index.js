@@ -5,9 +5,9 @@ export const SignUpSchema = yup.object().shape({
     .string()
     .email("Invalid email format")
     .required("Please enter your email address"),
-  firstName: yup.string().required("This field is required"),
-  lastName: yup.string().required("This field is required"),
-  password: yup.string().password().required("Password is required"),
+  firstName: yup.string().required("Required"),
+  lastName: yup.string().required("Required"),
+  password: yup.string().required("Password is required"),
   terms: yup.string().required("Accept our terms and policy document"),
 });
 

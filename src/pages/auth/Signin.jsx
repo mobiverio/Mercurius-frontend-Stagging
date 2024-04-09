@@ -51,11 +51,11 @@ export default function Register() {
           </Link>
         </p>
       </div>
-      <div className="w-fit mx-auto text-center mb-4 font-mono">
+      <div className="w-fit mx-auto text-center mb-4 font-mono mt-20">
         <h1 className="text-3xl">Mercurius</h1>
         <p className="">Elegance Redefined. Innovation Redesigned</p>
       </div>
-      <div className="shadow-md md:w-1/3 mx-auto flex flex-col justify-center items-center px-4 py-8 rounded">
+      <div className="shadow-md lg:w-1/3 mx-auto flex flex-col justify-center items-center px-4 py-8 rounded">
         <div className="w-full">
           <form onSubmit={handleSubmit(onSubmit)}>
             <label
@@ -117,7 +117,7 @@ export default function Register() {
               </span>
             </div>
             <Link to="/resetPassword">
-              <p className="font-bold -mt-3 cursor-pointer">Forgot password?</p>
+              <p className="font-bold mt-3 cursor-pointer">Forgot password?</p>
             </Link>
             <button
               type="submit"
@@ -141,7 +141,7 @@ export default function Register() {
           </form>
         </div>
       </div>
-      <p className="text-[.7rem] md:w-1/4 mx-auto my-4 leading-tight py-6 text-center md:text-left">
+      <p className="text-[.7rem] lg:w-1/4 mx-auto my-4 leading-tight py-2 px-4 text-center md:text-left">
         Protected by reCAPTCHA and subject to the{" "}
         <Link>
           <span className="font-bold cursor-pointer">Mercurius</span>
