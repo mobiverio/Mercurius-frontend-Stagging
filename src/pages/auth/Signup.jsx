@@ -8,7 +8,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
-const user_db = process.env.LOCAL_STORAGE_NAME;
+const user_db = process.env.REACT_APP_LOCAL_STORAGE_NAME;
 
 const defaultValues = {
   email: "",
