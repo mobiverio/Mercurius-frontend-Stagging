@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SignUpSchema } from "../../formScheme/index";
+import { v4 as uuid } from "uuid";
 import { BsEyeSlash, BsEye } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+
+const user_db = process.env.REACT_APP_LOCAL_STORAGE_NAME;
 
 const defaultValues = {
   email: "",
@@ -31,7 +34,20 @@ export default function Register() {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    const user = {
+      id: uuid(),
+      createdAt: new Date(),
+      cart: [],
+      stockpile: [],
+      favorite: [],
+      ...data,
+    };
+
+    const allUsers = JSON.parse(localStorage.getItem(user_db)) || [];
+    const newUser = [...allUsers, user];
+    localStorage.setItem(user_db, JSON.stringify(newUser));
+
+    console.log(newUser);
     reset();
   };
 
