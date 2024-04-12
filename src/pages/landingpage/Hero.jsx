@@ -38,7 +38,7 @@ export const Slider = function ({
     return () => {
       clearInterval(slideInterval);
     };
-    //eslint_disable-next-line react-hook-exhaustive-dept
+    //eslint_disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex]);
 
   return (
