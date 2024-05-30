@@ -9,9 +9,22 @@ import {
   BsCart3,
   BsChevronRight,
 } from "react-icons/bs";
+import useCartStore from "../../zustand/useCartStore";
+
 
 export const ProductView = ({ product }) => {
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(1); // Ensure counter starts at 1
+  const { addToCart } = useCartStore(); // Use the addToCart method from the store
+
+  const handleAddToCart = () => {
+    if (counter > 0) {
+      addToCart({
+        ...product,
+        quantity: counter
+      });
+    }
+  };
+
   return (
     <div className="p-2 md:mx-12">
       <div className="flex flex-col md:flex-row bg-white/70">
@@ -152,7 +165,7 @@ export const ProductView = ({ product }) => {
             <p className="flex flex-row justify-between items-center border rounded-md w-full h-8">
               <BsDash
                 className="bg-slate-200 h-full w-fit cursor-pointer"
-                onClick={() => setCounter(counter - 1)}
+                onClick={() => setCounter(counter > 1 ? counter - 1 : 1)}
                 size="25"
               />
               {counter}
@@ -165,7 +178,10 @@ export const ProductView = ({ product }) => {
           </div>
           <hr className="w-full" />
           <div className="max-w-[200px] mx-auto">
-            <button className="flex justify-center items-center gap-2 text-sm sm:text-[1.2rem] bg-black py-2 px-4 text-white w-full sm:w-[100%] my-4 rounded hover:bg-black/80 transition">
+            <button
+              className="flex justify-center items-center gap-2 text-sm sm:text-[1.2rem] bg-black py-2 px-4 text-white w-full sm:w-[100%] my-4 rounded hover:bg-black/80 transition"
+              onClick={handleAddToCart}
+            >
               <BsCart3 className="" size={25} />
               Add to Cart
             </button>
@@ -175,6 +191,7 @@ export const ProductView = ({ product }) => {
     </div>
   );
 };
+
 
 export const ProductDescription = ({ product }) => {
   return (

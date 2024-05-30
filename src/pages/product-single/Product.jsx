@@ -3,7 +3,6 @@ import Accordion from "../product-listing/Accordion";
 import { Selling } from "../../components/molecules/Selling";
 import Loader from "../../components/molecules/Loader";
 import { getProducts } from "../../api/Axios";
-// import { useParams } from "react-router-dom";
 
 export const Product = function () {
   const [products, setProducts] = useState([]);

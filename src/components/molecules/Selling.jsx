@@ -9,8 +9,10 @@ import Samsung from "../../assets/images/samsung.png";
 import Macbook from "../../assets/images/macbook.png";
 import Laptop from "../../assets/images/laptops.png";
 import Watch from "../../assets/images/watches.png";
+import useCartStore from "../../zustand/useCartStore";
 
 export const Selling = function ({ products }) {
+  const { addToCart } = useCartStore();
   return (
     <div className="">
       <div className="grid grid-cols-2 sm:grid-cols-[repeat(3,minmax(0,300px))] md:grid-cols-[repeat(5,minmax(0,300px))] gap-2">
@@ -34,7 +36,10 @@ export const Selling = function ({ products }) {
                     {product?.color || product?.title?.slice}
                   </p>
                 </Link>
-                <button className="relative -bottom-2 text-sm text-white bg-[#1b1b1b] hover:bg-[#1e1e1ebb]/70 p-2 mt-2 rounded-md">
+                <button
+                  onClick={() => addToCart(product)}
+                  className="relative -bottom-2 text-sm text-white bg-[#1b1b1b] hover:bg-[#1e1e1ebb]/70 p-2 mt-2 rounded-md"
+                >
                   Add&nbsp;to&nbsp;Cart
                 </button>
               </div>
@@ -47,6 +52,8 @@ export const Selling = function ({ products }) {
 };
 
 export const BestSelling = function ({ products }) {
+  const { addToCart } = useCartStore();
+
   return (
     <div className="mx-6 md:mx-12 my-4">
       <div className="flex flex-row justify-start">
@@ -67,7 +74,12 @@ export const BestSelling = function ({ products }) {
               />
               <p className="w-[80%] text-center text-sm">{product.name}</p>
               <p className="text-sm font-semibold">{`$${product.price}`}</p>
-              <button className="text-sm text-white bg-[#1e1e1e] hover:bg-[#1e1e1ebb]/70 p-2 mt-2 rounded-md">
+              <button
+                onClick={() => {
+                  addToCart(product);
+                }}
+                className="text-sm text-white bg-[#1e1e1e] hover:bg-[#1e1e1ebb]/70 p-2 mt-2 rounded-md"
+              >
                 Add to Cart
               </button>
             </div>
