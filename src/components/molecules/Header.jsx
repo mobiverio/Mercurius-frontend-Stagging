@@ -8,6 +8,7 @@ import {
   BsSearch,
   BsCart3,
 } from "react-icons/bs";
+import useCartStore from "../../zustand/useCartStore";
 
 const navigation = [
   { name: "New In", href: "/new", current: true },
@@ -23,6 +24,10 @@ const navigation = [
 // }
 
 export default function Header() {
+  const { cart } = useCartStore();
+
+  const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+
   return (
     <Disclosure as="nav" className="sticky top-0 z-40 shadow bg-white/90">
       {({ open }) => (
@@ -90,6 +95,9 @@ export default function Header() {
                   >
                     <BsCart3 size={20} />
                     <p className="hidden md:block font-semibold">Cart</p>
+                    <p className="hidden md:block font-semibold pl-4 text-red-400">
+                      {totalItems ? totalItems : null}
+                    </p>
                   </Link>
                 </div>
               </div>

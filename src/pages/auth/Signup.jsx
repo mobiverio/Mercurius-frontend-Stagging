@@ -47,7 +47,6 @@ export default function Register() {
     const newUser = [...allUsers, user];
     localStorage.setItem(user_db, JSON.stringify(newUser));
 
-    console.log(newUser);
     reset();
   };
 

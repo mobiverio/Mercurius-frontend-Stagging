@@ -1,5 +1,5 @@
 import React from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter, Navigate } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
@@ -23,30 +23,37 @@ import SignUp from "./pages/auth/Signup.jsx";
 import ResetPassword from "./pages/auth/ResetPassword.jsx";
 import CreatePassword from "./pages/auth/CreatePassword.jsx";
 
+const user = true;
+
+// Protected Route Component
+const ProtectedRoute = ({ element }) => {
+  return user ? element : <Navigate to="/signin" />;
+};
+
 const router = createBrowserRouter([
-  //Authentication Pages
+  // Authentication Pages
   { path: "/signin", element: <SignIn /> },
   { path: "/signup", element: <SignUp /> },
   { path: "/resetPassword", element: <ResetPassword /> },
   { path: "/createPassword", element: <CreatePassword /> },
 
-  //Authenticated Pages
+  // Authenticated Pages
   {
     path: "/",
-    element: <App />,
+    element: <ProtectedRoute element={<App />} />,
     errorElement: <div>Page not found</div>,
     children: [
-      { path: "/", element: <Index /> },
-      { path: "/new", element: <NewIndex /> },
-      { path: "/apparel", element: <ApparelIndex /> },
-      { path: "/accessories", element: <AccessoriesIndex /> },
-      { path: "/brands", element: <BrandIndex /> },
-      { path: "/gadgets", element: <GadgetIndex /> },
-      { path: "/sales", element: <SalesIndex /> },
-      { path: "/cart", element: <CartIndex /> },
-      { path: "/product-view/:productId", element: <ProductIndex /> },
-      { path: "/product/:id", element: <Product /> },
-      { path: "/brands/:id", element: <BrandProducts /> },
+      { path: "/", element: <ProtectedRoute element={<Index />} /> },
+      { path: "/new", element: <ProtectedRoute element={<NewIndex />} /> },
+      { path: "/apparel", element: <ProtectedRoute element={<ApparelIndex />} /> },
+      { path: "/accessories", element: <ProtectedRoute element={<AccessoriesIndex />} /> },
+      { path: "/brands", element: <ProtectedRoute element={<BrandIndex />} /> },
+      { path: "/gadgets", element: <ProtectedRoute element={<GadgetIndex />} /> },
+      { path: "/sales", element: <ProtectedRoute element={<SalesIndex />} /> },
+      { path: "/cart", element: <ProtectedRoute element={<CartIndex />} /> },
+      { path: "/product-view/:productId", element: <ProtectedRoute element={<ProductIndex />} /> },
+      { path: "/product/:id", element: <ProtectedRoute element={<Product />} /> },
+      { path: "/brands/:id", element: <ProtectedRoute element={<BrandProducts />} /> },
     ],
   },
 ]);
