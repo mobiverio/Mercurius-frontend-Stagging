@@ -7,19 +7,25 @@ import { BsEyeSlash, BsEye } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const user_db = process.env.REACT_APP_LOCAL_STORAGE_NAME;
 
 const defaultValues = {
   email: "",
-  firstName: "",
-  lastName: "",
+  name: "",
+  phone: "",
+  date_of_birth: "",
+  address: "",
+  city: "",
+  zip_code: "",
   password: "",
-  terms: false,
+  password_confirmation: "",
 };
 
 export default function Register() {
-  const [showPassword, setShowPassword] = useState(false);
+  const [password, setPassword] = useState(false);
   const [type, setType] = useState("password");
 
   const {
@@ -37,25 +43,24 @@ export default function Register() {
     const user = {
       id: uuid(),
       createdAt: new Date(),
-      cart: [],
-      stockpile: [],
-      favorite: [],
       ...data,
     };
 
-    const allUsers = JSON.parse(localStorage.getItem(user_db)) || [];
-    const newUser = [...allUsers, user];
-    localStorage.setItem(user_db, JSON.stringify(newUser));
+    // const allUsers = JSON.parse(localStorage.getItem(user_db)) || [];
+    // const newUser = [...allUsers, user];
+    // localStorage.setItem(user_db, JSON.stringify(newUser));
 
-    reset();
+    // reset();
+
+    console.log(user);
   };
 
   const handlePassword = () => {
     if (type === "password") {
-      setShowPassword(true);
+      setPassword(true);
       setType("text");
     } else {
-      setShowPassword(false);
+      setPassword(false);
       setType("password");
     }
   };
@@ -76,7 +81,7 @@ export default function Register() {
         <p className="">Elegance Redefined. Innovation Redesigned</p>
       </div>
 
-      <div className="shadow-md lg:w-1/3 mx-auto flex flex-col justify-center items-center px-4 py-8 rounded">
+      <div className="shadow-md lg:w-2/3 mx-auto flex flex-col justify-center items-center px-4 py-8 rounded">
         <div className="w-full">
           <form onSubmit={handleSubmit(onSubmit)}>
             <label
@@ -85,107 +90,225 @@ export default function Register() {
             >
               Sign up
             </label>
-            <div className="relative">
-              <Controller
-                name="email"
-                control={control}
-                rules={{ required: true }}
-                render={({ field: { value, onChange } }) => (
-                  <input
-                    className="border w-full my-2 rounded-xl px-4 py-3 outline-none"
-                    type="email"
-                    placeholder="email address"
-                    autoFocus
-                    value={value}
-                    onChange={onChange}
-                  />
-                )}
-              />
-
-              <span className="text-red-400 text-sm absolute -bottom-3 right-2">
-                {errors?.email?.message}
-              </span>
-            </div>
             <div className="flex items-center justify-between gap-4 relative my-4">
-              <Controller
-                name="firstName"
-                control={control}
-                rules={{ required: true }}
-                render={({ field: { value, onChange } }) => (
-                  <input
-                    className="border w-full my-2 rounded-xl px-4 py-3 outline-none"
-                    type="text"
-                    placeholder="first name"
-                    value={value}
-                    onChange={onChange}
-                    error={Boolean(errors.firstName)}
-                  />
-                )}
-              />
-              <span className="text-red-400 text-sm absolute -bottom-3 left-2">
-                {errors?.firstName?.message}
-              </span>
-              <Controller
-                name="lastName"
-                control={control}
-                rules={{ required: true }}
-                render={({ field: { value, onChange } }) => (
-                  <input
-                    type="text"
-                    className="border w-full my-2 rounded-xl px-4 py-3 outline-none"
-                    placeholder="last name"
-                    value={value}
-                    onChange={onChange}
-                  />
-                )}
-              />
-              <span className="text-red-400 text-sm absolute -bottom-3 right-2">
-                {errors?.lastName?.message}
-              </span>
-            </div>
-            <div className="relative">
-              {showPassword ? (
-                <BsEye
-                  onClick={handlePassword}
-                  className="absolute right-6 top-[37%] cursor-pointer"
-                  size={20}
+              <div className="relative w-full">
+                <Controller
+                  name="name"
+                  control={control}
+                  rules={{ required: true }}
+                  render={({ field: { value, onChange } }) => (
+                    <input
+                      className="border w-full my-2 rounded-xl px-4 py-3 outline-none"
+                      type="text"
+                      placeholder="first name"
+                      value={value}
+                      onChange={onChange}
+                      error={Boolean(errors.name)}
+                    />
+                  )}
                 />
-              ) : (
-                <BsEyeSlash
-                  onClick={handlePassword}
-                  className="absolute right-6 top-[37%] cursor-pointer"
-                  size={20}
+                <span className="text-red-400 text-sm absolute -bottom-3 left-2">
+                  {errors?.name?.message}
+                </span>
+              </div>
+              <div className="relative w-full">
+                <Controller
+                  name="email"
+                  control={control}
+                  rules={{ required: true }}
+                  render={({ field: { value, onChange } }) => (
+                    <input
+                      className="border w-full my-2 rounded-xl px-4 py-3 outline-none"
+                      type="email"
+                      placeholder="email address"
+                      autoFocus
+                      value={value}
+                      onChange={onChange}
+                    />
+                  )}
                 />
-              )}
-              <Controller
-                name="password"
-                control={control}
-                rules={{ required: "This field is required" }}
-                render={({ field: { value, onChange } }) => (
-                  <input
-                    className="border w-full my-2 rounded-xl px-4 py-3 outline-none"
-                    type={type}
-                    placeholder="password"
-                    value={value}
-                    onChange={onChange}
+                <span className="text-red-400 text-sm absolute -bottom-3 right-2">
+                  {errors?.email?.message}
+                </span>
+              </div>
+              <div className="relative w-full">
+                <Controller
+                  name="phone"
+                  control={control}
+                  rules={{ required: true }}
+                  render={({ field: { value, onChange } }) => (
+                    <input
+                      className="border w-full my-2 rounded-xl px-4 py-3 outline-none"
+                      type="text"
+                      placeholder="+234-0000-0000"
+                      value={value}
+                      onChange={onChange}
+                      error={Boolean(errors.name)}
+                    />
+                  )}
+                />
+                {/* <span className="text-red-400 text-sm absolute -bottom-3 left-2">
+                  {errors?.phone?.message}
+                </span> */}
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between gap-4 relative my-4">
+              <div className="relative w-full">
+                <Controller
+                  name="address"
+                  control={control}
+                  rules={{ required: true }}
+                  render={({ field: { value, onChange } }) => (
+                    <input
+                      type="text"
+                      className="border w-full my-2 rounded-xl px-4 py-3 outline-none"
+                      placeholder="Address"
+                      value={value}
+                      onChange={onChange}
+                    />
+                  )}
+                />
+                <span className="text-red-400 text-sm absolute -bottom-3 right-2">
+                  {errors?.address?.message}
+                </span>
+              </div>
+              <div className="relative w-full">
+                <Controller
+                  name="city"
+                  control={control}
+                  rules={{ required: true }}
+                  render={({ field: { value, onChange } }) => (
+                    <input
+                      type="text"
+                      className="border w-full my-2 rounded-xl px-4 py-3 outline-none"
+                      placeholder="City"
+                      value={value}
+                      onChange={onChange}
+                    />
+                  )}
+                />
+                <span className="text-red-400 text-sm absolute -bottom-3 right-2">
+                  {errors?.city?.message}
+                </span>
+              </div>
+              <div className="relative w-full">
+                <Controller
+                  name="zip_code"
+                  control={control}
+                  rules={{ required: true }}
+                  render={({ field: { value, onChange } }) => (
+                    <input
+                      type="text"
+                      className="border w-full my-2 rounded-xl px-4 py-3 outline-none"
+                      placeholder="ZIP Code"
+                      value={value}
+                      onChange={onChange}
+                    />
+                  )}
+                />
+                {/* <span className="text-red-400 text-sm absolute -bottom-3 right-2">
+                  {errors?.zip_code?.message}
+                </span> */}
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between gap-4 relative my-4">
+              <div className="relative w-full">
+                <Controller
+                  name="date_of_birth"
+                  control={control}
+                  rules={{ required: true }}
+                  render={({ field: { value, onChange } }) => (
+                    <DatePicker
+                      className="border min-w-[100%] w-full my-2 rounded-xl px-4 py-3 outline-none z-40
+                      "
+                      selected={value}
+                      // onSelect={(e) => handleDateSelect(e)} //when day is clicked
+                      onChange={onChange}
+                    />
+                  )}
+                />
+                <span className="text-red-400 text-sm absolute -bottom-3 right-2">
+                  {errors?.date_of_birth?.message}
+                </span>
+              </div>
+              <div className="w-full relative">
+                {password ? (
+                  <BsEye
+                    onClick={handlePassword}
+                    className="absolute right-6 top-[37%] cursor-pointer text-black/60"
+                    size={17}
+                  />
+                ) : (
+                  <BsEyeSlash
+                    onClick={handlePassword}
+                    className="absolute right-6 top-[37%] cursor-pointer text-black/60"
+                    size={17}
                   />
                 )}
-              />
-              <span className="text-red-400 text-sm absolute -bottom-3 right-2">
-                {errors?.password?.message}
-              </span>
+                <Controller
+                  name="password"
+                  control={control}
+                  rules={{ required: "This field is required" }}
+                  render={({ field: { value, onChange } }) => (
+                    <input
+                      className="border w-full my-2 rounded-xl px-4 py-3 outline-none"
+                      type={type}
+                      placeholder="password"
+                      value={value}
+                      onChange={onChange}
+                    />
+                  )}
+                />
+                <span className="text-red-400 text-sm absolute -bottom-3 right-2">
+                  {errors?.password?.message}
+                </span>
+              </div>
+              <div className="w-full relative">
+                {password ? (
+                  <BsEye
+                    onClick={handlePassword}
+                    className="absolute right-6 top-[37%] cursor-pointer text-black/60"
+                    size={17}
+                  />
+                ) : (
+                  <BsEyeSlash
+                    onClick={handlePassword}
+                    className="absolute right-6 top-[37%] cursor-pointer text-black/60"
+                    size={17}
+                  />
+                )}
+                <Controller
+                  name="password_confirmation"
+                  control={control}
+                  rules={{ required: "This field is required" }}
+                  render={({ field: { value, onChange } }) => (
+                    <input
+                      className="border w-full my-2 rounded-xl px-4 py-3 outline-none"
+                      type={type}
+                      placeholder="Confirm Password"
+                      value={value}
+                      onChange={onChange}
+                    />
+                  )}
+                />
+                <span className="text-red-400 text-sm absolute -bottom-3 right-2">
+                  {errors?.password_confirmation?.message}
+                </span>
+              </div>
             </div>
-            <Link to="/resetPassword">
-              <p className="font-bold mt-3 cursor-pointer">Forgot password?</p>
-            </Link>
+            <p className="font-bold mt-3 cursor-pointer w-fit p-1">
+              <Link to="/resetPassword">Forgot password?</Link>
+            </p>
             <button
               className="bg-[#00003C] text-white font-semibold w-full my-4 rounded-xl px-4 py-3 outline-none"
               type="submit"
             >
-              Sign In
+              Sign Up
             </button>
             <fieldset className="flex items-center justify-around gap-6 text-center border-0 border-t mt-2 py-2 px-2">
-              <legend className="px-2 font-semibold">Or</legend>
+              <legend className="px-2 font-semibold mt-16 mb-8">Or</legend>
               <button className="border py-2 px-3 rounded-md w-[90%] flex items-center justify-center gap-2 font-semibold">
                 {" "}
                 <FcGoogle size={25} />
@@ -197,7 +320,7 @@ export default function Register() {
                 Facebook
               </button>
             </fieldset>
-            <div className="flex items-center gap-2">
+            {/* <div className="flex items-center gap-2">
               <Controller
                 name="terms"
                 control={control}
@@ -223,24 +346,24 @@ export default function Register() {
                 <Link to="/">Terms of Use </Link> and{" "}
                 <Link to="/">Privacy Policy.</Link>
               </p>
-            </div>
+            </div> */}
           </form>
         </div>
+        <p className="text-[.7rem] lg:w-3/4 mx-auto my-4 leading-tight py-2 px-4 text-center">
+          Protected by reCAPTCHA and subject to the{" "}
+          <Link>
+            <span className="font-bold cursor-pointer">Mercurius</span>
+          </Link>{" "}
+          <Link>
+            <span className="font-bold cursor-pointer">Privacy Policy</span>
+          </Link>{" "}
+          and
+          <Link>
+            {" "}
+            <span className="font-bold cursor-pointer">Terms of Service.</span>
+          </Link>
+        </p>
       </div>
-      <p className="text-[.7rem] lg:w-1/4 mx-auto my-4 leading-tight py-2 px-4 text-center md:text-left">
-        Protected by reCAPTCHA and subject to the{" "}
-        <Link>
-          <span className="font-bold cursor-pointer">Mercurius</span>
-        </Link>{" "}
-        <Link>
-          <span className="font-bold cursor-pointer">Privacy Policy</span>
-        </Link>{" "}
-        and
-        <Link>
-          {" "}
-          <span className="font-bold cursor-pointer">Terms of Service.</span>
-        </Link>
-      </p>
     </main>
   );
 }
