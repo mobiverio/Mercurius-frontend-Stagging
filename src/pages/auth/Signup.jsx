@@ -114,7 +114,7 @@ export default function Register() {
                     <input
                       className="border w-full my-2 rounded-xl px-4 py-3 outline-none"
                       type="text"
-                      placeholder="first name"
+                      placeholder="Full name"
                       value={value}
                       onChange={onChange}
                       error={Boolean(errors.name)}
