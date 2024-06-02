@@ -139,7 +139,7 @@ export default function Register() {
                       type="email"
                       id="email"
                       placeholder="example@gmail.com"
-                      autoFocus
+                      autocomplete="false"
                       value={value}
                       onChange={onChange}
                     />
@@ -149,6 +149,9 @@ export default function Register() {
                   {errors?.email?.message}
                 </span>
               </div>
+            </div>
+
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative my-4">
               <div className="relative w-full">
                 <label htmlFor="phone">Phone Number</label>
                 <Controller
@@ -167,13 +170,10 @@ export default function Register() {
                     />
                   )}
                 />
-                {/* <span className="text-red-400 text-sm absolute -bottom-3 left-2">
+                <span className="text-red-400 text-sm absolute -bottom-3 left-2">
                   {errors?.phone?.message}
-                </span> */}
+                </span>
               </div>
-            </div>
-
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative my-4">
               <div className="relative w-full">
                 <label htmlFor="address">Address</label>
                 <Controller
@@ -193,6 +193,29 @@ export default function Register() {
                 />
                 <span className="text-red-400 text-sm absolute -bottom-3 right-2">
                   {errors?.address?.message}
+                </span>
+              </div>
+            </div>
+
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative my-4">
+              <div className="relative w-full">
+                <label htmlFor="dob">Date of Birth</label>
+                <Controller
+                  name="date_of_birth"
+                  control={control}
+                  rules={{ required: true }}
+                  render={({ field: { value, onChange } }) => (
+                    <DatePicker
+                      className="border border-[#00003C] min-w-[100%] w-full my-2 px-4 py-3 outline-none z-40
+                      "
+                      id="dob"
+                      selected={value}
+                      onChange={onChange}
+                    />
+                  )}
+                />
+                <span className="text-red-400 text-sm absolute -bottom-3 right-2">
+                  {errors?.date_of_birth?.message}
                 </span>
               </div>
               <div className="relative w-full">
@@ -240,26 +263,6 @@ export default function Register() {
             </div>
 
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative my-4">
-              <div className="relative w-full">
-                <label htmlFor="dob">Date of Birth</label>
-                <Controller
-                  name="date_of_birth"
-                  control={control}
-                  rules={{ required: true }}
-                  render={({ field: { value, onChange } }) => (
-                    <DatePicker
-                      className="border border-[#00003C] min-w-[100%] w-full my-2 px-4 py-3 outline-none z-40
-                      "
-                      id="dob"
-                      selected={value}
-                      onChange={onChange}
-                    />
-                  )}
-                />
-                <span className="text-red-400 text-sm absolute -bottom-3 right-2">
-                  {errors?.date_of_birth?.message}
-                </span>
-              </div>
               <div className="w-full relative">
                 {password ? (
                   <BsEye

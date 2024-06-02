@@ -48,6 +48,21 @@ export const register = async (vals) => {
   }
 };
 
+export const loginUser = async (vals) => {
+  try {
+    const res = await api.post("/login", { ...vals });
+    if (res?.data?.status) {
+      const { access_token, ...restOfData } = res?.data;
+      localStorage.setItem("accessToken", access_token);
+      localStorage.setItem("loggedInUser", JSON.stringify(restOfData?.user));
+    }
+    console.log(res?.data, "action payload");
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export const getProducts = async () => {
   try {
     const response = await baseUrl.get("/products");

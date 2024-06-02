@@ -28,10 +28,12 @@ import SignUp from "./pages/auth/Signup.jsx";
 import ResetPassword from "./pages/auth/ResetPassword.jsx";
 import CreatePassword from "./pages/auth/CreatePassword.jsx";
 
-const user = true;
+// const user = true;
 
 // Protected Route Component
 const ProtectedRoute = ({ element }) => {
+  // const user = sessionStorage.get('user')
+  const user = localStorage.getItem("loggedInUser");
   return user ? element : <Navigate to="/signin" />;
 };
 

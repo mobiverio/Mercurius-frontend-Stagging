@@ -135,7 +135,7 @@ const Profile = () => {
                         type="text"
                         id="zip_code"
                         className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
-                        placeholder="ZIP Code"
+                        placeholder="Zip Code"
                         value={value}
                         onChange={onChange}
                       />

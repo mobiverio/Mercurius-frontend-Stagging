@@ -6,11 +6,14 @@ import { BsEyeSlash, BsEye } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa6";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import { loginUser } from "../../api/Axios";
 
 export default function Register() {
   const [type, setType] = useState("password");
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handlePassword = () => {
     if (type === "password") {
@@ -36,8 +39,15 @@ export default function Register() {
     resolver: yupResolver(SignInSchema),
   });
 
-  const onSubmit = (data) => {
-    reset();
+  const onSubmit = async (data) => {
+    const { email, password } = data;
+    const response = await loginUser({ email, password });
+    if (response?.status) {
+      console.log("yipppeee");
+      navigate("/");
+      // reset();
+    }
+    console.log(response);
   };
 
   return (
