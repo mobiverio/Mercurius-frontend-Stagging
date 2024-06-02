@@ -34,26 +34,25 @@ export default function Register() {
           <p className="">Elegance Redefined. Innovation Redesigned</p>
         </div>
         <div className="shadow-md lg:w-1/3 mx-auto flex flex-col justify-center items-center px-4 py-8 rounded">
-          <div className="w-full">
+          <div className="w-full my">
             <form onSubmit={handleSubmit(onSubmit)}>
               <label className="font-semibold text-[1.4rem]" htmlFor="signIn">
                 Forgot Password?
               </label>
-              <p className="my-1">
-                No worries! Just enter your email and we’ll send you a reset
-                password link.
-              </p>
-              <div className="relative">
+
+              <div className="relative my-4">
+                <label htmlFor="email">Email</label>
                 <Controller
                   name="email"
                   control={control}
                   rules={{ required: "Please enter your email address" }}
                   render={({ field: { value, onChange } }) => (
                     <input
-                      className="border w-full my-4 rounded-xl px-4 py-3 outline-none"
+                      className="border border-[#00003C] w-full my-4 px-4 py-3 outline-none"
                       type="text"
                       placeholder="email address"
                       autoFocus
+                      id="email"
                       value={value}
                       onChange={onChange}
                     />
@@ -63,7 +62,7 @@ export default function Register() {
                   {errors?.email?.message}
                 </span>
               </div>
-              <button className="bg-[#00003C] text-white font-semibold w-full my-4 rounded-xl px-4 py-3 outline-none">
+              <button className="bg-[#00003C] text-white font-semibold w-full my-4 px-4 py-3 outline-none">
                 Reset Password
               </button>
               <button className="text-[#00003C] hover:underline font-semibold w-full">

@@ -63,16 +63,18 @@ export default function Register() {
             >
               Sign In
             </label>
-            <div className="relative">
+            <div className="relative mt-4">
+              <label htmlFor="email">Email</label>
               <Controller
                 name="email"
                 control={control}
                 rules={{ required: true }}
                 render={({ field: { value, onChange } }) => (
                   <input
-                    className="border w-full my-4 rounded-xl px-4 py-3 outline-none"
+                    className="border border-[#00003C] w-full mb-8 px-4 py-3 outline-none"
                     type="email"
-                    placeholder="email address"
+                    id="email"
+                    placeholder="example@gmail.com"
                     autoFocus
                     value={value}
                     onChange={onChange}
@@ -87,25 +89,27 @@ export default function Register() {
               {showPassword ? (
                 <BsEye
                   onClick={handlePassword}
-                  className="absolute right-6 top-[37%] cursor-pointer"
-                  size={20}
+                  className="absolute right-6 top-[37%] cursor-pointer text-black/60"
+                  size={17}
                 />
               ) : (
                 <BsEyeSlash
                   onClick={handlePassword}
-                  className="absolute right-6 top-[37%] cursor-pointer"
-                  size={20}
+                  className="absolute right-6 top-[37%] cursor-pointer text-black/60"
+                  size={17}
                 />
               )}
+              <label htmlFor="password">Password</label>
               <Controller
                 name="password"
                 control={control}
                 rules={{ required: true }}
                 render={({ field: { value, onChange } }) => (
                   <input
-                    className="border w-full my-4 rounded-xl px-4 py-3 outline-none"
+                    className="border border-[#00003C] w-full mb-4 px-4 py-3 outline-none"
                     type={type}
-                    placeholder="password"
+                    id="password"
+                    placeholder="***********"
                     value={value}
                     onChange={onChange}
                   />
@@ -115,12 +119,12 @@ export default function Register() {
                 {errors?.password?.message}
               </span>
             </div>
-            <Link to="/resetPassword">
-              <p className="font-bold mt-3 cursor-pointer">Forgot password?</p>
-            </Link>
+            <p className="font-bold mt-3 cursor-pointer w-fit p-1">
+              <Link to="/resetPassword">Forgot password?</Link>
+            </p>
             <button
               type="submit"
-              className="bg-[#00003C] text-white font-semibold w-full my-4 rounded-xl px-4 py-3 outline-none"
+              className="bg-[#00003C] text-white font-semibold w-full my-4 px-4 py-3 outline-none"
             >
               Sign In
             </button>
@@ -139,21 +143,21 @@ export default function Register() {
             </fieldset>
           </form>
         </div>
+        <p className="text-[.7rem] lg:w-3/4 mx-auto my-4 leading-tight py-2 px-4 text-center">
+          Protected by reCAPTCHA and subject to the{" "}
+          <Link>
+            <span className="font-bold cursor-pointer">Mercurius</span>
+          </Link>{" "}
+          <Link>
+            <span className="font-bold cursor-pointer">Privacy Policy</span>
+          </Link>{" "}
+          and
+          <Link>
+            {" "}
+            <span className="font-bold cursor-pointer">Terms of Service.</span>
+          </Link>
+        </p>
       </div>
-      <p className="text-[.7rem] lg:w-1/4 mx-auto my-4 leading-tight py-2 px-4 text-center md:text-left">
-        Protected by reCAPTCHA and subject to the{" "}
-        <Link>
-          <span className="font-bold cursor-pointer">Mercurius</span>
-        </Link>{" "}
-        <Link>
-          <span className="font-bold cursor-pointer">Privacy Policy</span>
-        </Link>{" "}
-        and
-        <Link>
-          {" "}
-          <span className="font-bold cursor-pointer">Terms of Service.</span>
-        </Link>
-      </p>
     </main>
   );
 }

@@ -46,7 +46,7 @@ const Profile = () => {
               >
                 Update Profile
               </label>
-              <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative my-4">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative my-8">
                 <div className="relative w-full">
                   <label htmlFor="full_name">Full Name</label>
                   <Controller
@@ -55,7 +55,7 @@ const Profile = () => {
                     rules={{ required: true }}
                     render={({ field: { value, onChange } }) => (
                       <input
-                        className="border border-black/50 w-full my-2 px-4 py-3 outline-none"
+                        className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
                         type="text"
                         id="full_name"
                         placeholder="Full name"
@@ -74,7 +74,7 @@ const Profile = () => {
                     rules={{ required: true }}
                     render={({ field: { value, onChange } }) => (
                       <input
-                        className="border border-black/50 w-full my-2 px-4 py-3 outline-none"
+                        className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
                         type="email"
                         id="email"
                         placeholder="Email address"
@@ -87,7 +87,7 @@ const Profile = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative my-4">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative my-8">
                 <div className="relative w-full">
                   <label htmlFor="address">Address</label>
                   <Controller
@@ -98,7 +98,7 @@ const Profile = () => {
                       <input
                         type="text"
                         id="address"
-                        className="border border-black/50 w-full my-2 px-4 py-3 outline-none"
+                        className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
                         placeholder="Address"
                         value={value}
                         onChange={onChange}
@@ -116,7 +116,7 @@ const Profile = () => {
                       <input
                         type="text"
                         id="city"
-                        className="border border-black/50 w-full my-2 px-4 py-3 outline-none"
+                        className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
                         placeholder="City"
                         value={value}
                         onChange={onChange}
@@ -134,7 +134,7 @@ const Profile = () => {
                       <input
                         type="text"
                         id="zip_code"
-                        className="border border-black/50 w-full my-2 px-4 py-3 outline-none"
+                        className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
                         placeholder="ZIP Code"
                         value={value}
                         onChange={onChange}
@@ -144,7 +144,7 @@ const Profile = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative my-4">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative my-8">
                 <div className="w-full relative">
                   <label htmlFor="password">Current password</label>
                   <Controller
@@ -153,7 +153,7 @@ const Profile = () => {
                     rules={{ required: "This field is required" }}
                     render={({ field: { value, onChange } }) => (
                       <input
-                        className="border border-black/50 w-full my-2 px-4 py-3 outline-none"
+                        className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
                         placeholder="*************"
                         id="password"
                         value={value}
@@ -173,7 +173,7 @@ const Profile = () => {
                     rules={{ required: "This field is required" }}
                     render={({ field: { value, onChange } }) => (
                       <input
-                        className="border border-black/50 w-full my-2 px-4 py-3 outline-none"
+                        className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
                         placeholder="*************"
                         value={value}
                         onChange={onChange}
@@ -192,7 +192,7 @@ const Profile = () => {
                     rules={{ required: "This field is required" }}
                     render={({ field: { value, onChange } }) => (
                       <input
-                        className="border border-black/50 w-full my-2 px-4 py-3 outline-none"
+                        className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
                         placeholder="*************"
                         value={value}
                         onChange={onChange}
@@ -206,7 +206,7 @@ const Profile = () => {
               </div>
               <div className="flex flex-row flex-nowrap justify-end items-center gap-8">
                 <button
-                  className="bg-[#00003c4a] text-white font-semibold my-4 px-3 py-2 outline-none"
+                  className="border border-[#00003C] text-[#00003C] font-semibold my-4 px-3 py-2 outline-none"
                   type="submit"
                 >
                   Cancel

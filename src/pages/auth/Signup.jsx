@@ -106,15 +106,17 @@ export default function Register() {
             </label>
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative my-4">
               <div className="relative w-full">
+                <label htmlFor="full_name">Full Name</label>
                 <Controller
                   name="name"
                   control={control}
                   rules={{ required: true }}
                   render={({ field: { value, onChange } }) => (
                     <input
-                      className="border w-full my-2 rounded-xl px-4 py-3 outline-none"
+                      className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
                       type="text"
-                      placeholder="Full name"
+                      id="full_name"
+                      placeholder="John Doe"
                       value={value}
                       onChange={onChange}
                       error={Boolean(errors.name)}
@@ -126,15 +128,17 @@ export default function Register() {
                 </span>
               </div>
               <div className="relative w-full">
+                <label htmlFor="email">Email</label>
                 <Controller
                   name="email"
                   control={control}
                   rules={{ required: true }}
                   render={({ field: { value, onChange } }) => (
                     <input
-                      className="border w-full my-2 rounded-xl px-4 py-3 outline-none"
+                      className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
                       type="email"
-                      placeholder="email address"
+                      id="email"
+                      placeholder="example@gmail.com"
                       autoFocus
                       value={value}
                       onChange={onChange}
@@ -146,14 +150,16 @@ export default function Register() {
                 </span>
               </div>
               <div className="relative w-full">
+                <label htmlFor="phone">Phone Number</label>
                 <Controller
                   name="phone"
                   control={control}
                   rules={{ required: true }}
                   render={({ field: { value, onChange } }) => (
                     <input
-                      className="border w-full my-2 rounded-xl px-4 py-3 outline-none"
+                      className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
                       type="text"
+                      id="phone"
                       placeholder="+234-0000-0000"
                       value={value}
                       onChange={onChange}
@@ -169,6 +175,7 @@ export default function Register() {
 
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative my-4">
               <div className="relative w-full">
+                <label htmlFor="address">Address</label>
                 <Controller
                   name="address"
                   control={control}
@@ -176,7 +183,8 @@ export default function Register() {
                   render={({ field: { value, onChange } }) => (
                     <input
                       type="text"
-                      className="border w-full my-2 rounded-xl px-4 py-3 outline-none"
+                      id="address"
+                      className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
                       placeholder="Address"
                       value={value}
                       onChange={onChange}
@@ -188,6 +196,7 @@ export default function Register() {
                 </span>
               </div>
               <div className="relative w-full">
+                <label htmlFor="city">City</label>
                 <Controller
                   name="city"
                   control={control}
@@ -195,7 +204,8 @@ export default function Register() {
                   render={({ field: { value, onChange } }) => (
                     <input
                       type="text"
-                      className="border w-full my-2 rounded-xl px-4 py-3 outline-none"
+                      id="city"
+                      className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
                       placeholder="City"
                       value={value}
                       onChange={onChange}
@@ -207,6 +217,7 @@ export default function Register() {
                 </span>
               </div>
               <div className="relative w-full">
+                <label htmlFor="zip_code">Zip Code</label>
                 <Controller
                   name="zip_code"
                   control={control}
@@ -214,8 +225,9 @@ export default function Register() {
                   render={({ field: { value, onChange } }) => (
                     <input
                       type="text"
-                      className="border w-full my-2 rounded-xl px-4 py-3 outline-none"
-                      placeholder="ZIP Code"
+                      id="zip_code"
+                      className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
+                      placeholder="Zip Code"
                       value={value}
                       onChange={onChange}
                     />
@@ -229,16 +241,17 @@ export default function Register() {
 
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative my-4">
               <div className="relative w-full">
+                <label htmlFor="dob">Date of Birth</label>
                 <Controller
                   name="date_of_birth"
                   control={control}
                   rules={{ required: true }}
                   render={({ field: { value, onChange } }) => (
                     <DatePicker
-                      className="border min-w-[100%] w-full my-2 rounded-xl px-4 py-3 outline-none z-40
+                      className="border border-[#00003C] min-w-[100%] w-full my-2 px-4 py-3 outline-none z-40
                       "
+                      id="dob"
                       selected={value}
-                      // onSelect={(e) => handleDateSelect(e)} //when day is clicked
                       onChange={onChange}
                     />
                   )}
@@ -261,14 +274,16 @@ export default function Register() {
                     size={17}
                   />
                 )}
+                <label htmlFor="password">Password</label>
                 <Controller
                   name="password"
                   control={control}
                   rules={{ required: "This field is required" }}
                   render={({ field: { value, onChange } }) => (
                     <input
-                      className="border w-full my-2 rounded-xl px-4 py-3 outline-none"
+                      className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
                       type={type}
+                      id="password"
                       placeholder="password"
                       value={value}
                       onChange={onChange}
@@ -293,14 +308,16 @@ export default function Register() {
                     size={17}
                   />
                 )}
+                <label htmlFor="cpassword">Confirm Password</label>
                 <Controller
                   name="password_confirmation"
                   control={control}
                   rules={{ required: "This field is required" }}
                   render={({ field: { value, onChange } }) => (
                     <input
-                      className="border w-full my-2 rounded-xl px-4 py-3 outline-none"
+                      className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
                       type={type}
+                      id="cpassword"
                       placeholder="Confirm Password"
                       value={value}
                       onChange={onChange}
@@ -342,7 +359,7 @@ export default function Register() {
               </p>
             </div>
             <button
-              className="bg-[#00003C] text-white font-semibold w-full my-4 rounded-xl px-4 py-3 outline-none"
+              className="block bg-[#00003C] text-white font-semibold w-1/2 mx-auto my-4 px-4 py-3 outline-none"
               type="submit"
             >
               Sign Up
