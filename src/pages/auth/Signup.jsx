@@ -1,14 +1,26 @@
+// ** React Imports
 import React, { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { SignUpSchema } from "../../formScheme/index";
-import { v4 as uuid } from "uuid";
+
+// ** Icon React Imports
 import { BsEyeSlash, BsEye } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+
+// ** React-Router Imports
+import { Link, useNavigate } from "react-router-dom";
+
+// ** Utility Imports
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { SignUpSchema } from "../../utils/formScheme";
+import { formatDateToYYYYMMDD } from "../../utils/format.js";
+
+// ** Third-Party Imports
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
+// **  Hooks/API Imports
+import { register } from "../../api/Axios";
 
 const defaultValues = {
   email: "",
@@ -27,6 +39,8 @@ export default function Register() {
   const [password, setPassword] = useState(false);
   const [type, setType] = useState("password");
 
+  const navigate = useNavigate();
+
   const {
     control,
     reset,
@@ -38,14 +52,21 @@ export default function Register() {
     resolver: yupResolver(SignUpSchema),
   });
 
-  const onSubmit = (data) => {
-    const user = {
-      id: uuid(),
-      createdAt: new Date(),
+  const onSubmit = async (data) => {
+    const { date_of_birth } = data;
+    const formattedDate = formatDateToYYYYMMDD(date_of_birth);
+
+    const payload = {
       ...data,
+      date_of_birth: formattedDate,
     };
 
-    console.log(user);
+    const res = await register(payload);
+    if (res?.status === 201) {
+      reset();
+      navigate("/");
+      console.log("navigating to dashboard");
+    }
   };
 
   const handlePassword = () => {
@@ -312,8 +333,8 @@ export default function Register() {
                 <p className="text-[.7rem] leading-3 my-2">
                   By clicking Create account, I agree that I have read and
                   accepted the
-                  <Link to="/">Terms of Use </Link> and{" "}
-                  <Link to="/">Privacy Policy.</Link>
+                  <Link to="#">Terms of Use </Link> and{" "}
+                  <Link to="#">Privacy Policy.</Link>
                 </p>
               </div>
               <p className="font-bold mt-3 cursor-pointer w-fit p-1">
