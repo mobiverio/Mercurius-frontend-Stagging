@@ -52,5 +52,17 @@ input[type="radio"]:checked {
   border-color: #111;
 }
 .react-datepicker__input-container {
-  min-width: 270px !important;
+  min-width: 15.5rem !important;
+}
+
+@media (650px <= width <= 750px) {
+  .react-datepicker__input-container {
+    min-width: 40rem !important;
+  }
+}
+
+@media (min-width: 795px) {
+  .react-datepicker__input-container {
+    min-width: 17rem !important;
+  }
 }

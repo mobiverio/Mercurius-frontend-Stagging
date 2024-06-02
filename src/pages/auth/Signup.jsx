@@ -10,8 +10,6 @@ import { Link } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const user_db = process.env.REACT_APP_LOCAL_STORAGE_NAME;
-
 const defaultValues = {
   email: "",
   name: "",
@@ -22,6 +20,7 @@ const defaultValues = {
   zip_code: "",
   password: "",
   password_confirmation: "",
+  terms: false,
 };
 
 export default function Register() {
@@ -45,12 +44,6 @@ export default function Register() {
       createdAt: new Date(),
       ...data,
     };
-
-    // const allUsers = JSON.parse(localStorage.getItem(user_db)) || [];
-    // const newUser = [...allUsers, user];
-    // localStorage.setItem(user_db, JSON.stringify(newUser));
-
-    // reset();
 
     console.log(user);
   };
@@ -85,12 +78,12 @@ export default function Register() {
         <div className="w-full">
           <form onSubmit={handleSubmit(onSubmit)}>
             <label
-              className="font-semibold text-sm sm:text-[1.4rem]"
+              className="font-semibold text-xl sm:text-[1.4rem]"
               htmlFor="signIn"
             >
               Sign up
             </label>
-            <div className="flex items-center justify-between gap-4 relative my-4">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative my-4">
               <div className="relative w-full">
                 <Controller
                   name="name"
@@ -153,7 +146,7 @@ export default function Register() {
               </div>
             </div>
 
-            <div className="flex items-center justify-between gap-4 relative my-4">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative my-4">
               <div className="relative w-full">
                 <Controller
                   name="address"
@@ -213,7 +206,7 @@ export default function Register() {
               </div>
             </div>
 
-            <div className="flex items-center justify-between gap-4 relative my-4">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative my-4">
               <div className="relative w-full">
                 <Controller
                   name="date_of_birth"
@@ -298,9 +291,35 @@ export default function Register() {
                 </span>
               </div>
             </div>
-            <p className="font-bold mt-3 cursor-pointer w-fit p-1">
-              <Link to="/resetPassword">Forgot password?</Link>
-            </p>
+            <div className="flex flex-col md:flex-row flex-nowrap justify-between items-center">
+              <div className="flex items-center gap-2">
+                <Controller
+                  name="terms"
+                  control={control}
+                  rules={{ required: true }}
+                  render={({ field: { value, onChange } }) => (
+                    <input
+                      type="checkbox"
+                      name="terms"
+                      id="terms"
+                      required
+                      value={value}
+                      onChange={onChange}
+                      error={errors.terms}
+                    />
+                  )}
+                />
+                <p className="text-[.7rem] leading-3 my-2">
+                  By clicking Create account, I agree that I have read and
+                  accepted the
+                  <Link to="/">Terms of Use </Link> and{" "}
+                  <Link to="/">Privacy Policy.</Link>
+                </p>
+              </div>
+              <p className="font-bold mt-3 cursor-pointer w-fit p-1">
+                <Link to="/resetPassword">Forgot password?</Link>
+              </p>
+            </div>
             <button
               className="bg-[#00003C] text-white font-semibold w-full my-4 rounded-xl px-4 py-3 outline-none"
               type="submit"
@@ -320,33 +339,6 @@ export default function Register() {
                 Facebook
               </button>
             </fieldset>
-            {/* <div className="flex items-center gap-2">
-              <Controller
-                name="terms"
-                control={control}
-                rules={{ required: true }}
-                render={({ field: { value, onChange } }) => (
-                  <input
-                    type="checkbox"
-                    name="terms"
-                    id="terms"
-                    required
-                    value={value}
-                    onChange={onChange}
-                    error={errors.terms}
-                    {...(errors.terms
-                      ? { helperText: "Accept our policy" }
-                      : null)}
-                  />
-                )}
-              />
-              <p className="text-[.7rem] leading-3 my-2">
-                By clicking Create account, I agree that I have read and
-                accepted the
-                <Link to="/">Terms of Use </Link> and{" "}
-                <Link to="/">Privacy Policy.</Link>
-              </p>
-            </div> */}
           </form>
         </div>
         <p className="text-[.7rem] lg:w-3/4 mx-auto my-4 leading-tight py-2 px-4 text-center">
