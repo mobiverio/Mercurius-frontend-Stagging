@@ -1,4 +1,6 @@
 import axios from "axios";
+// import notifySuccess from "../components/toast/notifySuccess";
+import notifyError from "../components/toast/notifyError";
 
 const baseUrl = axios.create({
   baseURL: "https://fakestoreapi.com",
@@ -53,13 +55,14 @@ export const loginUser = async (vals) => {
     const res = await api.post("/login", { ...vals });
     if (res?.data?.status) {
       const { access_token, ...restOfData } = res?.data;
-      localStorage.setItem("accessToken", access_token);
-      localStorage.setItem("loggedInUser", JSON.stringify(restOfData?.user));
+      sessionStorage.setItem("accessToken", access_token);
+      sessionStorage.setItem("loggedInUser", JSON.stringify(restOfData?.user));
     }
     console.log(res?.data, "action payload");
     return res;
   } catch (err) {
     console.log(err);
+    notifyError(err.message);
   }
 };
 

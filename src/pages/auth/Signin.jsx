@@ -5,6 +5,8 @@ import { SignInSchema } from "../../utils/formScheme";
 import { BsEyeSlash, BsEye } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa6";
+import notifySuccess from "../../components/toast/notifySuccess";
+import notifyError from "../../components/toast/notifyError";
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -43,11 +45,12 @@ export default function Register() {
     const { email, password } = data;
     const response = await loginUser({ email, password });
     if (response?.status) {
-      console.log("yipppeee");
+      notifySuccess("Login Successful");
       navigate("/");
-      // reset();
+      reset();
+    } else {
+      notifyError("Network failure");
     }
-    console.log(response);
   };
 
   return (
@@ -73,6 +76,7 @@ export default function Register() {
             >
               Sign In
             </label>
+
             <div className="relative mt-4">
               <label htmlFor="email">Email</label>
               <Controller
