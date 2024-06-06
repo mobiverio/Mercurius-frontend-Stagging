@@ -1,5 +1,5 @@
 import axios from "axios";
-// import notifySuccess from "../components/toast/notifySuccess";
+import notifySuccess from "../components/toast/notifySuccess";
 import notifyError from "../components/toast/notifyError";
 
 const baseUrl = axios.create({
@@ -43,10 +43,11 @@ export const register = async (vals) => {
         city,
       })
     );
-
+    notifySuccess("Account Created Successfully");
     return res;
   } catch (err) {
     console.error(err);
+    notifyError("Account creation failed");
   }
 };
 
@@ -61,8 +62,7 @@ export const loginUser = async (vals) => {
     console.log(res?.data, "action payload");
     return res;
   } catch (err) {
-    console.log(err);
-    notifyError(err.message);
+    notifyError("Login failed");
   }
 };
 

@@ -48,8 +48,6 @@ export default function Register() {
       notifySuccess("Login Successful");
       navigate("/");
       reset();
-    } else {
-      notifyError("Network failure");
     }
   };
 
