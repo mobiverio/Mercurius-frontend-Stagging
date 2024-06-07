@@ -1,5 +1,11 @@
 import React from "react";
-import { RouterProvider, createBrowserRouter, Navigate } from "react-router-dom";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  Navigate,
+} from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+import "@plume-ui-react/spinner/dist/index.css";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
@@ -16,6 +22,7 @@ import CartIndex from "./pages/cart/CartIndex";
 import ProductIndex from "./pages/product-listing/ProductIndex.jsx";
 import { Product } from "./pages/product-single/Product.jsx";
 import BrandProducts from "./pages/brands/BrandProducts.jsx";
+import Profile from "./pages/auth/Profile.jsx";
 
 //Auth Screens
 import SignIn from "./pages/auth/Signin.jsx";
@@ -23,10 +30,9 @@ import SignUp from "./pages/auth/Signup.jsx";
 import ResetPassword from "./pages/auth/ResetPassword.jsx";
 import CreatePassword from "./pages/auth/CreatePassword.jsx";
 
-const user = true;
-
 // Protected Route Component
 const ProtectedRoute = ({ element }) => {
+  const user = sessionStorage.getItem("loggedInUser");
   return user ? element : <Navigate to="/signin" />;
 };
 
@@ -40,20 +46,21 @@ const router = createBrowserRouter([
   // Authenticated Pages
   {
     path: "/",
-    element: <ProtectedRoute element={<App />} />,
+    element: <App />,
     errorElement: <div>Page not found</div>,
     children: [
-      { path: "/", element: <ProtectedRoute element={<Index />} /> },
-      { path: "/new", element: <ProtectedRoute element={<NewIndex />} /> },
-      { path: "/apparel", element: <ProtectedRoute element={<ApparelIndex />} /> },
-      { path: "/accessories", element: <ProtectedRoute element={<AccessoriesIndex />} /> },
-      { path: "/brands", element: <ProtectedRoute element={<BrandIndex />} /> },
-      { path: "/gadgets", element: <ProtectedRoute element={<GadgetIndex />} /> },
-      { path: "/sales", element: <ProtectedRoute element={<SalesIndex />} /> },
-      { path: "/cart", element: <ProtectedRoute element={<CartIndex />} /> },
-      { path: "/product-view/:productId", element: <ProtectedRoute element={<ProductIndex />} /> },
-      { path: "/product/:id", element: <ProtectedRoute element={<Product />} /> },
-      { path: "/brands/:id", element: <ProtectedRoute element={<BrandProducts />} /> },
+      { path: "/", element: <Index /> },
+      { path: "/new", element: <NewIndex /> },
+      { path: "/apparel", element: <ApparelIndex /> },
+      { path: "/accessories", element: <AccessoriesIndex /> },
+      { path: "/gadgets", element: <GadgetIndex /> },
+      { path: "/sales", element: <SalesIndex /> },
+      { path: "/cart", element: <CartIndex /> },
+      { path: "/product-view/:productId", element: <ProductIndex /> },
+      { path: "/product/:id", element: <Product /> },
+      { path: "/brands/:id", element: <BrandProducts /> },
+      { path: "/brands", element: <BrandIndex /> },
+      { path: "/profile", element: <ProtectedRoute element={<Profile />} /> },
     ],
   },
 ]);
@@ -62,5 +69,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
+    <Toaster position={"top-right"} limit={2} />
   </React.StrictMode>
 );

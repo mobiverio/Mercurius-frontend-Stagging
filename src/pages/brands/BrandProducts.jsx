@@ -24,6 +24,8 @@ const BrandProducts = () => {
     };
 
     fetchProduct();
+
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) {
@@ -39,7 +41,7 @@ const BrandProducts = () => {
               ?.filter((item) => item.id === productId)
               .map((item) => (
                 <div className="flex gap-4 font-semibold">
-                  {item.categories.map((link) => (
+                  {item.categories?.map((link) => (
                     <Link key={link.name} to="#">
                       {link}
                     </Link>

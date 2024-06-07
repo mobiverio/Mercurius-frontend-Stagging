@@ -79,7 +79,7 @@ export default function Header() {
               <div className="flex justify-between gap-x-2 sm:gap-x-4 items-end pr-2 sm:ml-6 sm:pr-0">
                 <div className="">
                   <Link
-                    to="/signin"
+                    to="/profile"
                     className="flex flex-row justify-between items-stretch"
                   >
                     <BsPerson size={20} />
@@ -134,7 +134,7 @@ export default function Header() {
             } transition-all duration-1000 z-20 bg-white`}
           >
             <div className="space-y-1 px-2 pb-3 pt-2">
-              {navigation.map((item) => (
+              {navigation?.map((item) => (
                 <Disclosure.Button
                   key={item.name}
                   as="a"

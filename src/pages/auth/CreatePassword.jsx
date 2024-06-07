@@ -35,45 +35,47 @@ export default function Register() {
                 {showPassword ? (
                   <BsEye
                     onClick={handlePassword}
-                    className="absolute right-6 top-[37%] cursor-pointer"
+                    className="absolute right-6 top-[50%] cursor-pointer"
                     size={20}
                   />
                 ) : (
                   <BsEyeSlash
                     onClick={handlePassword}
-                    className="absolute right-6 top-[37%] cursor-pointer"
+                    className="absolute right-6 top-[50%] cursor-pointer"
                     size={20}
                   />
                 )}
-
+                <label htmlFor="new_password">Password</label>
                 <input
-                  className="border w-full my-4 rounded-xl px-4 py-3 outline-none"
+                  className="border border-[#00003C] w-full my-4 px-4 py-3 outline-none"
                   type={type}
-                  placeholder="Create Password"
+                  id="password"
+                  placeholder="************"
                 />
               </div>
               <div className="relative">
                 {showPassword ? (
                   <BsEye
                     onClick={handlePassword}
-                    className="absolute right-6 top-[37%] cursor-pointer"
+                    className="absolute right-6 top-[50%] cursor-pointer text-black/50"
                     size={20}
                   />
                 ) : (
                   <BsEyeSlash
                     onClick={handlePassword}
-                    className="absolute right-6 top-[37%] cursor-pointer"
+                    className="absolute right-6 top-[50%] cursor-pointer"
                     size={20}
                   />
                 )}
-
+                <label htmlFor="cpassword">Confirm Password</label>
                 <input
-                  className="border w-full my-4 rounded-xl px-4 py-3 outline-none"
+                  className="border border-[#00003C] w-full my-4 px-4 py-3 outline-none"
                   type={type}
-                  placeholder="Confirm Password"
+                  id="cpassword"
+                  placeholder="*************"
                 />
               </div>
-              <button className="bg-[#00003C] text-white font-semibold w-full my-4 rounded-xl px-4 py-3 outline-none">
+              <button className="bg-[#00003C] text-white font-semibold w-full my-4 px-4 py-3 outline-none">
                 Save
               </button>
               <button className="text-[#00003C] hover:underline font-semibold w-full">

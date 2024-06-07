@@ -38,7 +38,8 @@ export const Slider = function ({
     return () => {
       clearInterval(slideInterval);
     };
-    //eslint_disable-next-line react-hooks/exhaustive-deps
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex]);
 
   return (
@@ -81,7 +82,7 @@ export const Slider = function ({
       {/* Indicators */}
       <div className="absolute bottom-4 right-0 left-0">
         <div className="flex flex-row justify-center items-center gap-2">
-          {slides.map((_, slideIndex) => (
+          {slides?.map((_, slideIndex) => (
             <div
               key={slideIndex}
               onClick={() => goToSlide(slideIndex)}
