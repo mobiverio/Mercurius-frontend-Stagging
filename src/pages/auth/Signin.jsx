@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SignInSchema } from "../../utils/formScheme";
@@ -6,8 +6,7 @@ import { BsEyeSlash, BsEye } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa6";
 import notifySuccess from "../../components/toast/notifySuccess";
-import notifyError from "../../components/toast/notifyError";
-
+import { Spinner } from "@plume-ui-react/spinner";
 import { Link, useNavigate } from "react-router-dom";
 
 import { loginUser } from "../../api/Axios";
@@ -15,6 +14,8 @@ import { loginUser } from "../../api/Axios";
 export default function Register() {
   const [type, setType] = useState("password");
   const [showPassword, setShowPassword] = useState(false);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handlePassword = () => {
@@ -30,6 +31,7 @@ export default function Register() {
   const {
     control,
     reset,
+    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm({
@@ -42,12 +44,21 @@ export default function Register() {
   });
 
   const onSubmit = async (data) => {
-    const { email, password } = data;
-    const response = await loginUser({ email, password });
-    if (response?.status) {
-      notifySuccess("Login Successful");
-      navigate("/");
-      reset();
+    try {
+      setLoading(true);
+      const { email, password } = data;
+      const response = await loginUser({ email, password });
+      if (response?.status) {
+        notifySuccess("Login Successful");
+        navigate("/");
+        reset();
+        setLoading(false);
+      } else {
+        setLoading(false);
+      }
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
     }
   };
 
@@ -138,7 +149,7 @@ export default function Register() {
               type="submit"
               className="bg-[#00003C] text-white font-semibold w-full my-4 px-4 py-3 outline-none"
             >
-              Sign In
+              {loading ? <Spinner /> : "Sign In"}
             </button>
             <fieldset className="flex items-center justify-around gap-6 text-center border-0 border-t mt-2 py-2 px-2">
               <legend className="px-2 font-semibold">Or</legend>

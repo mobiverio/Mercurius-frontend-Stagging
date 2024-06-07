@@ -1733,6 +1733,25 @@
   resolved "https://registry.npmjs.org/@pkgjs/parseargs/-/parseargs-0.11.0.tgz"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
+"@plume-ui-react/core@0.0.9":
+  version "0.0.9"
+  resolved "https://registry.npmjs.org/@plume-ui-react/core/-/core-0.0.9.tgz"
+  integrity sha512-HUHbgc1+tkdb2ju8sRjQCRlUFvUkTDswqJJ6h2lcNomL/ajDjO8FOdO9EBTJLQe01JKcaf8x6cKwz5j7Z1RUvw==
+  dependencies:
+    "@plume-ui-react/merge-utils" "0.0.4"
+
+"@plume-ui-react/merge-utils@0.0.4":
+  version "0.0.4"
+  resolved "https://registry.npmjs.org/@plume-ui-react/merge-utils/-/merge-utils-0.0.4.tgz"
+  integrity sha512-gEZO1Fx9BDxMHJC8yDQBnpiUz8xTGcCsG3uHRCk3ueehnM0BiKjAkRnRCsMyoNv86uv2Ekv7y0j03kBZJ22I8w==
+
+"@plume-ui-react/spinner@^0.0.14":
+  version "0.0.14"
+  resolved "https://registry.npmjs.org/@plume-ui-react/spinner/-/spinner-0.0.14.tgz"
+  integrity sha512-Yf6exSUbfR6W1iPKlmqqY2NPwOF5dpU4blFSGcUmIdiEkwt+jbDCWQeJ9PUatTeRQaea8VxBiK9mjqTrCIoa3w==
+  dependencies:
+    "@plume-ui-react/core" "0.0.9"
+
 "@pmmmwh/react-refresh-webpack-plugin@^0.5.3":
   version "0.5.11"
   resolved "https://registry.npmjs.org/@pmmmwh/react-refresh-webpack-plugin/-/react-refresh-webpack-plugin-0.5.11.tgz"
@@ -8131,7 +8150,7 @@ react-dev-utils@^12.0.1:
     strip-ansi "^6.0.1"
     text-table "^0.2.0"
 
-"react-dom@^15.5.x || ^16.x || ^17.x || ^18.x", "react-dom@^16 || ^17 || ^18", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.9.0 || ^17 || ^18", react-dom@^18.0.0, react-dom@^18.2.0, "react-dom@>= 16.8.0", react-dom@>=16, react-dom@>=16.8, react-dom@>=16.8.0:
+"react-dom@^15.5.x || ^16.x || ^17.x || ^18.x", "react-dom@^16 || ^17 || ^18", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.9.0 || ^17 || ^18", react-dom@^18.0.0, react-dom@^18.2.0, "react-dom@>= 16.8.0", react-dom@>=16, react-dom@>=16.11.0, react-dom@>=16.8, react-dom@>=16.8.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
@@ -8256,7 +8275,7 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
-react@*, "react@^15.5.x || ^16.x || ^17.x || ^18.x", "react@^16 || ^17 || ^18", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17 || ^18", react@^18.0.0, react@^18.2.0, "react@>= 16", "react@>= 16.8.0", react@>=16, react@>=16.8, react@>=16.8.0:
+react@*, "react@^15.5.x || ^16.x || ^17.x || ^18.x", "react@^16 || ^17 || ^18", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17 || ^18", react@^18.0.0, react@^18.2.0, "react@>= 16", "react@>= 16.8.0", react@>=16, react@>=16.11.0, react@>=16.8, react@>=16.8.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==

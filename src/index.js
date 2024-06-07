@@ -5,6 +5,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+import "@plume-ui-react/spinner/dist/index.css";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
@@ -68,6 +69,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
-    <Toaster position={"top-right"} />
+    <Toaster position={"top-right"} limit={2} />
   </React.StrictMode>
 );

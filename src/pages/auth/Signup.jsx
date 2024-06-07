@@ -18,6 +18,7 @@ import { formatDateToYYYYMMDD } from "../../utils/format.js";
 // ** Third-Party Imports
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Spinner } from "@plume-ui-react/spinner";
 
 // **  Hooks/API Imports
 import { register } from "../../api/Axios";
@@ -37,6 +38,7 @@ const defaultValues = {
 
 export default function Register() {
   const [password, setPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [type, setType] = useState("password");
 
   const navigate = useNavigate();
@@ -53,6 +55,7 @@ export default function Register() {
   });
 
   const onSubmit = async (data) => {
+    setLoading(true);
     const { date_of_birth } = data;
     const formattedDate = formatDateToYYYYMMDD(date_of_birth);
 
@@ -65,8 +68,9 @@ export default function Register() {
     if (res?.status === 201) {
       reset();
       navigate("/");
-      console.log("navigating to dashboard");
+      setLoading(false);
     }
+    setLoading(false);
   };
 
   const handlePassword = () => {
@@ -267,13 +271,13 @@ export default function Register() {
                 {password ? (
                   <BsEye
                     onClick={handlePassword}
-                    className="absolute right-6 top-[37%] cursor-pointer text-black/60"
+                    className="absolute right-6 top-[50%] cursor-pointer text-black/60"
                     size={17}
                   />
                 ) : (
                   <BsEyeSlash
                     onClick={handlePassword}
-                    className="absolute right-6 top-[37%] cursor-pointer text-black/60"
+                    className="absolute right-6 top-[50%] cursor-pointer text-black/60"
                     size={17}
                   />
                 )}
@@ -301,13 +305,13 @@ export default function Register() {
                 {password ? (
                   <BsEye
                     onClick={handlePassword}
-                    className="absolute right-6 top-[37%] cursor-pointer text-black/60"
+                    className="absolute right-6 top-[50%] cursor-pointer text-black/60"
                     size={17}
                   />
                 ) : (
                   <BsEyeSlash
                     onClick={handlePassword}
-                    className="absolute right-6 top-[37%] cursor-pointer text-black/60"
+                    className="absolute right-6 top-[50%] cursor-pointer text-black/60"
                     size={17}
                   />
                 )}
@@ -365,7 +369,7 @@ export default function Register() {
               className="block bg-[#00003C] text-white font-semibold w-1/2 mx-auto my-4 px-4 py-3 outline-none"
               type="submit"
             >
-              Sign Up
+              {loading ? <Spinner /> : "Sign Up"}
             </button>
             <fieldset className="flex items-center justify-around gap-6 text-center border-0 border-t mt-2 py-2 px-2">
               <legend className="px-2 font-semibold mt-16 mb-8">Or</legend>

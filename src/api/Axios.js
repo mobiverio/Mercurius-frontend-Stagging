@@ -2,6 +2,8 @@ import axios from "axios";
 import notifySuccess from "../components/toast/notifySuccess";
 import notifyError from "../components/toast/notifyError";
 
+const token = sessionStorage.getItem("accessToken");
+
 const baseUrl = axios.create({
   baseURL: "https://fakestoreapi.com",
   headers: {
@@ -62,9 +64,34 @@ export const loginUser = async (vals) => {
     console.log(res?.data, "action payload");
     return res;
   } catch (err) {
+    if (!err) {
+      notifyError("Failed to connect to server");
+    } else if (err.response.status === 401) {
+      notifyError("Email or password Incorrect");
+    }
     notifyError("Login failed");
   }
 };
+
+export const updateProfile = async (vals) => {
+  try {
+    const res = await api.put(`/editProfile/${vals?.id}`, vals, {
+      headers: { Authorization: `Bearer ${vals?.token}` },
+    });
+
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+// const response = await axios.patch(
+//   `/api/users/${userId}`,
+//   formData,
+//   {
+//     headers: { Authorization: `Bearer ${token}` },
+//   }
+// );
 
 export const getProducts = async () => {
   try {

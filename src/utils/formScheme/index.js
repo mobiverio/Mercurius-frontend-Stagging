@@ -18,6 +18,18 @@ export const SignUpSchema = yup.object().shape({
   zip_code: yup.string().required("Zip code is required"),
 });
 
+export const updateProfileSchema = yup.object().shape({
+  email: yup
+    .string()
+    .email("Invalid email format")
+    .required("Please enter your email address"),
+  name: yup.string().required("Enter your name"),
+  phone: yup.string().required("Phone number required"),
+  address: yup.string().required("Enter address"),
+  city: yup.string().required("Enter city"),
+  zip_code: yup.string().required("Zip code is required"),
+});
+
 export const SignInSchema = yup.object().shape({
   email: yup
     .string()
