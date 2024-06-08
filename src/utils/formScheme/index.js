@@ -44,5 +44,5 @@ export const updatePasswordSchema = yup.object().shape({
   c_new_password: yup
     .string()
     .required("Confirm Password is required")
-    .oneOf([yup.ref("password"), null], "Passwords must match"),
+    .oneOf([yup.ref("new_password"), null], "Passwords must match"),
 });

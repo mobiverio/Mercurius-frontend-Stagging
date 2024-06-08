@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { updatePasswordSchema } from "../../utils/formScheme";
+import { updatePassword } from "../../api/Axios";
+import notifyError from "../../components/toast/notifyError";
+import { Spinner } from "@plume-ui-react/spinner";
 
 const ChangePassword = () => {
+  const [token, setToken] = useState(null);
+  const [loading, setLoading] = useState(false);
+
   const defaultValues = {
     password: "",
     new_password: "",
-    cnew_password: "",
+    c_new_password: "",
   };
 
   const {
@@ -21,14 +27,35 @@ const ChangePassword = () => {
     resolver: yupResolver(updatePasswordSchema),
   });
 
-  const handleUpdate = (values) => {
-    console.log(values, "Expected values");
+  const handleUpdate = async (data) => {
+    try {
+      setLoading(true);
+      const payload = {
+        current_password: data.password,
+        password: data.new_password,
+        password_confirmation: data.c_new_password,
+        token,
+      };
+      const response = await updatePassword(payload);
+      if (response?.status?.success) {
+        setLoading(false);
+      }
+    } catch (err) {
+      console.log("Password change fail " + err);
+      notifyError("Operation Failed");
+      setLoading(false);
+    }
   };
+
+  useEffect(() => {
+    const getToken = sessionStorage.getItem("accessToken");
+    setToken(getToken);
+  }, []);
 
   return (
     <form
       onSubmit={handleSubmit(handleUpdate)}
-      className="shadow-sm rounded-sm w-[70%] p-4"
+      className="shadow-sm rounded-sm w-[100%] p-4"
     >
       <label
         className="font-semibold text-xl sm:text-[1.4rem]"
@@ -77,7 +104,7 @@ const ChangePassword = () => {
           </span>
         </div>
         <div className="w-full relative">
-          <label htmlFor="confirm_password">Confirm Password</label>
+          <label htmlFor="c_new_password">Confirm Password</label>
           <Controller
             name="c_new_password"
             control={control}
@@ -100,7 +127,7 @@ const ChangePassword = () => {
         <button
           className="border border-[#00003C] text-[#00003C] hover:bg-[#00003C] hover:text-white transition-colors font-semibold my-4 px-3 py-2 outline-none"
           type="button"
-          onClick={reset(defaultValues)}
+          onClick={reset}
         >
           Clear
         </button>
@@ -108,7 +135,7 @@ const ChangePassword = () => {
           className="bg-[#00003C] text-white font-semibold my-4 px-3 py-2 outline-none"
           type="submit"
         >
-          Update
+          {loading ? <Spinner /> : "Update"}
         </button>
       </div>
     </form>

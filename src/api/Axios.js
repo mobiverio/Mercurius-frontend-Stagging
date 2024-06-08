@@ -83,6 +83,19 @@ export const updateProfile = async (vals) => {
   }
 };
 
+export const updatePassword = async (vals) => {
+  try {
+    const res = await api.post("/change-password", vals, {
+      headers: { Authorization: `Bearer ${vals.token}` },
+    });
+    if (res) {
+      notifySuccess("Update Successful");
+    }
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
 // const response = await axios.patch(
 //   `/api/users/${userId}`,
 //   formData,

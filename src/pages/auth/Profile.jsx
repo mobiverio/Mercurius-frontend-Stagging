@@ -41,11 +41,11 @@ const Profile = () => {
       </h3>
       <div className="flex flex-row flex-nowrap">
         <nav className="hidden w-[24%] md:flex flex-col p-4 justify-between">
-          <ul className="flex flex-col gap-4">
+          <ul className="flex flex-col gap-4 cursor-pointer">
             <li
               className={
                 toggler === 0
-                  ? "w-[10%] border-b-[3px] pb-1 border-[#00003C] text-[#222] text-xl transition duration-300"
+                  ? "w-[30%] border-b-[3px] pb-1 border-[#00003C] text-[#222] text-xl transition duration-300"
                   : "text-black text-xl"
               }
               onClick={() => handleToggle(0)}
@@ -55,7 +55,7 @@ const Profile = () => {
             <li
               className={
                 toggler === 1
-                  ? "w-[10%] border-b-[3px] pb-1 border-[#00003C] text-[#222] text-xl transition duration-300"
+                  ? "w-[30%] border-b-[3px] pb-1 border-[#00003C] text-[#222] text-xl transition duration-300"
                   : "text-black text-xl"
               }
               onClick={() => handleToggle(1)}
@@ -65,7 +65,7 @@ const Profile = () => {
             <li
               className={
                 toggler === 2
-                  ? "w-[10%] border-b-[3px] pb-1 border-[#00003C] text-[#222] text-xl transition duration-300"
+                  ? "w-[30%] border-b-[3px] pb-1 border-[#00003C] text-[#222] text-xl transition duration-300"
                   : "text-black text-xl"
               }
               onClick={() => handleToggle(2)}
@@ -75,7 +75,7 @@ const Profile = () => {
             <li
               className={
                 toggler === 3
-                  ? "w-[40%] border-b-[3px] pb-1 border-[#00003C] text-[#222] text-xl transition duration-300"
+                  ? "w-[60%] border-b-[3px] pb-1 border-[#00003C] text-[#222] text-xl transition duration-300"
                   : "text-black text-xl"
               }
               onClick={() => handleToggle(3)}

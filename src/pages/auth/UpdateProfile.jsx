@@ -9,11 +9,14 @@ import { updateProfile } from "../../api/Axios";
 import notifyError from "../../components/toast/notifyError";
 import notifySuccess from "../../components/toast/notifySuccess";
 
+import { Spinner } from "@plume-ui-react/spinner";
+
 const UpdateProfile = () => {
   const [user, setUser] = useState("");
   const [token, setToken] = useState("");
   const [editMode, setEditMode] = useState(false);
   const [inactive, setInactive] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const defaultValues = {
     name: "",
@@ -42,16 +45,20 @@ const UpdateProfile = () => {
 
   const handleUpdate = async (values) => {
     try {
+      setLoading(true);
       const { email, ...restOfVals } = values;
       const payload = { id: user?.id, restOfVals, token };
       const response = await updateProfile(payload);
 
       if (response.status) {
         notifySuccess("Profile Updated Successfully");
+        setLoading(false);
+        handleEdit();
       }
     } catch (err) {
       console.log(err);
       notifyError(`Profile Update Failed ${err.message}`);
+      setLoading(false);
     }
   };
 
@@ -241,7 +248,7 @@ const UpdateProfile = () => {
                 className="bg-[#00003C] text-white font-semibold my-4 px-3 py-2 outline-none"
                 type="submit"
               >
-                Save Changes
+                {loading ? <Spinner /> : "Save Changes"}
               </button>
             </>
           )}
