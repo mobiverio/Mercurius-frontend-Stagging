@@ -2,8 +2,6 @@ import axios from "axios";
 import notifySuccess from "../components/toast/notifySuccess";
 import notifyError from "../components/toast/notifyError";
 
-const token = sessionStorage.getItem("accessToken");
-
 const baseUrl = axios.create({
   baseURL: "https://fakestoreapi.com",
   headers: {

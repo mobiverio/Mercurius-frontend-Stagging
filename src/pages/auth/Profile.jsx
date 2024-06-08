@@ -15,6 +15,8 @@ import notifySuccess from "../../components/toast/notifySuccess";
 const Profile = () => {
   const [user, setUser] = useState("");
   const [token, setToken] = useState("");
+  const [editMode, setEditMode] = useState(false);
+  const [inactive, setInactive] = useState(true);
   const navigate = useNavigate();
 
   const defaultValues = {
@@ -45,6 +47,11 @@ const Profile = () => {
     navigate("/");
   };
 
+  const handleEdit = () => {
+    setEditMode(!editMode);
+    setInactive(!inactive);
+  };
+
   const handleUpdate = async (values) => {
     try {
       const { email, ...restOfVals } = values;
@@ -65,7 +72,9 @@ const Profile = () => {
     const access_token = sessionStorage.getItem("accessToken");
     setUser(users);
     setToken(access_token);
+  }, []);
 
+  useEffect(() => {
     setValue("name", user?.name);
     setValue("email", user?.email);
     setValue("address", user?.address);
@@ -74,7 +83,7 @@ const Profile = () => {
     setValue("phone", user?.phone);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [user]);
 
   return (
     <main className="px-6 md:px-12 my-8">
@@ -83,7 +92,10 @@ const Profile = () => {
       </h3>
       <div className="flex flex-row flex-nowrap">
         <nav className="hidden w-[30%] md:flex flex-col p-4">
-          <p>Manage your account</p>
+          <p>Profile</p>
+          <p>Cart</p>
+          <p>Stockpile</p>
+          <p>Change Password</p>
           <button
             type="button"
             onClick={logout}
@@ -96,9 +108,7 @@ const Profile = () => {
           onSubmit={handleSubmit(handleUpdate)}
           className="shadow-sm rounded-sm w-[70%] p-4"
         >
-          <h3 className="font-semibold text-xl sm:text-[1.4rem]">
-            Update Profile
-          </h3>
+          <h3 className="font-semibold text-xl sm:text-[1.4rem]">Profile</h3>
 
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative my-8">
             <div className="relative w-full">
@@ -109,12 +119,17 @@ const Profile = () => {
                 rules={{ required: true }}
                 render={({ field: { value, onChange } }) => (
                   <input
-                    className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
+                    className={`${
+                      inactive
+                        ? "cursor-not-allowed text-gray-500 border-gray-500"
+                        : ""
+                    } border border-[#00003C] w-full my-2 px-4 py-3 outline-none`}
                     type="text"
                     id="full_name"
                     placeholder="Full name"
                     value={value}
                     onChange={onChange}
+                    disabled={inactive}
                   />
                 )}
               />
@@ -128,12 +143,13 @@ const Profile = () => {
                 rules={{ required: true }}
                 render={({ field: { value, onChange } }) => (
                   <input
-                    className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
+                    className="cursor-not-allowed border border-gray-500 text-gray-500 w-full my-2 px-4 py-3 outline-none"
                     type="email"
                     id="email"
                     placeholder="Email address"
                     value={value}
                     onChange={onChange}
+                    disabled
                   />
                 )}
               />
@@ -150,12 +166,17 @@ const Profile = () => {
                 rules={{ required: true }}
                 render={({ field: { value, onChange } }) => (
                   <input
+                    className={`${
+                      inactive
+                        ? "cursor-not-allowed text-gray-500 border-gray-500"
+                        : ""
+                    } border border-[#00003C] w-full my-2 px-4 py-3 outline-none`}
                     type="text"
                     id="phone"
-                    className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
                     placeholder="+234-0000-0000"
                     value={value}
                     onChange={onChange}
+                    disabled={inactive}
                   />
                 )}
               />
@@ -169,12 +190,17 @@ const Profile = () => {
                 rules={{ required: true }}
                 render={({ field: { value, onChange } }) => (
                   <input
+                    className={`${
+                      inactive
+                        ? "cursor-not-allowed text-gray-500 border-gray-500"
+                        : ""
+                    } border border-[#00003C] w-full my-2 px-4 py-3 outline-none`}
                     type="text"
                     id="address"
-                    className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
                     placeholder="Address"
                     value={value}
                     onChange={onChange}
+                    disabled={inactive}
                   />
                 )}
               />
@@ -191,12 +217,17 @@ const Profile = () => {
                 rules={{ required: true }}
                 render={({ field: { value, onChange } }) => (
                   <input
+                    className={`${
+                      inactive
+                        ? "cursor-not-allowed text-gray-500 border-gray-500"
+                        : ""
+                    } border border-[#00003C] w-full my-2 px-4 py-3 outline-none`}
                     type="text"
                     id="city"
-                    className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
                     placeholder="City"
                     value={value}
                     onChange={onChange}
+                    disabled={inactive}
                   />
                 )}
               />
@@ -210,12 +241,17 @@ const Profile = () => {
                 rules={{ required: true }}
                 render={({ field: { value, onChange } }) => (
                   <input
+                    className={`${
+                      inactive
+                        ? "cursor-not-allowed text-gray-500 border-gray-500"
+                        : ""
+                    } border border-[#00003C] w-full my-2 px-4 py-3 outline-none`}
                     type="text"
                     id="zip_code"
-                    className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
                     placeholder="Zip Code"
                     value={value}
                     onChange={onChange}
+                    disabled={inactive}
                   />
                 )}
               />
@@ -223,79 +259,34 @@ const Profile = () => {
             </div>
           </div>
 
-          {/* <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative my-8">
-        <div className="w-full relative">
-          <label htmlFor="password">Current password</label>
-          <Controller
-            name="password"
-            control={control}
-            rules={{ required: "This field is required" }}
-            render={({ field: { value, onChange } }) => (
-              <input
-                className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
-                placeholder="*************"
-                id="password"
-                value={value}
-                onChange={onChange}
-              />
-            )}
-          />
-          <span className="text-red-400 text-sm absolute -bottom-3 right-2">
-            {errors?.password?.message}
-          </span>
-        </div>
-        <div className="w-full relative">
-          <label htmlFor="new_password">New Password</label>
-          <Controller
-            name="new_password"
-            control={control}
-            rules={{ required: "This field is required" }}
-            render={({ field: { value, onChange } }) => (
-              <input
-                className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
-                placeholder="*************"
-                value={value}
-                onChange={onChange}
-              />
-            )}
-          />
-          <span className="text-red-400 text-sm absolute -bottom-3 right-2">
-            {errors?.password_confirmation?.message}
-          </span>
-        </div>
-        <div className="w-full relative">
-          <label htmlFor="confirm_password">Confirm Password</label>
-          <Controller
-            name="cpassword"
-            control={control}
-            rules={{ required: "This field is required" }}
-            render={({ field: { value, onChange } }) => (
-              <input
-                className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
-                placeholder="*************"
-                value={value}
-                onChange={onChange}
-              />
-            )}
-          />
-          <span className="text-red-400 text-sm absolute -bottom-3 right-2">
-            {errors?.cpassword?.message}
-          </span>
-        </div>
-      </div> */}
           <div className="flex flex-row flex-nowrap justify-end items-center gap-8">
-            <button
-              className="border border-[#00003C] text-[#00003C] hover:bg-[#00003C] hover:text-white transition-colors font-semibold my-4 px-3 py-2 outline-none"
-              type="button"
-            >
-              Cancel
-            </button>
-            <button
-              className="bg-[#00003C] text-white font-semibold my-4 px-3 py-2 outline-none"
-              type="submit"
-            >
-              Update
-            </button>
+            {editMode && (
+              <>
+                <button
+                  className="border border-[#00003C] text-[#00003C] hover:bg-[#00003C] hover:text-white transition-colors font-semibold my-4 px-3 py-2 outline-none"
+                  type="button"
+                  onClick={handleEdit}
+                >
+                  Cancel
+                </button>
+                <button
+                  className="bg-[#00003C] text-white font-semibold my-4 px-3 py-2 outline-none"
+                  type="submit"
+                >
+                  Save Changes
+                </button>
+              </>
+            )}
+
+            {!editMode && (
+              <button
+                className="bg-[#00003C] text-white font-semibold my-4 px-3 py-2 outline-none"
+                type="button"
+                onClick={handleEdit}
+              >
+                Edit Profile
+              </button>
+            )}
           </div>
         </form>
       </div>
