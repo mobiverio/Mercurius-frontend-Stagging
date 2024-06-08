@@ -2,42 +2,22 @@
 import React, { useState, useEffect } from "react";
 
 // ** React-Router Imports
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-// ** Utility Imports
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { updateProfileSchema } from "../../utils/formScheme";
-import { updateProfile } from "../../api/Axios";
-import notifyError from "../../components/toast/notifyError";
-import notifySuccess from "../../components/toast/notifySuccess";
+// ** Page Imports
+import UpdateProfile from "./UpdateProfile";
+import ChangePassword from "./ChangePassword";
 
 const Profile = () => {
   const [user, setUser] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [token, setToken] = useState("");
-  const [editMode, setEditMode] = useState(false);
-  const [inactive, setInactive] = useState(true);
+  const [toggler, setToggler] = useState(0);
   const navigate = useNavigate();
 
-  const defaultValues = {
-    name: "",
-    email: "",
-    city: "",
-    address: "",
-    zip_code: "",
-    phone: "",
+  const handleToggle = (index) => {
+    setToggler(index);
   };
-
-  const {
-    control,
-    setValue,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    defaultValues,
-    mode: "onTouched",
-    resolver: yupResolver(updateProfileSchema),
-  });
 
   const logout = () => {
     setUser(null);
@@ -47,26 +27,6 @@ const Profile = () => {
     navigate("/");
   };
 
-  const handleEdit = () => {
-    setEditMode(!editMode);
-    setInactive(!inactive);
-  };
-
-  const handleUpdate = async (values) => {
-    try {
-      const { email, ...restOfVals } = values;
-      const payload = { id: user?.id, restOfVals, token };
-      const response = await updateProfile(payload);
-
-      if (response.status) {
-        notifySuccess("Profile Updated Successfully");
-      }
-    } catch (err) {
-      console.log(err);
-      notifyError(`Profile Update Failed ${err.message}`);
-    }
-  };
-
   useEffect(() => {
     const users = JSON.parse(sessionStorage.getItem("loggedInUser"));
     const access_token = sessionStorage.getItem("accessToken");
@@ -74,28 +34,56 @@ const Profile = () => {
     setToken(access_token);
   }, []);
 
-  useEffect(() => {
-    setValue("name", user?.name);
-    setValue("email", user?.email);
-    setValue("address", user?.address);
-    setValue("city", user?.city);
-    setValue("zip_code", user?.zip_code);
-    setValue("phone", user?.phone);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
-
   return (
     <main className="px-6 md:px-12 my-8">
       <h3 className="flex justify-end items-center pr-16 text-xl">
         Welcome {user?.name}
       </h3>
       <div className="flex flex-row flex-nowrap">
-        <nav className="hidden w-[30%] md:flex flex-col p-4">
-          <p>Profile</p>
-          <p>Cart</p>
-          <p>Stockpile</p>
-          <p>Change Password</p>
+        <nav className="hidden w-[24%] md:flex flex-col p-4 justify-between">
+          <ul className="flex flex-col gap-4">
+            <li
+              className={
+                toggler === 0
+                  ? "w-[10%] border-b-[3px] pb-1 border-[#00003C] text-[#222] text-xl transition duration-300"
+                  : "text-black text-xl"
+              }
+              onClick={() => handleToggle(0)}
+            >
+              Profile
+            </li>
+            <li
+              className={
+                toggler === 1
+                  ? "w-[10%] border-b-[3px] pb-1 border-[#00003C] text-[#222] text-xl transition duration-300"
+                  : "text-black text-xl"
+              }
+              onClick={() => handleToggle(1)}
+            >
+              Cart
+            </li>
+            <li
+              className={
+                toggler === 2
+                  ? "w-[10%] border-b-[3px] pb-1 border-[#00003C] text-[#222] text-xl transition duration-300"
+                  : "text-black text-xl"
+              }
+              onClick={() => handleToggle(2)}
+            >
+              Stockpile
+            </li>
+            <li
+              className={
+                toggler === 3
+                  ? "w-[40%] border-b-[3px] pb-1 border-[#00003C] text-[#222] text-xl transition duration-300"
+                  : "text-black text-xl"
+              }
+              onClick={() => handleToggle(3)}
+            >
+              Change Password
+            </li>
+          </ul>
+
           <button
             type="button"
             onClick={logout}
@@ -104,191 +92,10 @@ const Profile = () => {
             Logout
           </button>
         </nav>
-        <form
-          onSubmit={handleSubmit(handleUpdate)}
-          className="shadow-sm rounded-sm w-[70%] p-4"
-        >
-          <h3 className="font-semibold text-xl sm:text-[1.4rem]">Profile</h3>
-
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative my-8">
-            <div className="relative w-full">
-              <label htmlFor="full_name">Full Name</label>
-              <Controller
-                name="name"
-                control={control}
-                rules={{ required: true }}
-                render={({ field: { value, onChange } }) => (
-                  <input
-                    className={`${
-                      inactive
-                        ? "cursor-not-allowed text-gray-500 border-gray-500"
-                        : ""
-                    } border border-[#00003C] w-full my-2 px-4 py-3 outline-none`}
-                    type="text"
-                    id="full_name"
-                    placeholder="Full name"
-                    value={value}
-                    onChange={onChange}
-                    disabled={inactive}
-                  />
-                )}
-              />
-              {errors.name && notifyError("Enter your full name")}
-            </div>
-            <div className="relative w-full">
-              <label htmlFor="email">Email</label>
-              <Controller
-                name="email"
-                control={control}
-                rules={{ required: true }}
-                render={({ field: { value, onChange } }) => (
-                  <input
-                    className="cursor-not-allowed border border-gray-500 text-gray-500 w-full my-2 px-4 py-3 outline-none"
-                    type="email"
-                    id="email"
-                    placeholder="Email address"
-                    value={value}
-                    onChange={onChange}
-                    disabled
-                  />
-                )}
-              />
-              {errors.email && notifyError("Enter a valid email")}
-            </div>
-          </div>
-
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative my-8">
-            <div className="relative w-full">
-              <label htmlFor="phone">Phone</label>
-              <Controller
-                name="phone"
-                control={control}
-                rules={{ required: true }}
-                render={({ field: { value, onChange } }) => (
-                  <input
-                    className={`${
-                      inactive
-                        ? "cursor-not-allowed text-gray-500 border-gray-500"
-                        : ""
-                    } border border-[#00003C] w-full my-2 px-4 py-3 outline-none`}
-                    type="text"
-                    id="phone"
-                    placeholder="+234-0000-0000"
-                    value={value}
-                    onChange={onChange}
-                    disabled={inactive}
-                  />
-                )}
-              />
-              {errors.phone && notifyError("Enter a valid Phone number")}
-            </div>
-            <div className="relative w-full">
-              <label htmlFor="address">Address</label>
-              <Controller
-                name="address"
-                control={control}
-                rules={{ required: true }}
-                render={({ field: { value, onChange } }) => (
-                  <input
-                    className={`${
-                      inactive
-                        ? "cursor-not-allowed text-gray-500 border-gray-500"
-                        : ""
-                    } border border-[#00003C] w-full my-2 px-4 py-3 outline-none`}
-                    type="text"
-                    id="address"
-                    placeholder="Address"
-                    value={value}
-                    onChange={onChange}
-                    disabled={inactive}
-                  />
-                )}
-              />
-              {errors.address && notifyError("Enter your delivery address")}
-            </div>
-          </div>
-
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative my-8">
-            <div className="relative w-full">
-              <label htmlFor="city">City</label>
-              <Controller
-                name="city"
-                control={control}
-                rules={{ required: true }}
-                render={({ field: { value, onChange } }) => (
-                  <input
-                    className={`${
-                      inactive
-                        ? "cursor-not-allowed text-gray-500 border-gray-500"
-                        : ""
-                    } border border-[#00003C] w-full my-2 px-4 py-3 outline-none`}
-                    type="text"
-                    id="city"
-                    placeholder="City"
-                    value={value}
-                    onChange={onChange}
-                    disabled={inactive}
-                  />
-                )}
-              />
-              {errors.city && notifyError("Enter your city")}
-            </div>
-            <div className="relative w-full">
-              <label htmlFor="zip_code">Zip Code</label>
-              <Controller
-                name="zip_code"
-                control={control}
-                rules={{ required: true }}
-                render={({ field: { value, onChange } }) => (
-                  <input
-                    className={`${
-                      inactive
-                        ? "cursor-not-allowed text-gray-500 border-gray-500"
-                        : ""
-                    } border border-[#00003C] w-full my-2 px-4 py-3 outline-none`}
-                    type="text"
-                    id="zip_code"
-                    placeholder="Zip Code"
-                    value={value}
-                    onChange={onChange}
-                    disabled={inactive}
-                  />
-                )}
-              />
-              {errors.zip_code && notifyError("Enter your zip code")}
-            </div>
-          </div>
-
-          <div className="flex flex-row flex-nowrap justify-end items-center gap-8">
-            {editMode && (
-              <>
-                <button
-                  className="border border-[#00003C] text-[#00003C] hover:bg-[#00003C] hover:text-white transition-colors font-semibold my-4 px-3 py-2 outline-none"
-                  type="button"
-                  onClick={handleEdit}
-                >
-                  Cancel
-                </button>
-                <button
-                  className="bg-[#00003C] text-white font-semibold my-4 px-3 py-2 outline-none"
-                  type="submit"
-                >
-                  Save Changes
-                </button>
-              </>
-            )}
-
-            {!editMode && (
-              <button
-                className="bg-[#00003C] text-white font-semibold my-4 px-3 py-2 outline-none"
-                type="button"
-                onClick={handleEdit}
-              >
-                Edit Profile
-              </button>
-            )}
-          </div>
-        </form>
+        <div className="shadow-sm rounded-sm w-[76%] p-4">
+          {toggler === 0 && <UpdateProfile />}
+          {toggler === 3 && <ChangePassword />}
+        </div>
       </div>
     </main>
   );
