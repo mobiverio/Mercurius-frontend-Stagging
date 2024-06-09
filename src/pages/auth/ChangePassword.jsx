@@ -3,7 +3,7 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { updatePasswordSchema } from "../../utils/formScheme";
 import { updatePassword } from "../../api/Axios";
-import notifyError from "../../components/toast/notifyError";
+import notifySuccess from "../../components/toast/notifySuccess";
 import { Spinner } from "@plume-ui-react/spinner";
 
 const ChangePassword = () => {
@@ -28,21 +28,20 @@ const ChangePassword = () => {
   });
 
   const handleUpdate = async (data) => {
-    try {
-      setLoading(true);
-      const payload = {
-        current_password: data.password,
-        password: data.new_password,
-        password_confirmation: data.c_new_password,
-        token,
-      };
-      const response = await updatePassword(payload);
-      if (response?.status?.success) {
-        setLoading(false);
-      }
-    } catch (err) {
-      console.log("Password change fail " + err);
-      notifyError("Operation Failed");
+    setLoading(true);
+    const payload = {
+      current_password: data.password,
+      password: data.new_password,
+      password_confirmation: data.c_new_password,
+      token,
+    };
+    const response = await updatePassword(payload);
+    if (response) {
+      reset();
+      notifySuccess("Update Successful");
+      setLoading(false);
+    }
+    if (!response) {
       setLoading(false);
     }
   };

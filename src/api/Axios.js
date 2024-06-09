@@ -88,11 +88,17 @@ export const updatePassword = async (vals) => {
     const res = await api.post("/change-password", vals, {
       headers: { Authorization: `Bearer ${vals.token}` },
     });
-    if (res) {
-      notifySuccess("Update Successful");
-    }
+
+    return res;
   } catch (err) {
-    console.log(err.message);
+    if (err?.response?.status === 422) {
+      notifyError("Password must be at least 6 characters");
+    }
+    if (err?.response?.status === 401) {
+      notifyError(err.response?.data?.error);
+      // console.log("Please login");
+    }
+    console.log(err);
   }
 };
 
