@@ -91,11 +91,15 @@ export default function Header() {
                 <div className="">
                   <Link
                     to="/cart"
-                    className="flex flex-row justify-center items-stretch"
+                    className="flex flex-row justify-center items-stretch relative"
                   >
                     <BsCart3 size={20} />
                     <p className="hidden md:block font-semibold">Cart</p>
-                    <p className="hidden md:block font-semibold pl-4 text-red-400">
+                    <p
+                      className={`${
+                        totalItems && "block bg-black text-white"
+                      } w-5 h-5 absolute -left-3 leading-[11.5px] -top-3 p-1 text-[.75rem] rounded-full text-center`}
+                    >
                       {totalItems ? totalItems : null}
                     </p>
                   </Link>

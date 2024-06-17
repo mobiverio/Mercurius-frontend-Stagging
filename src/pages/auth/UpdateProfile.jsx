@@ -46,8 +46,16 @@ const UpdateProfile = () => {
   const handleUpdate = async (values) => {
     try {
       setLoading(true);
-      const { email, ...restOfVals } = values;
-      const payload = { id: user?.id, restOfVals, token };
+      const { name, address, city, zip_code, phone } = values;
+      const payload = {
+        id: user?.id,
+        name,
+        address,
+        city,
+        zip_code,
+        phone,
+        token,
+      };
       const response = await updateProfile(payload);
 
       if (response.status) {
