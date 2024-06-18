@@ -11,3 +11,16 @@ textarea,
 select {
   zoom: reset;
 }
+
+.mercurius {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqzzQIHI0uzxWVZVQBGT4ZCakMlbUf_ir2MQ&s");
+  display: inline-block;
+  margin: 0;
+  font-size: 16rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
