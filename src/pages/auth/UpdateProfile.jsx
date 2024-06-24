@@ -92,7 +92,6 @@ const UpdateProfile = () => {
     <div>
       <form onSubmit={handleSubmit(handleUpdate)}>
         <h3 className="font-semibold text-xl sm:text-[1.4rem]">Profile</h3>
-
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative my-8">
           <div className="relative w-full">
             <label htmlFor="full_name">Full Name</label>
