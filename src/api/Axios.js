@@ -2,8 +2,6 @@ import axios from "axios";
 import notifySuccess from "../components/toast/notifySuccess";
 import notifyError from "../components/toast/notifyError";
 
-const token = sessionStorage.getItem("accessToken");
-
 const baseUrl = axios.create({
   baseURL: "https://fakestoreapi.com",
   headers: {
@@ -81,6 +79,25 @@ export const updateProfile = async (vals) => {
 
     return res;
   } catch (err) {
+    console.log(err);
+  }
+};
+
+export const updatePassword = async (vals) => {
+  try {
+    const res = await api.post("/change-password", vals, {
+      headers: { Authorization: `Bearer ${vals.token}` },
+    });
+
+    return res;
+  } catch (err) {
+    if (err?.response?.status === 422) {
+      notifyError("Password must be at least 6 characters");
+    }
+    if (err?.response?.status === 401) {
+      notifyError(err.response?.data?.error);
+      // console.log("Please login");
+    }
     console.log(err);
   }
 };

@@ -50,7 +50,7 @@ export default function Register() {
       const response = await loginUser({ email, password });
       if (response?.status) {
         notifySuccess("Login Successful");
-        navigate("/");
+        navigate("/profile");
         reset();
         setLoading(false);
       } else {

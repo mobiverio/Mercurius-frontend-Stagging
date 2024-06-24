@@ -37,3 +37,12 @@ export const SignInSchema = yup.object().shape({
     .required("Please enter your email address"),
   password: yup.string().required("Password is required"),
 });
+
+export const updatePasswordSchema = yup.object().shape({
+  password: yup.string().required("Old Password is required"),
+  new_password: yup.string().required("Enter New Password"),
+  c_new_password: yup
+    .string()
+    .required("Confirm Password is required")
+    .oneOf([yup.ref("new_password"), null], "Passwords must match"),
+});

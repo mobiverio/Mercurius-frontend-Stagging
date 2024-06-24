@@ -8,6 +8,7 @@ import { Toaster } from "react-hot-toast";
 import "@plume-ui-react/spinner/dist/index.css";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import Missing from "./components/molecules/404.js";
 
 //Main Screens
 import App from "./App.jsx";
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <div>Page not found</div>,
+    errorElement: <Missing />,
     children: [
       { path: "/", element: <Index /> },
       { path: "/new", element: <NewIndex /> },
