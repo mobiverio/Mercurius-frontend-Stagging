@@ -1,14 +1,20 @@
-// OrderSummary.js
-import React from "react";
+import React, { useState } from "react";
 import useCartStore from "../../zustand/useCartStore";
+import PaymentOptionsModal from '../../components/molecules/PaymentOptionsModal'// Import the new modal component
 
 const OrderSummary = () => {
   const { cart } = useCartStore();
+  const [isModalOpen, setModalOpen] = useState(false); // State to handle modal visibility
 
   const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const estimatedTax = subtotal * 0.05; // Assuming 5% tax rate
   const shipping = 29; // Flat shipping rate
   const total = subtotal + estimatedTax + shipping;
+
+  // Function to toggle modal visibility
+  const handleCheckoutClick = () => {
+    setModalOpen(!isModalOpen);
+  };
 
   return (
     <div className="border sm:basis-[45%] p-2 sm:py-4 sm:px-2 lg:px-8 rounded">
@@ -37,14 +43,18 @@ const OrderSummary = () => {
           </li>
         </ul>
       </div>
-      <div className="flex flex-col ">
-        <button className="flex flex-row justify-center items-center gap-x-8 p-2 border w-full my-2 rounded-md bg-black text-white hover:text-white hover:bg-black/80 transition duration-300">
+      <div className="flex flex-col">
+        <button
+          onClick={handleCheckoutClick}
+          className="flex flex-row justify-center items-center gap-x-8 p-2 border w-full my-2 rounded-md bg-black text-white hover:text-white hover:bg-black/80 transition duration-300"
+        >
           Checkout
         </button>
         <button className="flex flex-row justify-center items-center gap-x-8 p-2 border w-full my-2 rounded-md hover:bg-black/80 hover:text-white text-black bg-transparent">
           Stockpile
         </button>
       </div>
+      {isModalOpen && <PaymentOptionsModal onClose={handleCheckoutClick} />} {/* Render modal if open */}
     </div>
   );
 };
