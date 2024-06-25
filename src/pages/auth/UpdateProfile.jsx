@@ -75,15 +75,15 @@ const UpdateProfile = () => {
     const access_token = sessionStorage.getItem("accessToken");
     setUser(users);
     setToken(access_token);
-  }, []);
+  }, [editMode]);
 
   useEffect(() => {
-    setValue("name", user?.name);
-    setValue("email", user?.email);
-    setValue("address", user?.address);
-    setValue("city", user?.city);
-    setValue("zip_code", user?.zip_code);
-    setValue("phone", user?.phone);
+    setValue("name", user?.name || "");
+    setValue("email", user?.email || "");
+    setValue("address", user?.address || "");
+    setValue("city", user?.city || "");
+    setValue("zip_code", user?.zip_code || "");
+    setValue("phone", user?.phone || "");
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
