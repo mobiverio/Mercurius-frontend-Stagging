@@ -8,12 +8,16 @@ import { useNavigate } from "react-router-dom";
 import UpdateProfile from "./UpdateProfile";
 import ChangePassword from "./ChangePassword";
 
+//** Global state Imports
+import useCartStore from "../../zustand/useCartStore";
+
 const Profile = () => {
   const [user, setUser] = useState("");
   // eslint-disable-next-line no-unused-vars
   const [token, setToken] = useState("");
   const [toggler, setToggler] = useState(0);
   const navigate = useNavigate();
+  const { clearCart } = useCartStore();
 
   const handleToggle = (index) => {
     setToggler(index);
@@ -24,6 +28,8 @@ const Profile = () => {
     setToken("");
     sessionStorage.removeItem("loggedInUser");
     sessionStorage.removeItem("accessToken");
+    localStorage.removeItem("cartItems");
+    clearCart();
     navigate("/");
   };
 
