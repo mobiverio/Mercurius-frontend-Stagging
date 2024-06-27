@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 // ** Page Imports
 import UpdateProfile from "./UpdateProfile";
 import ChangePassword from "./ChangePassword";
+import Cart from "../cart/CartIndex";
 
 //** Global state Imports
 import useCartStore from "../../zustand/useCartStore";
@@ -100,6 +101,7 @@ const Profile = () => {
         </nav>
         <div className="shadow-sm rounded-sm w-[76%] p-4">
           {toggler === 0 && <UpdateProfile />}
+          {toggler === 1 && <Cart />}
           {toggler === 3 && <ChangePassword />}
         </div>
       </div>
