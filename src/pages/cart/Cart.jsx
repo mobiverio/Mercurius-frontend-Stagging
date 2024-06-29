@@ -26,7 +26,7 @@ const Cart = ({ title }) => {
   };
 
   return (
-    <div className="p-2 md:mx-4 lg:mx-12 mb-4">
+    <div className="p-2 md:ml-4 lg:ml-12 mb-4">
       <h2 className="font-semibold text-sm sm:text-[1.2rem] mb-4">{title}</h2>
 
       <main>
