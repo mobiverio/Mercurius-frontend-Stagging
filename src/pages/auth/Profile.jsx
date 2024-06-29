@@ -27,19 +27,19 @@ const Profile = () => {
   const logout = () => {
     setUser(null);
     setToken("");
-    sessionStorage.removeItem("loggedInUser");
-    sessionStorage.removeItem("accessToken");
+    localStorage.removeItem("loggedInUser");
+    localStorage.removeItem("accessToken");
     localStorage.removeItem("cartItems");
     clearCart();
     navigate("/");
   };
 
   useEffect(() => {
-    const users = JSON.parse(sessionStorage.getItem("loggedInUser"));
-    const access_token = sessionStorage.getItem("accessToken");
+    const users = JSON.parse(localStorage.getItem("loggedInUser"));
+    const access_token = localStorage.getItem("accessToken");
     setUser(users);
     setToken(access_token);
-  }, [toggler]);
+  }, []);
 
   return (
     <main className="px-6 md:px-12 my-8">

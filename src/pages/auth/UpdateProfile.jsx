@@ -59,6 +59,7 @@ const UpdateProfile = () => {
       const response = await updateProfile(payload);
 
       if (response.status) {
+        console.log(response);
         notifySuccess("Profile Updated Successfully");
         setLoading(false);
         handleEdit();
@@ -71,8 +72,8 @@ const UpdateProfile = () => {
   };
 
   useEffect(() => {
-    const users = JSON.parse(sessionStorage.getItem("loggedInUser"));
-    const access_token = sessionStorage.getItem("accessToken");
+    const users = JSON.parse(localStorage.getItem("loggedInUser"));
+    const access_token = localStorage.getItem("accessToken");
     setUser(users);
     setToken(access_token);
   }, [editMode]);
