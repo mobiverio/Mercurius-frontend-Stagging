@@ -1,7 +1,7 @@
 // Cart.js
 import React from "react";
 import { BsPlus, BsDash, BsX } from "react-icons/bs";
-
+import EmptyCart from "../../components/molecules/EmptyCart";
 import useCartStore from "../../zustand/useCartStore";
 
 const Cart = ({ title }) => {
@@ -65,7 +65,7 @@ const Cart = ({ title }) => {
           </div>
         ) : (
           <div>
-            <p>You have no items</p>
+            <EmptyCart />
           </div>
         )}
       </main>
