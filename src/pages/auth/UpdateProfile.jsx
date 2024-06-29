@@ -59,7 +59,8 @@ const UpdateProfile = () => {
       const response = await updateProfile(payload);
 
       if (response.status) {
-        console.log(response);
+        const newUserInfo = response?.data?.user;
+        localStorage.setItem("loggedInUser", JSON.stringify(newUserInfo));
         notifySuccess("Profile Updated Successfully");
         setLoading(false);
         handleEdit();

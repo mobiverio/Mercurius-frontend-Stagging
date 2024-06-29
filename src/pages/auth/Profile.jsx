@@ -39,7 +39,7 @@ const Profile = () => {
     const access_token = localStorage.getItem("accessToken");
     setUser(users);
     setToken(access_token);
-  }, []);
+  }, [toggler]);
 
   return (
     <main className="px-6 md:px-12 my-8">
