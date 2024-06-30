@@ -33,7 +33,7 @@ import CreatePassword from "./pages/auth/CreatePassword.jsx";
 
 // Protected Route Component
 const ProtectedRoute = ({ element }) => {
-  const user = sessionStorage.getItem("loggedInUser");
+  const user = localStorage.getItem("loggedInUser");
   return user ? element : <Navigate to="/signin" />;
 };
 
@@ -56,8 +56,8 @@ const router = createBrowserRouter([
       { path: "/accessories", element: <AccessoriesIndex /> },
       { path: "/gadgets", element: <GadgetIndex /> },
       { path: "/sales", element: <SalesIndex /> },
-      { path: "/cart", element: <CartIndex /> },
       { path: "/product-view/:productId", element: <ProductIndex /> },
+      { path: "/cart", element: <CartIndex /> },
       { path: "/product/:id", element: <Product /> },
       { path: "/brands/:id", element: <BrandProducts /> },
       { path: "/brands", element: <BrandIndex /> },

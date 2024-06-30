@@ -47,7 +47,7 @@ const ChangePassword = () => {
   };
 
   useEffect(() => {
-    const getToken = sessionStorage.getItem("accessToken");
+    const getToken = localStorage.getItem("accessToken");
     setToken(getToken);
   }, []);
 

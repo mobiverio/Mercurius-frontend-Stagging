@@ -56,8 +56,8 @@ export const loginUser = async (vals) => {
     const res = await api.post("/login", { ...vals });
     if (res?.data?.status) {
       const { access_token, ...restOfData } = res?.data;
-      sessionStorage.setItem("accessToken", access_token);
-      sessionStorage.setItem("loggedInUser", JSON.stringify(restOfData?.user));
+      localStorage.setItem("accessToken", access_token);
+      localStorage.setItem("loggedInUser", JSON.stringify(restOfData?.user));
     }
     console.log(res?.data, "action payload");
     return res;
