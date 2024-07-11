@@ -13,20 +13,20 @@ const ProductSlider = function ({ items }) {
   };
 
   return (
-    <main className="relative flex items-center my-4 mx-6 md:mx-12 mr-10 bg-blue-200">
+    <main className="relative flex items-center my-4 mx-6 md:mx-12 mr-10 bg-blue-400">
       <div
         className="py-4 px-6 overflow-auto hide_bar scroll-smooth"
         id="slider"
       >
-        {/* <BsChevronCompactLeft
+        <BsChevronCompactLeft
           size={30}
           className="cursor-pointer absolute z-20 p-2 text-black/70 left-0"
           onClick={leftSlide}
-        /> */}
-        <ul className="w-full flex flex-row gap-4 items-center">
+        />
+        <ul className="w-max flex flex-row gap-4 items-center bg-red-950">
           {items?.map((item) => (
             <Link key={item.id} to={`/product/${item.id}`}>
-              <li className="min-w-[200px] hover:scale-105 transition-all">
+              <li className="min-w-[220px] max-w-[220px] hover:scale-105 transition-all">
                 <figure className="flex flex-col items-center justify-center bg-white">
                   <img
                     className="w-full cursor-pointer"
@@ -43,11 +43,11 @@ const ProductSlider = function ({ items }) {
             </Link>
           ))}
         </ul>
-        {/* <BsChevronCompactRight
+        <BsChevronCompactRight
           size={30}
           className="cursor-pointer absolute z-20 p-2 text-black/70 right-0"
           onClick={rightSlide}
-        /> */}
+        />
       </div>
     </main>
   );
