@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
-import { Slider, ItemSelling } from "./Hero";
+import { Slider } from "./Hero";
+import ProductSlider from "../../components/molecules/Slider";
 import {
   BestSelling,
   Selling,
@@ -13,6 +14,7 @@ import {
 import BrandsIndex from "../brands/AllBrands";
 import Loader from "../../components/molecules/Loader";
 import { getProductsLimited } from "../../api/Axios";
+import { items } from "../../db_local/store";
 
 export default function Index() {
   const [newArrivals, setNewArrivals] = useState([]);
@@ -37,7 +39,7 @@ export default function Index() {
   return (
     <>
       <Slider autoSlideInterval={1000} autoSlide={true} />
-      <ItemSelling />
+      <ProductSlider items={items} />
       <Category />
       <MaleFemaleCategory />
       <div className="my-4 mx-6 md:mx-12">

@@ -1,7 +1,9 @@
 import Image from "../assets/images/Iphone.png";
-import Swag from "../assets/images/swag.png";
-import Model from "../assets/images/model.png";
-import Friends from "../assets/images/friends.png";
+// import Swag from "../assets/images/swag.png";
+// import Model from "../assets/images/model.png";
+// import Friends from "../assets/images/friends.png";
+import Phonepng from "../assets/images/sliderpng.png";
+import Pants from "../assets/images/pantpng.png";
 
 import Img1 from "../assets/images/pro1.png";
 import Img2 from "../assets/images/pro2.png";
@@ -266,80 +268,80 @@ export const items = [
   {
     id: 1,
     title: "Apparel",
-    pitch: "Buy now, Save 30%",
-    url: Image,
+    discount: "30%",
+    url: Pants,
   },
   {
     id: 2,
     title: "Gadget",
-    pitch: "Buy now, Save 30%",
-    url: Friends,
+    discount: "30%",
+    url: Phonepng,
   },
   {
     id: 3,
     title: "Accessories",
-    pitch: "Buy now, Save 30%",
-    url: Model,
+    discount: "30%",
+    url: Pants,
   },
   {
     id: 4,
     title: "New Arrivals",
-    pitch: "Buy now, Save 30%",
-    url: Swag,
+    discount: "30%",
+    url: Phonepng,
   },
   {
     id: 5,
     title: "Furnitures",
-    pitch: "Buy now, Save 30%",
-    url: Friends,
+    discount: "30%",
+    url: Phonepng,
   },
   {
     id: 6,
     title: "Utencils",
-    pitch: "Buy now, Save 30%",
-    url: Model,
+    discount: "30%",
+    url: Pants,
   },
   {
     id: 7,
     title: "Wine",
-    pitch: "Buy now, Save 30%",
-    url: Swag,
+    discount: "30%",
+    url: Phonepng,
   },
   {
     id: 8,
     title: "Product",
-    pitch: "Buy now, Save 30%",
-    url: Friends,
+    discount: "30%",
+    url: Phonepng,
   },
   {
     id: 9,
     title: "Product",
-    pitch: "Buy now, Save 30%",
-    url: Image,
+    discount: "30%",
+    url: Pants,
   },
   {
     id: 10,
     title: "Apparel",
-    pitch: "Buy now, Save 30%",
-    url: Image,
+    discount: "30%",
+    url: Pants,
   },
   {
     id: 11,
     title: "Gadget",
-    pitch: "Buy now, Save 30%",
-    url: Friends,
+    discount: "30%",
+    url: Phonepng,
   },
   {
     id: 12,
     title: "Accessories",
-    pitch: "Buy now, Save 30%",
-    url: Model,
+    discount: "30%",
+    url: Pants,
   },
   {
     id: 13,
     title: "New Arrivals",
-    pitch: "Buy now, Save 30%",
-    url: Swag,
+    discount: "30%",
+    url: Phonepng,
   },
 ];
 

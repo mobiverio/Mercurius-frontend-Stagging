@@ -119,6 +119,7 @@ export const getProducts = async () => {
     throw error;
   }
 };
+
 export const getProductsLimited = async () => {
   try {
     const response = await baseUrl.get("/products?limit=9");
@@ -151,4 +152,4 @@ export const getCategories = async () => {
 
 // Add more API methods as needed
 
-export default api;
+// export default api;
