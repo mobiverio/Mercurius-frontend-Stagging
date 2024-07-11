@@ -13,12 +13,12 @@ import MercuriusWeek from "../../assets/images/merc.png";
 
 export const Category = function () {
   return (
-    <div className="mx-6 md:mx-12 my-4 bg-white/55">
-      <div className="flex flex-row justify-start">
+    <div className="p-1 sm:px-2 md:px-12 my-8 bg-white/55">
+      {/* <div className="flex flex-row justify-start">
         <p className="text-[1.1rem] font-semibold">Shop by Category</p>
-      </div>
+      </div> */}
       <div>
-        <p className="flex flex-row gap-2 items-center justify-end text-[.8rem] mb-3">
+        <p className="flex flex-row gap-2 items-center justify-end text-sm mb-3 p-2">
           <a href="/#">All categories</a>
           <BsArrowRight />
         </p>
@@ -55,7 +55,7 @@ export const Category = function () {
 
 export const MaleFemaleCategory = function () {
   return (
-    <div className="my-4 mx-6 md:mx-12">
+    <div className="my-4 px-1 sm:px-2 md:px-12">
       <div className="xl:grid grid-cols-1 sm:grid-cols-2 gap-2">
         <div className="hidden xl:grid grid-rows-[100px_minmax(50px,_200px)_100px] gap-2">
           {/* item 1 */}

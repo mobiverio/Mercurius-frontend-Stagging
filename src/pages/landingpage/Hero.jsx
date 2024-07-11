@@ -42,7 +42,7 @@ export const Slider = function ({
   }, [currentIndex]);
 
   return (
-    <div className="relative w-full h-[470px] m-auto bg-white/40 group px-6 md:px-12 mt-1">
+    <div className="relative w-full h-[470px] m-auto bg-white/40 group px-0 sm:px-2 md:px-12 mt-1">
       <div className="w-full h-full duration-1000 bg-cover bg-no-repeat flex flex-col justify-center items-center sm:items-start gap-1 px-4 sm:pl-[5rem] bg-black/95 rounded-t">
         <img
           src={slides[currentIndex].src}

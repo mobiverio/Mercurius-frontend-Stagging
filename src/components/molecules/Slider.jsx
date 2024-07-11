@@ -13,7 +13,7 @@ const ProductSlider = function ({ items }) {
   };
 
   return (
-    <main className="relative flex items-center my-4 mx-6 md:mx-12 mr-10 bg-blue-200">
+    <main className="relative flex items-center my-8 p-1 sm:px-2 md:px-12 sm:mx-6 md:mx-12 bg-blue-200">
       <div
         className="py-4 px-6 overflow-auto hide_bar scroll-smooth"
         id="slider"
@@ -24,9 +24,9 @@ const ProductSlider = function ({ items }) {
           onClick={leftSlide}
         />
         <ul className="w-max flex flex-row gap-4 items-center">
-          {items?.map((item) => (
-            <Link key={item.id} to={`/product/${item.id}`}>
-              <li className="min-w-[220px] max-w-[220px] hover:scale-105 transition-all">
+          {items?.map((item, i) => (
+            <Link key={i + 1} to={`/product/${item.id}`}>
+              <li className="min-w-[150px] max-w-[150px] sm:min-w-[220px] sm:max-w-[220px] hover:scale-105 transition-all">
                 <figure className="flex flex-col items-center justify-center bg-white">
                   <img
                     className="w-full cursor-pointer"

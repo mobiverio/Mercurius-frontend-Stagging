@@ -11,10 +11,11 @@ import Laptop from "../../assets/images/laptops.png";
 import Watch from "../../assets/images/watches.png";
 import useCartStore from "../../zustand/useCartStore";
 
-export const Selling = function ({ products }) {
+export const Selling = function ({ products, title }) {
   const { addToCart } = useCartStore();
   return (
-    <div className="">
+    <div className="my-8 p-1 sm:px-2 md:px-12">
+      <p className="font-semibold text-[1.2rem]">{title}</p>
       <div className="grid grid-cols-2 sm:grid-cols-[repeat(3,minmax(0,300px))] md:grid-cols-[repeat(5,minmax(0,300px))] gap-2">
         {products?.map((product, i) => {
           return (
@@ -51,13 +52,13 @@ export const Selling = function ({ products }) {
   );
 };
 
-export const BestSelling = function ({ products }) {
+export const BestSelling = function ({ products, title }) {
   const { addToCart } = useCartStore();
 
   return (
-    <div className="mx-6 md:mx-12 my-4">
+    <div className="p-1 sm:px-2 md:px-12 my-8">
       <div className="flex flex-row justify-start">
-        <h3 className="text-[1.1rem] font-semibold">Best Selling</h3>
+        <h3 className="text-[1.1rem] font-semibold">{title}</h3>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
         {products?.map((product, i) => {
@@ -92,64 +93,66 @@ export const BestSelling = function ({ products }) {
 
 export const Gadget = function () {
   return (
-    <div className="bg-slate-200 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4">
-      <div className="w-full flex flex-col sm:flex-row md:flex-col bg-[#fff]">
-        <img className="w-[80%]" src={Accessories} alt="" />
-        <div className="w-[80%] p-4 mx-auto sm:mt-10">
-          <h3 className="text-2xl my-2">Popular Products</h3>
-          <p className="text-sm">
-            Explore a realm where innovation meets design, providing a perfect
-            fusion of style, functionality, and performance across popular
-            categories.
-          </p>
-          <button className="border hover:bg-black/90 hover:text-white transition border-[#333] p-3 my-5 rounded-lg w-[90%]">
-            Shop Now
-          </button>
+    <main className="my-8 p-1 sm:px-2 md:px-12">
+      <div className="bg-slate-200 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4">
+        <div className="w-full flex flex-col sm:flex-row md:flex-col bg-[#fff]">
+          <img className="w-[80%]" src={Accessories} alt="" />
+          <div className="w-[80%] p-4 mx-auto sm:mt-10">
+            <h3 className="text-2xl my-2">Popular Products</h3>
+            <p className="text-sm">
+              Explore a realm where innovation meets design, providing a perfect
+              fusion of style, functionality, and performance across popular
+              categories.
+            </p>
+            <button className="border hover:bg-black/90 hover:text-white transition border-[#333] p-3 my-5 rounded-lg w-[90%]">
+              Shop Now
+            </button>
+          </div>
+        </div>
+        <div className="w-full flex flex-col sm:flex-row-reverse md:flex-col bg-[#f9f9f9]">
+          <img className="w-[80%] self-end" src={Ipad} alt="" />
+          <div className="w-[80%] p-4 mx-auto my-5">
+            <h3 className="text-2xl my-2">Brands</h3>
+            <p className="text-sm">
+              Embark on a journey where cutting-edge technology seamlessly
+              intertwines with refined elegance, transforming every task into a
+              delightful experience.
+            </p>
+            <button className="border border-[#333] hover:bg-black/90 transition hover:text-white p-3 my-5 rounded-lg w-[90%]">
+              Shop Now
+            </button>
+          </div>
+        </div>
+        <div className="w-full flex flex-col sm:flex-row md:flex-col bg-[#eaeaea]">
+          <img className="w-[80%]" src={Samsung} alt="" />
+          <div className="w-[80%] p-4 mx-auto my-5">
+            <h3 className="text-2xl my-2">Phones</h3>
+            <p className="text-sm">
+              Effortlessly multitask and navigate with unparalleled ease as
+              phones redefine mobile innovation, setting new standards for a
+              seamless user experience.
+            </p>
+            <button className="border border-[#333] hover:bg-black/90 transition hover:text-white p-3 my-5 rounded-lg w-[90%]">
+              Shop Now
+            </button>
+          </div>
+        </div>
+        <div className="w-full flex flex-col sm:flex-row-reverse md:flex-col bg-[#1F2A37] text-[#eaeaea]">
+          <img className="w-[80%] self-end" src={Macbook} alt="" />
+          <div className="w-[80%] p-4 mx-auto mt-10">
+            <h3 className="text-2xl my-2">Computers</h3>
+            <p className="text-sm">
+              Embark on a new computing era with computers—blending form,
+              performance, and user-friendly innovation seamlessly for an
+              unparalleled experience.
+            </p>
+            <button className="border border-[#eaeaea] hover:bg-white/90 transition hover:text-black p-3 my-5 rounded-lg w-[90%]">
+              Shop Now
+            </button>
+          </div>
         </div>
       </div>
-      <div className="w-full flex flex-col sm:flex-row-reverse md:flex-col bg-[#f9f9f9]">
-        <img className="w-[80%] self-end" src={Ipad} alt="" />
-        <div className="w-[80%] p-4 mx-auto my-5">
-          <h3 className="text-2xl my-2">Brands</h3>
-          <p className="text-sm">
-            Embark on a journey where cutting-edge technology seamlessly
-            intertwines with refined elegance, transforming every task into a
-            delightful experience.
-          </p>
-          <button className="border border-[#333] hover:bg-black/90 transition hover:text-white p-3 my-5 rounded-lg w-[90%]">
-            Shop Now
-          </button>
-        </div>
-      </div>
-      <div className="w-full flex flex-col sm:flex-row md:flex-col bg-[#eaeaea]">
-        <img className="w-[80%]" src={Samsung} alt="" />
-        <div className="w-[80%] p-4 mx-auto my-5">
-          <h3 className="text-2xl my-2">Phones</h3>
-          <p className="text-sm">
-            Effortlessly multitask and navigate with unparalleled ease as phones
-            redefine mobile innovation, setting new standards for a seamless
-            user experience.
-          </p>
-          <button className="border border-[#333] hover:bg-black/90 transition hover:text-white p-3 my-5 rounded-lg w-[90%]">
-            Shop Now
-          </button>
-        </div>
-      </div>
-      <div className="w-full flex flex-col sm:flex-row-reverse md:flex-col bg-[#1F2A37] text-[#eaeaea]">
-        <img className="w-[80%] self-end" src={Macbook} alt="" />
-        <div className="w-[80%] p-4 mx-auto mt-10">
-          <h3 className="text-2xl my-2">Computers</h3>
-          <p className="text-sm">
-            Embark on a new computing era with computers—blending form,
-            performance, and user-friendly innovation seamlessly for an
-            unparalleled experience.
-          </p>
-          <button className="border border-[#eaeaea] hover:bg-white/90 transition hover:text-black p-3 my-5 rounded-lg w-[90%]">
-            Shop Now
-          </button>
-        </div>
-      </div>
-    </div>
+    </main>
   );
 };
 
