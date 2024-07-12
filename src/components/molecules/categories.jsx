@@ -1,3 +1,5 @@
+import React from "react";
+import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 import Img1 from "../../assets/images/img1.png";
 import Img2 from "../../assets/images/img2.png";
@@ -14,9 +16,6 @@ import MercuriusWeek from "../../assets/images/merc.png";
 export const Category = function () {
   return (
     <div className="p-1 sm:px-2 md:px-12 my-8 bg-white/55">
-      {/* <div className="flex flex-row justify-start">
-        <p className="text-[1.1rem] font-semibold">Shop by Category</p>
-      </div> */}
       <div>
         <p className="flex flex-row gap-2 items-center justify-end text-sm mb-3 p-2">
           <a href="/#">All categories</a>
@@ -130,8 +129,10 @@ export const MaleFemaleCategory = function () {
         <div className="flex flex-col">
           <div className="relative flex justify-center items-center">
             <div className="absolute z-50 bg-white/70 text-center py-4 w-[75%] sm:w-[300px] outline outline-white outline-offset-8 outline-1 cursor-pointer">
-              <h3 className="text-4xl font-semibold text-pretty">SALE</h3>
-              <p>#mercuriusweek</p>
+              <Link to={"/sales"}>
+                <h3 className="text-4xl font-semibold text-pretty">SALE</h3>
+                <p>#mercuriusweek</p>
+              </Link>
             </div>
             <img className="object-cover " src={MercuriusWeek} alt="" />
           </div>

@@ -13,16 +13,17 @@ import {
 } from "../../components/molecules/categories";
 import BrandsIndex from "../brands/AllBrands";
 import Loader from "../../components/molecules/Loader";
-import { getProductsLimited } from "../../api/Axios";
+import { getProductsLimited, getProducts } from "../../api/Axios";
 import { items } from "../../db_local/store";
 
 export default function Index() {
   const [newArrivals, setNewArrivals] = useState([]);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const data = await getProductsLimited();
+        const data = await getProducts();
         setNewArrivals(data);
         setLoading(false);
       } catch (error) {

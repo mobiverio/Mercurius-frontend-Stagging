@@ -13,7 +13,7 @@ const ProductSlider = function ({ items }) {
   };
 
   return (
-    <main className="relative flex items-center my-8 p-1 sm:px-2 md:px-12 sm:mx-6 md:mx-12 bg-blue-200">
+    <main className="relative flex items-center my-8 sm:px-4 sm:mx-6 md:mx-12 bg-black/40">
       <div
         className="py-4 px-6 overflow-auto hide_bar scroll-smooth"
         id="slider"

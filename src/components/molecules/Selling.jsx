@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/Styles.css";
 import { FiHeart } from "react-icons/fi";
 import { Link } from "react-router-dom";
@@ -10,9 +10,20 @@ import Macbook from "../../assets/images/macbook.png";
 import Laptop from "../../assets/images/laptops.png";
 import Watch from "../../assets/images/watches.png";
 import useCartStore from "../../zustand/useCartStore";
+import useFavorites from "../../zustand/useFavStore";
 
 export const Selling = function ({ products, title }) {
   const { addToCart } = useCartStore();
+  const [likes, setLikes] = useState([]);
+  const { favorite, addToFavorite } = useFavorites();
+
+  useEffect(() => {
+    const likedId = favorite.map((item) => [...likes, item.id]);
+    setLikes(likedId);
+
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [favorite]);
+
   return (
     <div className="my-8 p-1 sm:px-2 md:px-12">
       <p className="font-semibold text-[1.2rem]">{title}</p>
@@ -24,7 +35,17 @@ export const Selling = function ({ products, title }) {
                 key={i}
                 className="relative p-4 bg-[#f6f6f6] w-full min-h-[100%] flex flex-col items-center justify-center"
               >
-                <FiHeart className="w-4 h-4 self-end cursor-pointer text-black/40" />
+                <button
+                  className="absolute right-4 top-4"
+                  onClick={() => addToFavorite(product)}
+                >
+                  <FiHeart
+                    className="w-5 h-5 self-end cursor-pointer text-red-300"
+                    fill={`${
+                      likes.includes(product.id) ? "red" : "transparent"
+                    }`}
+                  />
+                </button>
                 <Link key={i} to={`/product-view/${product.id}`}>
                   <img
                     className=" min-w-[100px] max-w-[120px] min-h-[100px] max-h-[100px] my-4"
@@ -32,7 +53,7 @@ export const Selling = function ({ products, title }) {
                     alt="product "
                   />
                   <p className="w-[80%] text-center text-sm">{product.name}</p>
-                  <p className="text-sm font-semibold">{`$${product.price}`}</p>
+                  <p className="text-sm font-semibold text-center">{`$${product.price}`}</p>
                   <p className="text-sm font-semibold">
                     {product?.color || product?.title?.slice}
                   </p>
