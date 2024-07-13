@@ -1,5 +1,6 @@
-import { Disclosure } from "@headlessui/react";
+import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { Disclosure } from "@headlessui/react";
 
 import {
   BsJustifyLeft,
@@ -25,6 +26,14 @@ const navigation = [
 
 export default function Header() {
   const { cart } = useCartStore();
+  const [user, setUser] = useState("");
+
+  useEffect(() => {
+    const getUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    console.log(getUser);
+
+    setUser(getUser?.name);
+  }, []);
 
   const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
 
@@ -33,7 +42,7 @@ export default function Header() {
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-            <div className="relative flex h-16 items-center justify-between">
+            <div className="relative w-full flex h-16 bg-red-500 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-black hover:bg-black/20 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-black/20">
@@ -52,11 +61,17 @@ export default function Header() {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex flex-1 items-center justify-center">
-                <div className="font-semibold font-mono text-[1.3rem] md:text-3xl flex flex-shrink-0 items-center ml-6 sm:ml-0">
+
+              <div className="font-semibold font-mono text-[1.3rem] md:text-3xl flex flex-shrink-0 items-center ml-6 sm:ml-0">
+                <Link to="/">Mercurius</Link>
+              </div>
+
+              <div className="flex flex-1 items-center justify-between mt-8 mb-4">
+                <div className="hidden sm:block font-semibold font-mono text-[1.3rem] md:text-3xl items-center ml-6 sm:ml-0">
                   <Link to="/">Mercurius</Link>
                 </div>
-                <div className="hidden flex-1 ml-6 md:ml-6 sm:block transition duration-300">
+
+                <div className="hidden flex-1 max-w-[55%] sm:block transition duration-300">
                   <form className="relative">
                     <BsSearch className="absolute top-[30%] left-2 text-black/80" />
 
@@ -64,59 +79,50 @@ export default function Header() {
                       type="text"
                       name="search"
                       id="search"
-                      className="border border-[#c3c3c3] rounded-md py-2 px-7 w-[100%] outline-none hover:outline-offset-1"
+                      className="border border-[#c3c3c3] rounded-md py-3 px-7 w-[100%] outline-none hover:outline-offset-1"
                       placeholder="Search Brands, Shoes ..."
                     />
                     <input
                       type="submit"
                       value="Search"
-                      className="absolute top-[.33rem] right-[2%] bg-[#111] py-1 px-3 rounded-md text-white"
+                      className="absolute top-[.5rem] right-[1%] bg-[#111] py-1 px-3 rounded-md text-white"
                     />
                   </form>
                 </div>
-              </div>
 
-              <div className="flex justify-between gap-x-2 sm:gap-x-4 items-end pr-2 sm:ml-6 sm:pr-0">
-                <div className="">
-                  <Link
-                    to="/profile"
-                    className="flex flex-row justify-between items-stretch"
-                  >
-                    <BsPerson size={20} />
-                    <p className="hidden md:block font-semibold">
-                      My&nbsp;Account
-                    </p>
-                  </Link>
-                </div>
-                <div className="">
-                  <Link
-                    to="/cart"
-                    className="flex flex-row justify-center items-stretch relative"
-                  >
-                    <BsCart3 size={20} />
-                    <p className="hidden md:block font-semibold">Cart</p>
-                    <p
-                      className={`${
-                        totalItems && "block bg-black text-white"
-                      } w-5 h-5 absolute -left-3 leading-[11.5px] -top-3 p-1 text-[.75rem] rounded-full text-center`}
+                <div className="flex justify-between gap-x-2 sm:gap-x-4 items-end pr-2 sm:ml-6 sm:pr-0">
+                  <div className="">
+                    <Link
+                      to="/profile"
+                      className="flex flex-row justify-between items-stretch"
                     >
-                      {totalItems ? totalItems : null}
-                    </p>
-                  </Link>
+                      <BsPerson size={20} />
+                      <p className="hidden md:block font-semibold">
+                        {user === null ? "My&nbsp;Account" : user}
+                      </p>
+                    </Link>
+                  </div>
+                  <div className="">
+                    <Link
+                      to="/cart"
+                      className="flex flex-row justify-center items-stretch relative"
+                    >
+                      <BsCart3 size={20} />
+                      <p className="hidden md:block font-semibold">Cart</p>
+                      <p
+                        className={`${
+                          totalItems && "block bg-black text-white"
+                        } w-5 h-5 absolute -left-3 leading-[11.5px] -top-3 p-1 text-[.75rem] rounded-full text-center`}
+                      >
+                        {totalItems ? totalItems : null}
+                      </p>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
             <div className="hidden sm:block mt-4 pb-4">
               <div className="flex gap-x-4 items-center justify-center">
-                {/* <div className="hidden md:flex sm:flex-row gap-1 justify-center items-center border-2 py-1 px-3 rounded">
-                  <BsJustifyLeft className="h-5 w-5" />
-                  <p>All Categories</p>
-                  <BsChevronDown
-                    className="h-5 w-5"
-                    role="button"
-                    aria-label="button"
-                  />
-                </div> */}
                 <div className="justify-self-center">
                   {navigation?.map((item) => (
                     <NavLink
