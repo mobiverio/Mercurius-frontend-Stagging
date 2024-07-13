@@ -18,8 +18,8 @@ export const Selling = function ({ products, title }) {
   const { favorite, addToFavorite } = useFavorites();
 
   useEffect(() => {
-    const likedId = favorite.map((item) => [...likes, item.id]);
-    setLikes(likedId);
+    const likedIds = favorite.map((item) => item.id);
+    setLikes(likedIds);
 
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [favorite]);
@@ -75,6 +75,15 @@ export const Selling = function ({ products, title }) {
 
 export const BestSelling = function ({ products, title }) {
   const { addToCart } = useCartStore();
+  const [likes, setLikes] = useState([]);
+  const { favorite, addToFavorite } = useFavorites();
+
+  useEffect(() => {
+    const likedIds = favorite.map((item) => item.id);
+    setLikes(likedIds);
+
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [favorite]);
 
   return (
     <div className="p-1 sm:px-2 md:px-12 my-8">
@@ -86,9 +95,17 @@ export const BestSelling = function ({ products, title }) {
           return (
             <div
               key={i}
-              className="w-full p-4 bg-[#f6f6f6] flex flex-col items-center justify-center"
+              className="relative w-full p-4 bg-[#f6f6f6] flex flex-col items-center justify-center"
             >
-              <FiHeart className="w-4 h-4 self-end cursor-pointer text-black/40" />
+              <button
+                className="absolute right-4 top-4"
+                onClick={() => addToFavorite(product)}
+              >
+                <FiHeart
+                  className="w-5 h-5 self-end cursor-pointer text-red-300"
+                  fill={`${likes.includes(product.id) ? "red" : "transparent"}`}
+                />
+              </button>
               <img
                 className="min-w-[100px] max-w-[120px] min-h-[100px] max-h-[100px] my-4"
                 src={product.src || product.image}

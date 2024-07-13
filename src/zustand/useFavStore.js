@@ -35,12 +35,10 @@ const useFavorites = create((set) => {
     ...initialState,
     addToFavorite: (product) =>
       set((state) => {
-        const existingProduct = state.favorite.find(
-          (item) => item.id === product.id
-        );
+        const likedItem = state.favorite.find((item) => item.id === product.id);
 
         let newLikes;
-        if (existingProduct) {
+        if (likedItem) {
           newLikes = state.favorite.filter((items) => items.id !== product.id);
         } else {
           newLikes = [...state.favorite, { ...product }];
