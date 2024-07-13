@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/Styles.css";
 import { FiHeart } from "react-icons/fi";
 import { Link } from "react-router-dom";
@@ -10,11 +10,23 @@ import Macbook from "../../assets/images/macbook.png";
 import Laptop from "../../assets/images/laptops.png";
 import Watch from "../../assets/images/watches.png";
 import useCartStore from "../../zustand/useCartStore";
+import useFavorites from "../../zustand/useFavStore";
 
-export const Selling = function ({ products }) {
+export const Selling = function ({ products, title }) {
   const { addToCart } = useCartStore();
+  const [likes, setLikes] = useState([]);
+  const { favorite, addToFavorite } = useFavorites();
+
+  useEffect(() => {
+    const likedIds = favorite.map((item) => item.id);
+    setLikes(likedIds);
+
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [favorite]);
+
   return (
-    <div className="">
+    <div className="my-8 p-1 sm:px-2 md:px-12">
+      <p className="font-semibold text-[1.2rem]">{title}</p>
       <div className="grid grid-cols-2 sm:grid-cols-[repeat(3,minmax(0,300px))] md:grid-cols-[repeat(5,minmax(0,300px))] gap-2">
         {products?.map((product, i) => {
           return (
@@ -23,7 +35,17 @@ export const Selling = function ({ products }) {
                 key={i}
                 className="relative p-4 bg-[#f6f6f6] w-full min-h-[100%] flex flex-col items-center justify-center"
               >
-                <FiHeart className="w-4 h-4 self-end cursor-pointer text-black/40" />
+                <button
+                  className="absolute right-4 top-4"
+                  onClick={() => addToFavorite(product)}
+                >
+                  <FiHeart
+                    className="w-5 h-5 self-end cursor-pointer text-red-300"
+                    fill={`${
+                      likes.includes(product.id) ? "red" : "transparent"
+                    }`}
+                  />
+                </button>
                 <Link key={i} to={`/product-view/${product.id}`}>
                   <img
                     className=" min-w-[100px] max-w-[120px] min-h-[100px] max-h-[100px] my-4"
@@ -31,7 +53,7 @@ export const Selling = function ({ products }) {
                     alt="product "
                   />
                   <p className="w-[80%] text-center text-sm">{product.name}</p>
-                  <p className="text-sm font-semibold">{`$${product.price}`}</p>
+                  <p className="text-sm font-semibold text-center">{`$${product.price}`}</p>
                   <p className="text-sm font-semibold">
                     {product?.color || product?.title?.slice}
                   </p>
@@ -51,22 +73,39 @@ export const Selling = function ({ products }) {
   );
 };
 
-export const BestSelling = function ({ products }) {
+export const BestSelling = function ({ products, title }) {
   const { addToCart } = useCartStore();
+  const [likes, setLikes] = useState([]);
+  const { favorite, addToFavorite } = useFavorites();
+
+  useEffect(() => {
+    const likedIds = favorite.map((item) => item.id);
+    setLikes(likedIds);
+
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [favorite]);
 
   return (
-    <div className="mx-6 md:mx-12 my-4">
+    <div className="p-1 sm:px-2 md:px-12 my-8">
       <div className="flex flex-row justify-start">
-        <h3 className="text-[1.1rem] font-semibold">Best Selling</h3>
+        <h3 className="text-[1.1rem] font-semibold">{title}</h3>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
         {products?.map((product, i) => {
           return (
             <div
               key={i}
-              className="w-full p-4 bg-[#f6f6f6] flex flex-col items-center justify-center"
+              className="relative w-full p-4 bg-[#f6f6f6] flex flex-col items-center justify-center"
             >
-              <FiHeart className="w-4 h-4 self-end cursor-pointer text-black/40" />
+              <button
+                className="absolute right-4 top-4"
+                onClick={() => addToFavorite(product)}
+              >
+                <FiHeart
+                  className="w-5 h-5 self-end cursor-pointer text-red-300"
+                  fill={`${likes.includes(product.id) ? "red" : "transparent"}`}
+                />
+              </button>
               <img
                 className="min-w-[100px] max-w-[120px] min-h-[100px] max-h-[100px] my-4"
                 src={product.src || product.image}
@@ -92,64 +131,66 @@ export const BestSelling = function ({ products }) {
 
 export const Gadget = function () {
   return (
-    <div className="bg-slate-200 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4">
-      <div className="w-full flex flex-col sm:flex-row md:flex-col bg-[#fff]">
-        <img className="w-[80%]" src={Accessories} alt="" />
-        <div className="w-[80%] p-4 mx-auto sm:mt-10">
-          <h3 className="text-2xl my-2">Popular Products</h3>
-          <p className="text-sm">
-            Explore a realm where innovation meets design, providing a perfect
-            fusion of style, functionality, and performance across popular
-            categories.
-          </p>
-          <button className="border hover:bg-black/90 hover:text-white transition border-[#333] p-3 my-5 rounded-lg w-[90%]">
-            Shop Now
-          </button>
+    <main className="my-8 p-1 sm:px-2 md:px-12">
+      <div className="bg-slate-200 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4">
+        <div className="w-full flex flex-col sm:flex-row md:flex-col bg-[#fff]">
+          <img className="w-[80%]" src={Accessories} alt="" />
+          <div className="w-[80%] p-4 mx-auto sm:mt-10">
+            <h3 className="text-2xl my-2">Popular Products</h3>
+            <p className="text-sm">
+              Explore a realm where innovation meets design, providing a perfect
+              fusion of style, functionality, and performance across popular
+              categories.
+            </p>
+            <button className="border hover:bg-black/90 hover:text-white transition border-[#333] p-3 my-5 rounded-lg w-[90%]">
+              Shop Now
+            </button>
+          </div>
+        </div>
+        <div className="w-full flex flex-col sm:flex-row-reverse md:flex-col bg-[#f9f9f9]">
+          <img className="w-[80%] self-end" src={Ipad} alt="" />
+          <div className="w-[80%] p-4 mx-auto my-5">
+            <h3 className="text-2xl my-2">Brands</h3>
+            <p className="text-sm">
+              Embark on a journey where cutting-edge technology seamlessly
+              intertwines with refined elegance, transforming every task into a
+              delightful experience.
+            </p>
+            <button className="border border-[#333] hover:bg-black/90 transition hover:text-white p-3 my-5 rounded-lg w-[90%]">
+              Shop Now
+            </button>
+          </div>
+        </div>
+        <div className="w-full flex flex-col sm:flex-row md:flex-col bg-[#eaeaea]">
+          <img className="w-[80%]" src={Samsung} alt="" />
+          <div className="w-[80%] p-4 mx-auto my-5">
+            <h3 className="text-2xl my-2">Phones</h3>
+            <p className="text-sm">
+              Effortlessly multitask and navigate with unparalleled ease as
+              phones redefine mobile innovation, setting new standards for a
+              seamless user experience.
+            </p>
+            <button className="border border-[#333] hover:bg-black/90 transition hover:text-white p-3 my-5 rounded-lg w-[90%]">
+              Shop Now
+            </button>
+          </div>
+        </div>
+        <div className="w-full flex flex-col sm:flex-row-reverse md:flex-col bg-[#1F2A37] text-[#eaeaea]">
+          <img className="w-[80%] self-end" src={Macbook} alt="" />
+          <div className="w-[80%] p-4 mx-auto mt-10">
+            <h3 className="text-2xl my-2">Computers</h3>
+            <p className="text-sm">
+              Embark on a new computing era with computers—blending form,
+              performance, and user-friendly innovation seamlessly for an
+              unparalleled experience.
+            </p>
+            <button className="border border-[#eaeaea] hover:bg-white/90 transition hover:text-black p-3 my-5 rounded-lg w-[90%]">
+              Shop Now
+            </button>
+          </div>
         </div>
       </div>
-      <div className="w-full flex flex-col sm:flex-row-reverse md:flex-col bg-[#f9f9f9]">
-        <img className="w-[80%] self-end" src={Ipad} alt="" />
-        <div className="w-[80%] p-4 mx-auto my-5">
-          <h3 className="text-2xl my-2">Brands</h3>
-          <p className="text-sm">
-            Embark on a journey where cutting-edge technology seamlessly
-            intertwines with refined elegance, transforming every task into a
-            delightful experience.
-          </p>
-          <button className="border border-[#333] hover:bg-black/90 transition hover:text-white p-3 my-5 rounded-lg w-[90%]">
-            Shop Now
-          </button>
-        </div>
-      </div>
-      <div className="w-full flex flex-col sm:flex-row md:flex-col bg-[#eaeaea]">
-        <img className="w-[80%]" src={Samsung} alt="" />
-        <div className="w-[80%] p-4 mx-auto my-5">
-          <h3 className="text-2xl my-2">Phones</h3>
-          <p className="text-sm">
-            Effortlessly multitask and navigate with unparalleled ease as phones
-            redefine mobile innovation, setting new standards for a seamless
-            user experience.
-          </p>
-          <button className="border border-[#333] hover:bg-black/90 transition hover:text-white p-3 my-5 rounded-lg w-[90%]">
-            Shop Now
-          </button>
-        </div>
-      </div>
-      <div className="w-full flex flex-col sm:flex-row-reverse md:flex-col bg-[#1F2A37] text-[#eaeaea]">
-        <img className="w-[80%] self-end" src={Macbook} alt="" />
-        <div className="w-[80%] p-4 mx-auto mt-10">
-          <h3 className="text-2xl my-2">Computers</h3>
-          <p className="text-sm">
-            Embark on a new computing era with computers—blending form,
-            performance, and user-friendly innovation seamlessly for an
-            unparalleled experience.
-          </p>
-          <button className="border border-[#eaeaea] hover:bg-white/90 transition hover:text-black p-3 my-5 rounded-lg w-[90%]">
-            Shop Now
-          </button>
-        </div>
-      </div>
-    </div>
+    </main>
   );
 };
 

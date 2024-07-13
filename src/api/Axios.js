@@ -10,6 +10,7 @@ const baseUrl = axios.create({
 });
 
 const api = axios.create({
+  // baseURL: "https://api.mercurius.ng/api/v1",
   baseURL: "https://api.mercurius.ng/api/v1",
   headers: {
     "Content-Type": "application/json",
@@ -113,12 +114,13 @@ export const updatePassword = async (vals) => {
 export const getProducts = async () => {
   try {
     const response = await baseUrl.get("/products");
-    return response.data;
+    return response?.data;
   } catch (error) {
     console.error("Error fetching products:", error);
     throw error;
   }
 };
+
 export const getProductsLimited = async () => {
   try {
     const response = await baseUrl.get("/products?limit=9");
@@ -151,4 +153,4 @@ export const getCategories = async () => {
 
 // Add more API methods as needed
 
-export default api;
+// export default api;

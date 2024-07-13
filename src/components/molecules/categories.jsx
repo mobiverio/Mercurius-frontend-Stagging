@@ -1,3 +1,5 @@
+import React from "react";
+import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 import Img1 from "../../assets/images/img1.png";
 import Img2 from "../../assets/images/img2.png";
@@ -13,12 +15,9 @@ import MercuriusWeek from "../../assets/images/merc.png";
 
 export const Category = function () {
   return (
-    <div className="mx-6 md:mx-12 my-4 bg-white/55">
-      <div className="flex flex-row justify-start">
-        <p className="text-[1.1rem] font-semibold">Shop by Category</p>
-      </div>
+    <div className="p-1 sm:px-2 md:px-12 my-8 bg-white/55">
       <div>
-        <p className="flex flex-row gap-2 items-center justify-end text-[.8rem] mb-3">
+        <p className="flex flex-row gap-2 items-center justify-end text-sm mb-3 p-2">
           <a href="/#">All categories</a>
           <BsArrowRight />
         </p>
@@ -55,7 +54,7 @@ export const Category = function () {
 
 export const MaleFemaleCategory = function () {
   return (
-    <div className="my-4 mx-6 md:mx-12">
+    <div className="my-4 px-1 sm:px-2 md:px-12">
       <div className="xl:grid grid-cols-1 sm:grid-cols-2 gap-2">
         <div className="hidden xl:grid grid-rows-[100px_minmax(50px,_200px)_100px] gap-2">
           {/* item 1 */}
@@ -130,8 +129,10 @@ export const MaleFemaleCategory = function () {
         <div className="flex flex-col">
           <div className="relative flex justify-center items-center">
             <div className="absolute z-50 bg-white/70 text-center py-4 w-[75%] sm:w-[300px] outline outline-white outline-offset-8 outline-1 cursor-pointer">
-              <h3 className="text-4xl font-semibold text-pretty">SALE</h3>
-              <p>#mercuriusweek</p>
+              <Link to={"/sales"}>
+                <h3 className="text-4xl font-semibold text-pretty">SALE</h3>
+                <p>#mercuriusweek</p>
+              </Link>
             </div>
             <img className="object-cover " src={MercuriusWeek} alt="" />
           </div>

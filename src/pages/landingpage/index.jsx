@@ -1,5 +1,6 @@
-import { React, useState, useEffect } from "react";
-import { Slider, ItemSelling } from "./Hero";
+import { React, useState, useEffect, Fragment } from "react";
+import { Slider } from "./Hero";
+import ProductSlider from "../../components/molecules/Slider";
 import {
   BestSelling,
   Selling,
@@ -12,15 +13,17 @@ import {
 } from "../../components/molecules/categories";
 import BrandsIndex from "../brands/AllBrands";
 import Loader from "../../components/molecules/Loader";
-import { getProductsLimited } from "../../api/Axios";
+import { getProductsLimited, getProducts } from "../../api/Axios";
+import { items } from "../../db_local/store";
 
 export default function Index() {
   const [newArrivals, setNewArrivals] = useState([]);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const data = await getProductsLimited();
+        const data = await getProducts();
         setNewArrivals(data);
         setLoading(false);
       } catch (error) {
@@ -35,21 +38,16 @@ export default function Index() {
     return <Loader />;
   }
   return (
-    <>
+    <Fragment>
       <Slider autoSlideInterval={1000} autoSlide={true} />
-      <ItemSelling />
+      <ProductSlider items={items} />
       <Category />
       <MaleFemaleCategory />
-      <div className="my-4 mx-6 md:mx-12">
-        <p className="font-semibold text-[1.2rem]">New Arrivals</p>
-        <Selling products={newArrivals} />
-      </div>
+      <Selling products={newArrivals} title={"New Arrivals"} />
       <BrandsIndex />
-      <div className="my-4 mx-6 md:mx-12">
-        <Gadget />
-      </div>
-      <BestSelling products={newArrivals} />
+      <Gadget />
+      <BestSelling products={newArrivals} title={"Best Selling"} />
       <BigSale />
-    </>
+    </Fragment>
   );
 }

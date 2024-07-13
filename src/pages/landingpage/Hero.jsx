@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import {
   BsChevronCompactLeft,
   BsChevronCompactRight,
   BsArrowRight,
 } from "react-icons/bs";
 import "../../styles/Styles.css";
-import { slides, items } from "../../db_local/store";
+import { slides } from "../../db_local/store";
 
 export const Slider = function ({
   autoSlide = false,
@@ -43,7 +42,7 @@ export const Slider = function ({
   }, [currentIndex]);
 
   return (
-    <div className="relative w-full h-[470px] m-auto bg-white/40 group px-6 md:px-12 mt-1">
+    <div className="relative w-full h-[470px] m-auto bg-white/40 group px-0 sm:px-2 md:px-12 mt-1">
       <div className="w-full h-full duration-1000 bg-cover bg-no-repeat flex flex-col justify-center items-center sm:items-start gap-1 px-4 sm:pl-[5rem] bg-black/95 rounded-t">
         <img
           src={slides[currentIndex].src}
@@ -93,59 +92,6 @@ export const Slider = function ({
           ))}
         </div>
       </div>
-    </div>
-  );
-};
-
-export const ItemSelling = function () {
-  const leftSlide = function () {
-    const slider = document.getElementById("slider");
-    slider.scrollLeft = slider.scrollLeft - 400;
-  };
-  const rightSlide = function () {
-    const slider = document.getElementById("slider");
-    slider.scrollLeft = slider.scrollLeft + 400;
-  };
-
-  return (
-    <div className="relative flex items-center my-4 mx-6 md:mx-12 bg-blue-200">
-      <div
-        className="py-3 px-6 overflow-y-auto hide_bar scroll-smooth"
-        id="slider"
-      >
-        <ul className="flex flex-row gap-4 items-center">
-          {items?.map((item) => (
-            <Link key={item.id} to={`/product/${item.id}`}>
-              <li className="min-w-[200px]">
-                <figure className="flex items-center justify-center">
-                  <img
-                    className="max-w-[90px] min-h-[100px] rounded-xl inline-block p-2 cursor-pointer "
-                    src={item.url}
-                    alt="/"
-                  />
-                  <figcaption className="px-2 py-1 -mt-3">
-                    <h3 className="text-sm font-semibold leading-tight">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm leading-tight">{item.pitch}</p>
-                  </figcaption>
-                </figure>
-              </li>
-            </Link>
-          ))}
-        </ul>
-      </div>
-
-      <BsChevronCompactLeft
-        size={30}
-        className="cursor-pointer block absolute h-full p-2 text-white/70 w-[4%] left-0"
-        onClick={leftSlide}
-      />
-      <BsChevronCompactRight
-        size={30}
-        className="cursor-pointer block absolute h-full p-2 text-white/70 w-[4%] right-0"
-        onClick={rightSlide}
-      />
     </div>
   );
 };
