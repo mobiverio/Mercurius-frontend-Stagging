@@ -13,7 +13,7 @@ import {
 } from "../../components/molecules/categories";
 import BrandsIndex from "../brands/AllBrands";
 import Loader from "../../components/molecules/Loader";
-import { getProductsLimited, getProducts } from "../../api/Axios";
+import { getProducts } from "../../api/Axios";
 import { items } from "../../db_local/store";
 
 export default function Index() {
