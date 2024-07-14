@@ -15,15 +15,10 @@ const ProductSlider = function ({ items }) {
   return (
     <main className="relative flex items-center my-8 sm:px-4 sm:mx-6 md:mx-12 bg-black/40">
       <div
-        className="py-4 px-6 overflow-auto hide_bar scroll-smooth"
+        className="py-4 px-2 overflow-auto hide_bar scroll-smooth"
         id="slider"
       >
-        <BsChevronCompactLeft
-          size={50}
-          className="cursor-pointer absolute z-20 p-2 text-black/70 -left-2 top-[40%]"
-          onClick={leftSlide}
-        />
-        <ul className="w-max flex flex-row gap-4 items-center">
+        <ul className="w-max flex flex-row gap-2 items-center">
           {items?.map((item, i) => (
             <Link key={i + 1} to={`/product/${item.id}`}>
               <li className="min-w-[150px] max-w-[150px] sm:min-w-[220px] sm:max-w-[220px] hover:scale-105 transition-all">
@@ -43,11 +38,6 @@ const ProductSlider = function ({ items }) {
             </Link>
           ))}
         </ul>
-        <BsChevronCompactRight
-          size={50}
-          className="cursor-pointer absolute z-20 p-2 text-black/70 -right-2 top-[40%]"
-          onClick={rightSlide}
-        />
       </div>
     </main>
   );

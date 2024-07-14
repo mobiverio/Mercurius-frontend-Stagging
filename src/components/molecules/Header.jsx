@@ -30,7 +30,6 @@ export default function Header() {
 
   useEffect(() => {
     const getUser = JSON.parse(localStorage.getItem("loggedInUser"));
-    console.log(getUser);
 
     setUser(getUser?.name);
   }, []);
@@ -71,7 +70,7 @@ export default function Header() {
                     to="/profile"
                     className="flex flex-row justify-between items-stretch gap-2"
                   >
-                    <BsPerson size={18} />
+                    <BsPerson size={20} />
                     <p className="hidden md:block font-semibold">
                       {user === null ? "My&nbsp;Account" : user}
                     </p>
@@ -83,7 +82,7 @@ export default function Header() {
                     to="/cart"
                     className="flex flex-row justify-center items-stretch gap-2 relative"
                   >
-                    <BsCart3 size={18} />
+                    <BsCart3 size={20} />
                     <p className="hidden md:block font-semibold">Cart</p>
                     <p
                       className={`${
