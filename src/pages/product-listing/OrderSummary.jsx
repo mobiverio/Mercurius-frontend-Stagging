@@ -22,7 +22,7 @@ const OrderSummary = () => {
   return (
     <main>
       {cart.length ? (
-        <div className="border sm:basis-[45%] p-2 sm:py-4 sm:px-2 lg:px-8 rounded">
+        <div className="border p-2 sm:py-4 sm:px-4 rounded w-full">
           <h2 className="font-semibold text-sm sm:text-[1.2rem] mb-4">
             Order Summary
           </h2>

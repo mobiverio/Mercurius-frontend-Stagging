@@ -30,7 +30,7 @@ const Cart = ({ title }) => {
       <h2 className="font-semibold text-sm sm:text-[1.2rem] mb-4">{title}</h2>
       <main>
         {cart.length ? (
-          <div className="overflow-y-auto max-h-[75vh] cart scrollbar-hide">
+          <div className="overflow-y-auto w-full max-h-[75vh] cart scrollbar-hide">
             {cart?.map((item, i) => (
               <div
                 key={i}
