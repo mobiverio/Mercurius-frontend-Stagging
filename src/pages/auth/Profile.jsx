@@ -42,18 +42,18 @@ const Profile = () => {
   }, [toggler]);
 
   return (
-    <main className="px-6 md:px-12 my-8">
-      <h3 className="flex justify-end items-center pr-16 text-xl">
+    <main className="sm:px-6 md:px-12 mb-8 mt-4">
+      <h3 className="hidden sm:flex justify-end items-center text-sm sm:text-[1rem] px-4">
         Welcome {user?.name}
       </h3>
       <div className="flex flex-row flex-nowrap">
-        <nav className="hidden w-[24%] md:flex flex-col p-4 justify-between">
-          <ul className="flex flex-col gap-4 cursor-pointer">
+        <nav className="hidden sm:w-[24%] md:flex flex-col justify-between">
+          <ul className="flex flex-col gap-4 cursor-pointer text-sm sm:text-[1.2rem]">
             <li
               className={
                 toggler === 0
-                  ? "w-[30%] border-b-[3px] pb-1 border-[#00003C] text-[#222] text-xl transition duration-300"
-                  : "text-black text-xl"
+                  ? "w-[30%] border-b-[3px] pb-1 border-[#00003C] text-[#222] transition duration-300"
+                  : "text-black"
               }
               onClick={() => handleToggle(0)}
             >
@@ -62,8 +62,8 @@ const Profile = () => {
             <li
               className={
                 toggler === 1
-                  ? "w-[30%] border-b-[3px] pb-1 border-[#00003C] text-[#222] text-xl transition duration-300"
-                  : "text-black text-xl"
+                  ? "w-[30%] border-b-[3px] pb-1 border-[#00003C] text-[#222] transition duration-300"
+                  : "text-black"
               }
               onClick={() => handleToggle(1)}
             >
@@ -72,8 +72,8 @@ const Profile = () => {
             <li
               className={
                 toggler === 2
-                  ? "w-[30%] border-b-[3px] pb-1 border-[#00003C] text-[#222] text-xl transition duration-300"
-                  : "text-black text-xl"
+                  ? "w-[30%] border-b-[3px] pb-1 border-[#00003C] text-[#222] transition duration-300"
+                  : "text-black"
               }
               onClick={() => handleToggle(2)}
             >
@@ -82,24 +82,24 @@ const Profile = () => {
             <li
               className={
                 toggler === 3
-                  ? "w-[60%] border-b-[3px] pb-1 border-[#00003C] text-[#222] text-xl transition duration-300"
-                  : "text-black text-xl"
+                  ? "w-[60%] border-b-[3px] pb-1 border-[#00003C] text-[#222] transition duration-300"
+                  : "text-black"
               }
               onClick={() => handleToggle(3)}
             >
-              Change Password
+              Password
             </li>
           </ul>
 
           <button
             type="button"
             onClick={logout}
-            className="border w-fit border-[#00003C] text-[#00003C] hover:bg-[#00003C] hover:text-white transition-colors font-semibold my-4 px-3 py-2 outline-none"
+            className="border w-fit border-[#00003C] text-[#00003C] hover:bg-[#00003C] hover:text-white transition-colors font-semibold text-sm sm:text-[1rem] my-4 p-2 sm:px-3 sm:py-2 outline-none"
           >
             Logout
           </button>
         </nav>
-        <div className="shadow-sm rounded-sm w-[76%] p-4">
+        <div className="shadow-sm rounded-sm w-full">
           {toggler === 0 && <UpdateProfile />}
           {toggler === 1 && <Cart title={"Your Cart"} />}
           {toggler === 3 && <ChangePassword />}

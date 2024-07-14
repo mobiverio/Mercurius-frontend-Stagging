@@ -71,7 +71,7 @@ const ChangePassword = () => {
             rules={{ required: "This field is required" }}
             render={({ field: { value, onChange } }) => (
               <input
-                className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
+                className="border border-[#00003C] text-sm sm:text-[1rem] w-full my-2 p-2 sm:px-4 sm:py-3 outline-none"
                 placeholder="*************"
                 id="password"
                 value={value}
@@ -91,7 +91,7 @@ const ChangePassword = () => {
             rules={{ required: "This field is required" }}
             render={({ field: { value, onChange } }) => (
               <input
-                className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
+                className="border border-[#00003C] text-sm sm:text-[1rem] w-full my-2 p-2 sm:px-4 sm:py-3 outline-none"
                 placeholder="*************"
                 value={value}
                 onChange={onChange}
@@ -110,7 +110,7 @@ const ChangePassword = () => {
             rules={{ required: "This field is required" }}
             render={({ field: { value, onChange } }) => (
               <input
-                className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none"
+                className="border border-[#00003C] text-sm sm:text-[1rem] w-full my-2 p-2 sm:px-4 sm:py-3 outline-none"
                 placeholder="*************"
                 value={value}
                 onChange={onChange}
@@ -122,16 +122,16 @@ const ChangePassword = () => {
           </span>
         </div>
       </div>
-      <div className="flex flex-row flex-nowrap justify-end items-center gap-8">
+      <div className="flex flex-row flex-nowrap justify-end items-center gap-4 sm:gap-8">
         <button
-          className="border border-[#00003C] text-[#00003C] hover:bg-[#00003C] hover:text-white transition-colors font-semibold my-4 px-3 py-2 outline-none"
+          className="border border-[#00003C] text-[#00003C] hover:bg-[#00003C] hover:text-white transition-colors font-semibold my-4 sm:px-3 sm:py-2 p-2 text-sm sm:text-[1rem] outline-none"
           type="button"
           onClick={reset}
         >
           Clear
         </button>
         <button
-          className="bg-[#00003C] text-white font-semibold my-4 px-3 py-2 outline-none"
+          className="bg-[#00003C] text-white font-semibold my-4 sm:px-3 sm:py-2 p-2 text-sm sm:text-[1rem] outline-none"
           type="submit"
         >
           {loading ? <Spinner /> : "Update"}

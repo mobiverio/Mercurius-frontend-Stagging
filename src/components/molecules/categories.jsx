@@ -55,8 +55,8 @@ export const Category = function () {
 export const MaleFemaleCategory = function () {
   return (
     <div className="my-4 px-1 sm:px-2 md:px-12">
-      <div className="xl:grid grid-cols-1 sm:grid-cols-2 gap-2">
-        <div className="hidden xl:grid grid-rows-[100px_minmax(50px,_200px)_100px] gap-2">
+      <div className="lg:grid grid-cols-1 sm:grid-cols-2 gap-2">
+        <div className="hidden lg:grid grid-rows-[100px_minmax(50px,_200px)_100px] gap-2">
           {/* item 1 */}
           <div className="row-start-1 row-span-1 col-start-1 col-span-2 flex flex-row justify-around items-center flex-nowrap bg-[#FDE8E8] rounded">
             <div>

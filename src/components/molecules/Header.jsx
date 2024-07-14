@@ -1,5 +1,6 @@
-import { Disclosure } from "@headlessui/react";
+import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { Disclosure } from "@headlessui/react";
 
 import {
   BsJustifyLeft,
@@ -25,6 +26,13 @@ const navigation = [
 
 export default function Header() {
   const { cart } = useCartStore();
+  const [user, setUser] = useState("");
+
+  useEffect(() => {
+    const getUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+    setUser(getUser?.name);
+  }, []);
 
   const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
 
@@ -32,10 +40,9 @@ export default function Header() {
     <Disclosure as="nav" className="sticky top-0 z-40 shadow bg-white/90">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-            <div className="relative flex h-16 items-center justify-between">
-              <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                {/* Mobile menu button*/}
+          <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div className="min-h-12 flex flex-row flex-nowrap items-center justify-between sm:hidden px-4">
+              <div className="sm:hidden">
                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-black hover:bg-black/20 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-black/20">
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open main menu</span>
@@ -52,46 +59,28 @@ export default function Header() {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex flex-1 items-center justify-center">
-                <div className="font-semibold font-mono text-[1.3rem] md:text-3xl flex flex-shrink-0 items-center ml-6 sm:ml-0">
-                  <Link to="/">Mercurius</Link>
-                </div>
-                <div className="hidden flex-1 ml-6 md:ml-6 sm:block transition duration-300">
-                  <form className="relative">
-                    <BsSearch className="absolute top-[30%] left-2 text-black/80" />
 
-                    <input
-                      type="text"
-                      name="search"
-                      id="search"
-                      className="border border-[#c3c3c3] rounded-md py-2 px-7 w-[100%] outline-none hover:outline-offset-1"
-                      placeholder="Search Brands, Shoes ..."
-                    />
-                    <input
-                      type="submit"
-                      value="Search"
-                      className="absolute top-[.33rem] right-[2%] bg-[#111] py-1 px-3 rounded-md text-white"
-                    />
-                  </form>
-                </div>
+              <div className="sm:hidden font-semibold font-mono text-[1.3rem] md:text-3xl text-center">
+                <Link to="/">Mercurius</Link>
               </div>
 
-              <div className="flex justify-between gap-x-2 sm:gap-x-4 items-end pr-2 sm:ml-6 sm:pr-0">
+              <div className="flex flex-row flex-nowrap gap-4">
                 <div className="">
                   <Link
                     to="/profile"
-                    className="flex flex-row justify-between items-stretch"
+                    className="flex flex-row justify-between items-stretch gap-2"
                   >
                     <BsPerson size={20} />
                     <p className="hidden md:block font-semibold">
-                      My&nbsp;Account
+                      {user === null ? "My&nbsp;Account" : user}
                     </p>
                   </Link>
                 </div>
+
                 <div className="">
                   <Link
                     to="/cart"
-                    className="flex flex-row justify-center items-stretch relative"
+                    className="flex flex-row justify-center items-stretch gap-2 relative"
                   >
                     <BsCart3 size={20} />
                     <p className="hidden md:block font-semibold">Cart</p>
@@ -106,17 +95,84 @@ export default function Header() {
                 </div>
               </div>
             </div>
+
+            <div className="hidden relative sm:flex h-16 items-center justify-between">
+              {/* <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-black hover:bg-black/20 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-black/20">
+                  <span className="absolute -inset-0.5" />
+                  <span className="sr-only">Open main menu</span>
+                  {open ? (
+                    <BsX
+                      className="block h-5 w-5 font-semibold"
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <BsJustifyLeft
+                      className="block h-5 w-5"
+                      aria-hidden="true"
+                    />
+                  )}
+                </Disclosure.Button>
+              </div> */}
+
+              <div className="flex flex-1 items-center justify-between mt-8 mb-4">
+                <div className="hidden sm:block font-semibold font-mono text-[1.3rem] md:text-3xl items-center ml-6 sm:ml-0">
+                  <Link to="/">Mercurius</Link>
+                </div>
+
+                <div className="hidden flex-1 max-w-[55%] sm:block transition duration-300">
+                  <form className="relative">
+                    <BsSearch className="absolute top-[30%] left-2 text-black/80" />
+
+                    <input
+                      type="text"
+                      name="search"
+                      id="search"
+                      className="border border-[#c3c3c3] rounded-md py-3 px-7 w-[100%] outline-none hover:outline-offset-1"
+                      placeholder="Search Brands, Shoes ..."
+                    />
+                    <input
+                      type="submit"
+                      value="Search"
+                      className="absolute top-[.5rem] right-[1%] bg-[#111] py-1 px-3 rounded-md text-white"
+                    />
+                  </form>
+                </div>
+
+                <div className="hidden sm:flex justify-between gap-x-2 sm:gap-x-4 items-end pr-2 sm:ml-6 sm:pr-0">
+                  <div className="">
+                    <Link
+                      to="/profile"
+                      className="flex flex-row justify-between items-stretch gap-1"
+                    >
+                      <BsPerson size={20} />
+                      <p className="hidden md:block font-semibold">
+                        {user === null ? "My&nbsp;Account" : user}
+                      </p>
+                    </Link>
+                  </div>
+                  <div className="">
+                    <Link
+                      to="/cart"
+                      className="flex flex-row justify-center items-stretch gap-1 relative"
+                    >
+                      <BsCart3 size={20} />
+                      <p className="hidden md:block font-semibold">Cart</p>
+                      <p
+                        className={`${
+                          totalItems && "block bg-black text-white"
+                        } w-5 h-5 absolute -left-3 leading-[11.5px] -top-3 p-1 text-[.75rem] rounded-full text-center`}
+                      >
+                        {totalItems ? totalItems : null}
+                      </p>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div className="hidden sm:block mt-4 pb-4">
               <div className="flex gap-x-4 items-center justify-center">
-                {/* <div className="hidden md:flex sm:flex-row gap-1 justify-center items-center border-2 py-1 px-3 rounded">
-                  <BsJustifyLeft className="h-5 w-5" />
-                  <p>All Categories</p>
-                  <BsChevronDown
-                    className="h-5 w-5"
-                    role="button"
-                    aria-label="button"
-                  />
-                </div> */}
                 <div className="justify-self-center">
                   {navigation?.map((item) => (
                     <NavLink
@@ -133,7 +189,7 @@ export default function Header() {
             </div>
           </div>
           <Disclosure.Panel
-            className={`sm:hidden absolute top-16 right-0 ${
+            className={`sm:hidden absolute top-12 right-0 ${
               open ? "left-0" : "-left-[100%]"
             } transition-all duration-1000 z-20 bg-white`}
           >

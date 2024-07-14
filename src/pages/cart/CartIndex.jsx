@@ -8,11 +8,13 @@ import OrderSummary from "../product-listing/OrderSummary";
 
 export default function CartIndex() {
   return (
-    <main className="flex flex-col md:flex-row gap-4 md:gap-4 my-8">
-      <div className="flex-1 basis-[75%]">
+    <main className="flex flex-col md:flex-row gap-4 mb-8 mt-4 px-4">
+      <div className="basis-[70%]">
         <Cart title={"Shopping Cart"} />
       </div>
-      <OrderSummary />
+      <div className="basis-[30%]">
+        <OrderSummary />
+      </div>
     </main>
   );
 }
