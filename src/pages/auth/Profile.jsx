@@ -87,14 +87,14 @@ const Profile = () => {
               }
               onClick={() => handleToggle(3)}
             >
-              Change Password
+              Password
             </li>
           </ul>
 
           <button
             type="button"
             onClick={logout}
-            className="border w-fit border-[#00003C] text-[#00003C] hover:bg-[#00003C] hover:text-white transition-colors font-semibold my-4 px-3 py-2 outline-none"
+            className="border w-fit border-[#00003C] text-[#00003C] hover:bg-[#00003C] hover:text-white transition-colors font-semibold text-sm sm:text-[1rem] my-4 p-2 sm:px-3 sm:py-2 outline-none"
           >
             Logout
           </button>

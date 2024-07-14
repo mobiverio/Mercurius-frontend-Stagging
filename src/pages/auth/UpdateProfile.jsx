@@ -95,7 +95,7 @@ const UpdateProfile = () => {
       <form onSubmit={handleSubmit(handleUpdate)}>
         <h3 className="font-semibold text-xl sm:text-[1.4rem]">Profile</h3>
 
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-4 relative sm:my-8">
+        <div className="flex flex-col lg:flex-row items-center justify-between sm:gap-4 relative sm:my-8">
           <div className="relative w-full">
             <label htmlFor="full_name">Full Name</label>
             <Controller
@@ -108,7 +108,7 @@ const UpdateProfile = () => {
                     inactive
                       ? "cursor-not-allowed text-gray-500 border-gray-500"
                       : ""
-                  } border border-[#00003C] w-full mb-2 p-1 sm:my-2 sm:px-4 sm:py-3 outline-none`}
+                  } border border-[#00003C] w-full my-2 p-1 sm:my-2 sm:px-4 sm:py-3 outline-none`}
                   type="text"
                   id="full_name"
                   placeholder="Full name"
@@ -142,7 +142,7 @@ const UpdateProfile = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative sm:my-8">
+        <div className="flex flex-col md:flex-row items-center justify-between sm:gap-4 relative sm:my-8">
           <div className="relative w-full">
             <label htmlFor="phone">Phone</label>
             <Controller
@@ -193,7 +193,7 @@ const UpdateProfile = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 relative sm:my-8">
+        <div className="flex flex-col md:flex-row items-center justify-between sm:gap-4 relative sm:my-8">
           <div className="relative w-full">
             <label htmlFor="city">City</label>
             <Controller
@@ -244,18 +244,18 @@ const UpdateProfile = () => {
           </div>
         </div>
 
-        <div className="flex flex-row flex-nowrap justify-end items-center gap-8">
+        <div className="flex flex-row flex-nowrap justify-end items-center gap-4 sm:gap-8">
           {editMode && (
             <>
               <button
-                className="border border-[#00003C] text-[#00003C] hover:bg-[#00003C] hover:text-white transition-colors font-semibold my-4 px-3 py-2 outline-none"
+                className="border border-[#00003C] text-[#00003C] hover:bg-[#00003C] hover:text-white transition-colors font-semibold text-sm sm:text-[1rem] my-4 p-2 sm:px-3 sm:py-2 outline-none"
                 type="button"
                 onClick={handleEdit}
               >
                 Cancel
               </button>
               <button
-                className="bg-[#00003C] text-white font-semibold my-4 px-3 py-2 outline-none"
+                className="bg-[#00003C] text-white font-semibold text-sm sm:text-[1rem] my-4 p-2 sm:px-3 sm:py-2 outline-none"
                 type="submit"
               >
                 {loading ? <Spinner /> : "Save Changes"}
@@ -265,7 +265,7 @@ const UpdateProfile = () => {
 
           {!editMode && (
             <button
-              className="bg-[#00003C] text-white font-semibold my-4 px-3 py-2 outline-none"
+              className="bg-[#00003C] text-white font-semibold text-sm sm:text-[1rem] my-4 p-2 sm:px-3 sm:py-2 outline-none"
               type="button"
               onClick={handleEdit}
             >
