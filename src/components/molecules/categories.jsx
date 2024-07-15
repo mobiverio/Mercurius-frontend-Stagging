@@ -18,7 +18,7 @@ export const Category = function () {
     <div className="p-1 sm:px-2 md:px-12 my-8 bg-white/55">
       <div>
         <p className="flex flex-row gap-2 items-center justify-end text-sm mb-3 p-2">
-          <a href="/#">All categories</a>
+          <a href="/products">All categories</a>
           <BsArrowRight />
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">

@@ -8,7 +8,7 @@ const Accessories = () => {
   return (
     <main className="px-2 py-3 sm:px-12">
       <ClothingCategory category={"Beauty Accessories"} items={apparel} />
-      <Selling products={accessories} title={"Fast Selling"} />
+      <Selling products={accessories} title={"Hot Deal Sales"} />
       <Brands
         brandHeader={"Popular Brands"}
         brandItems={brands}
