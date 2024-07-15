@@ -8,7 +8,11 @@ const AllGadgets = () => {
     <main className="px-2 py-3 md:px-12">
       <div className="">
         <ProductCategory productName={"Gadgets"} product={gadgets} />
-        <Brands brandCategory={"Shop by Brand"} brandItems={brands} />
+        <Brands
+          brandHeader={"Popular Brands"}
+          brandItems={brands}
+          brandType={"gadget"}
+        />
       </div>
     </main>
   );

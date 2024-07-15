@@ -1,11 +1,11 @@
 import React from "react";
 import { Selling } from "../../components/molecules/Selling";
 import { apparel, brands, accessories } from "../../db_local/store";
-import { Link } from "react-router-dom";
+import Brands from "../../components/molecules/Brands";
 
 const Accessories = () => {
   return (
-    <div className="px-2 py-3 sm:px-12">
+    <main className="px-2 py-3 sm:px-12">
       <div className="my-4">
         <h2 className="font-semibold text-[1.2rem] my-4">Shop by category</h2>
         <div className="w-full sm:w-fit mx-auto grid grid-cols-2 sm:grid-cols-[repeat(3,minmax(0,300px))] md:grid-cols-[repeat(auto,minmax(0,200px))] text-center gap-4">
@@ -30,23 +30,14 @@ const Accessories = () => {
         <h2 className="font-semibold text-[1.2rem] my-4">Quick Picks</h2>
         <Selling products={accessories} />
       </div>
-      <div className="my-4">
-        <h2 className="font-semibold text-[1.2rem] my-4">Shop by brands</h2>
-        <div className="my-4 grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-4">
-          {brands
-            .filter((items) => items.category === "clothing")
-            ?.map((items) => {
-              return (
-                <Link key={items.id} to={`/brands/${items.id}`}>
-                  <div className="mx-auto w-full min-h-[150px] flex items-center shadow hover:scale-105 cursor-pointer transition">
-                    <img className="block mx-auto" src={items.src} alt="/" />
-                  </div>
-                </Link>
-              );
-            })}
-        </div>
+      <div>
+        <Brands
+          brandHeader={"Popular Brands"}
+          brandItems={brands}
+          brandType={"clothing"}
+        />
       </div>
-    </div>
+    </main>
   );
 };
 
