@@ -37,7 +37,10 @@ export default function Header() {
   const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
-    <Disclosure as="nav" className="sticky top-0 z-40 shadow bg-white/90">
+    <Disclosure
+      as="nav"
+      className="fixed inset-x-0 top-0 z-40 shadow bg-white/90"
+    >
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">

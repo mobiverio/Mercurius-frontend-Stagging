@@ -7,7 +7,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Outlet />
+      <div className="mt-[7.65rem]">
+        <Outlet />
+      </div>
       <Footers />
       <ScrollRestoration />
     </div>
