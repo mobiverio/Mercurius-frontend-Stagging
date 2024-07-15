@@ -7,8 +7,7 @@ export default function Accordion() {
   const [brandOpen, setBrandOpen] = useState(false);
   const [memoryOpen, setMemoryOpen] = useState(false);
   return (
-    <div className="hidden md:block">
-      {/* Price */}
+    <main className="hidden md:block mt-16">
       <div className="my-4">
         <button
           onClick={() => setPriceOpen(!priceOpen)}
@@ -71,7 +70,6 @@ export default function Accordion() {
         </div>
       </div>
 
-      {/* Brands */}
       <div className="my-4">
         <button
           onClick={() => setBrandOpen(!brandOpen)}
@@ -136,7 +134,6 @@ export default function Accordion() {
         </div>
       </div>
 
-      {/* {Memory} */}
       <div className="my-4">
         <button
           onClick={() => setMemoryOpen(!memoryOpen)}
@@ -188,6 +185,6 @@ export default function Accordion() {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

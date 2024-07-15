@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 
 // ** React-Router Imports
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 // ** Page Imports
 import UpdateProfile from "./UpdateProfile";
@@ -18,7 +18,7 @@ const Profile = () => {
   const [token, setToken] = useState("");
   const [toggler, setToggler] = useState(0);
   const navigate = useNavigate();
-  const { clearCart } = useCartStore();
+  const { cart, clearCart } = useCartStore();
 
   const handleToggle = (index) => {
     setToggler(index);
@@ -103,6 +103,12 @@ const Profile = () => {
           {toggler === 0 && <UpdateProfile />}
           {toggler === 1 && <Cart title={"Your Cart"} />}
           {toggler === 3 && <ChangePassword />}
+
+          {toggler === 1 && cart.length > 0 && (
+            <button className="transition-colors text-sm sm:text-[1rem] my-4 p-2 sm:px-3 sm:py-2 outline-none bg-black/90 text-white block ml-auto">
+              <Link to="/cart">Proceed to checkout</Link>
+            </button>
+          )}
         </div>
       </div>
     </main>

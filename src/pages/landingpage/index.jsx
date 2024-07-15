@@ -43,7 +43,9 @@ export default function Index() {
       <ProductSlider items={items} />
       <Category />
       <MaleFemaleCategory />
-      <Selling products={newArrivals} title={"New Arrivals"} />
+      <div className="px-2 py-3 sm:px-12">
+        <Selling products={newArrivals} title={"New Arrivals"} />
+      </div>
       <BrandsIndex />
       <Gadget />
       <BestSelling products={newArrivals} title={"Best Selling"} />

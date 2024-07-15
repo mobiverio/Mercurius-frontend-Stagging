@@ -25,12 +25,12 @@ export const Selling = function ({ products, title }) {
   }, [favorite]);
 
   return (
-    <div className="my-8 p-1 sm:px-2 md:px-12">
-      <p className="font-semibold text-[1.2rem]">{title}</p>
+    <div className="my-8">
+      <p className="font-semibold text-[1.2rem] mb-3">{title}</p>
       <div className="grid grid-cols-2 sm:grid-cols-[repeat(3,minmax(0,300px))] md:grid-cols-[repeat(5,minmax(0,300px))] gap-2">
         {products?.map((product, i) => {
           return (
-            <div key={product.id} className="w-full">
+            <main key={product.id} className="w-full">
               <div
                 key={i}
                 className="relative p-4 bg-[#f6f6f6] w-full min-h-[100%] flex flex-col items-center justify-center"
@@ -48,15 +48,15 @@ export const Selling = function ({ products, title }) {
                 </button>
                 <Link key={i} to={`/product-view/${product.id}`}>
                   <img
-                    className=" min-w-[100px] max-w-[120px] min-h-[100px] max-h-[100px] my-4"
+                    className="min-w-[100px] max-w-[120px] min-h-[100px] max-h-[100px] block mx-auto my-4"
                     src={product.src || product.image}
                     alt="product "
                   />
-                  <p className="w-[80%] text-center text-sm">{product.name}</p>
-                  <p className="text-sm font-semibold text-center">{`$${product.price}`}</p>
-                  <p className="text-sm font-semibold">
-                    {product?.color || product?.title?.slice}
-                  </p>
+                  <div className="text-sm sm:text-[1rem] text-center font-semibold">
+                    <p className="">{product.name}</p>
+                    <p>{`$${product.price}`}</p>
+                    <p>{product?.color || product?.title?.slice}</p>
+                  </div>
                 </Link>
                 <button
                   onClick={() => addToCart(product)}
@@ -65,7 +65,7 @@ export const Selling = function ({ products, title }) {
                   Add&nbsp;to&nbsp;Cart
                 </button>
               </div>
-            </div>
+            </main>
           );
         })}
       </div>
@@ -88,7 +88,7 @@ export const BestSelling = function ({ products, title }) {
   return (
     <div className="p-1 sm:px-2 md:px-12 my-8">
       <div className="flex flex-row justify-start">
-        <h3 className="text-[1.1rem] font-semibold">{title}</h3>
+        <h3 className="text-[1.1rem] font-semibold mb-3">{title}</h3>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
         {products?.map((product, i) => {

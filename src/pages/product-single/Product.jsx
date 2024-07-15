@@ -27,14 +27,11 @@ export const Product = function () {
   }
   return (
     <>
-      <div className="mx-6 md:mx-12 flex flex-row md:gap-x-4 my-8 scrollbar-hide">
-        <div className="md:w-1/4">
+      <div className="mx-6 md:mx-12 flex flex-row md:gap-x-4 scrollbar-hide">
+        <div className="md:w-2/5">
           <Accordion />
         </div>
-        <div className="w-full md:w-3/4">
-          <h1>Product</h1>
-          <Selling products={products} />
-        </div>
+        <Selling products={products} title={"Best Selling"} />
       </div>
     </>
   );
