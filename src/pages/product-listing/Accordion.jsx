@@ -7,13 +7,13 @@ export default function Accordion() {
   const [brandOpen, setBrandOpen] = useState(false);
   const [memoryOpen, setMemoryOpen] = useState(false);
   return (
-    <main className="hidden md:block mt-16">
+    <main className="hidden md:block mt-[4.75rem] text-sm text-[1rem] bg-[#f6f6f6] p-4">
       <div className="my-4">
         <button
           onClick={() => setPriceOpen(!priceOpen)}
           className="flex justify-between w-full border-b font-semibold"
         >
-          <span className="border-b">Price</span>
+          <span className="border-b mb-1">Price</span>
           <span>
             <BsChevronDown
               className={`transform origin-center transition duration-300 ease-in-out ${
@@ -75,7 +75,7 @@ export default function Accordion() {
           onClick={() => setBrandOpen(!brandOpen)}
           className="flex justify-between w-full border-b font-semibold"
         >
-          <span className="border-b">Brands</span>
+          <span className="border-b mb-1">Brands</span>
           <span>
             <BsChevronDown
               className={`transform origin-center transition duration-300 ease-in-out ${
@@ -139,7 +139,7 @@ export default function Accordion() {
           onClick={() => setMemoryOpen(!memoryOpen)}
           className="flex justify-between w-full border-b font-semibold"
         >
-          <span className="border-b">Built-in memory</span>
+          <span className="border-b mb-1">Built-in memory</span>
           <span>
             <BsChevronDown
               className={`transform origin-center transition duration-300 ease-in-out ${

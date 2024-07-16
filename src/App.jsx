@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <div className="mt-[7.65rem]">
+      <div className="mt-8 sm:mt-[7.65rem]">
         <Outlet />
       </div>
       <Footers />

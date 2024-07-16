@@ -25,7 +25,7 @@ export const Selling = function ({ products, title }) {
   }, [favorite]);
 
   return (
-    <div className="my-8">
+    <main className="my-8">
       <p className="font-semibold text-[1.2rem] mb-3">{title}</p>
       <div className="grid grid-cols-2 sm:grid-cols-[repeat(3,minmax(0,300px))] md:grid-cols-[repeat(5,minmax(0,300px))] gap-2">
         {products?.map((product, i) => {
@@ -60,7 +60,7 @@ export const Selling = function ({ products, title }) {
                 </Link>
                 <button
                   onClick={() => addToCart(product)}
-                  className="relative -bottom-2 text-sm text-white bg-[#1b1b1b] hover:bg-[#1e1e1ebb]/70 p-2 mt-2 rounded-md"
+                  className="relative -bottom-2 text-sm text-white bg-[#1b1b1b] hover:bg-[#1e1e1ebb]/90 p-2 mt-2 rounded-md"
                 >
                   Add&nbsp;to&nbsp;Cart
                 </button>
@@ -69,7 +69,7 @@ export const Selling = function ({ products, title }) {
           );
         })}
       </div>
-    </div>
+    </main>
   );
 };
 
@@ -117,7 +117,7 @@ export const BestSelling = function ({ products, title }) {
                 onClick={() => {
                   addToCart(product);
                 }}
-                className="text-sm text-white bg-[#1e1e1e] hover:bg-[#1e1e1ebb]/70 p-2 mt-2 rounded-md"
+                className="text-sm text-white bg-[#1e1e1e] hover:bg-[#1e1e1ebb]/90 p-2 mt-2 rounded-md"
               >
                 Add to Cart
               </button>

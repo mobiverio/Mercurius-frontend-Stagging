@@ -26,7 +26,7 @@ const navigation = [
 
 export default function Header() {
   const { cart } = useCartStore();
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const getUser = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -74,9 +74,6 @@ export default function Header() {
                     className="flex flex-row justify-between items-stretch gap-2"
                   >
                     <BsPerson size={20} />
-                    <p className="hidden md:block font-semibold">
-                      {user === null ? "My&nbsp;Account" : user}
-                    </p>
                   </Link>
                 </div>
 
@@ -86,7 +83,6 @@ export default function Header() {
                     className="flex flex-row justify-center items-stretch gap-2 relative"
                   >
                     <BsCart3 size={20} />
-                    <p className="hidden md:block font-semibold">Cart</p>
                     <p
                       className={`${
                         totalItems && "block bg-black text-white"
@@ -100,24 +96,6 @@ export default function Header() {
             </div>
 
             <div className="hidden relative sm:flex h-16 items-center justify-between">
-              {/* <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-black hover:bg-black/20 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-black/20">
-                  <span className="absolute -inset-0.5" />
-                  <span className="sr-only">Open main menu</span>
-                  {open ? (
-                    <BsX
-                      className="block h-5 w-5 font-semibold"
-                      aria-hidden="true"
-                    />
-                  ) : (
-                    <BsJustifyLeft
-                      className="block h-5 w-5"
-                      aria-hidden="true"
-                    />
-                  )}
-                </Disclosure.Button>
-              </div> */}
-
               <div className="flex flex-1 items-center justify-between mt-8 mb-4">
                 <div className="hidden sm:block font-semibold font-mono text-[1.3rem] md:text-3xl items-center ml-6 sm:ml-0">
                   <Link to="/">Mercurius</Link>
@@ -149,8 +127,8 @@ export default function Header() {
                       className="flex flex-row justify-between items-stretch gap-1"
                     >
                       <BsPerson size={20} />
-                      <p className="hidden md:block font-semibold">
-                        {user === null ? "My&nbsp;Account" : user}
+                      <p className="hidden sm:block font-semibold">
+                        {user !== undefined ? user : `My Account`}
                       </p>
                     </Link>
                   </div>
@@ -160,7 +138,7 @@ export default function Header() {
                       className="flex flex-row justify-center items-stretch gap-1 relative"
                     >
                       <BsCart3 size={20} />
-                      <p className="hidden md:block font-semibold">Cart</p>
+                      <p className="hidden sm:block font-semibold">Cart</p>
                       <p
                         className={`${
                           totalItems && "block bg-black text-white"
