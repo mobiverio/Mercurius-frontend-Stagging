@@ -22,11 +22,11 @@ const OrderSummary = () => {
   return (
     <main>
       {cart.length ? (
-        <div className="border p-2 sm:py-4 sm:px-4 rounded w-full">
+        <div className="shadow-lg p-2 sm:py-4 sm:px-4 rounded w-full">
           <h2 className="font-semibold text-sm sm:text-[1.2rem] mb-4">
             Order Summary
           </h2>
-          <div>
+          <section>
             <ul>
               <li className="flex flex-row flex-nowrap justify-between my-2">
                 <p className="font-semibold">Sub-Total</p>
@@ -47,18 +47,18 @@ const OrderSummary = () => {
                 <p className="font-semibold">${total.toFixed(2)}</p>
               </li>
             </ul>
-          </div>
-          <div className="flex flex-col">
+          </section>
+          <section className="flex flex-col">
             <button
               onClick={handleCheckoutClick}
-              className="flex flex-row justify-center items-center gap-x-8 p-2 border w-full my-2 rounded-md bg-black text-white hover:text-white hover:bg-black/80 transition duration-300"
+              className="flex flex-row justify-center items-center gap-x-8 p-2 border w-full my-2 rounded-md bg-black text-white hover:text-white hover:bg-black/90 transition duration-300"
             >
               Checkout
             </button>
-            <button className="flex flex-row justify-center items-center gap-x-8 p-2 border w-full my-2 rounded-md hover:bg-black/80 hover:text-white text-black bg-transparent">
+            <button className="flex flex-row justify-center items-center gap-x-8 p-2 border w-full my-2 rounded-md hover:bg-black/90 hover:text-white text-black bg-transparent">
               Stockpile
             </button>
-          </div>
+          </section>
           {isModalOpen && <PaymentOptionsModal onClose={handleCheckoutClick} />}{" "}
           {/* Render modal if open */}
         </div>

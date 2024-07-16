@@ -26,9 +26,9 @@ const Cart = ({ title }) => {
   };
 
   return (
-    <div className="p-2 md:ml-4 lg:ml-8 mb-4">
+    <main className="p-2 mb-4">
       <h2 className="font-semibold text-sm sm:text-[1.2rem] mb-4">{title}</h2>
-      <main>
+      <section>
         {cart.length ? (
           <div className="overflow-y-auto w-full max-h-[75vh] cart scrollbar-hide">
             {cart?.map((item, i) => (
@@ -67,8 +67,8 @@ const Cart = ({ title }) => {
             <EmptyCart />
           </div>
         )}
-      </main>
-    </div>
+      </section>
+    </main>
   );
 };
 
