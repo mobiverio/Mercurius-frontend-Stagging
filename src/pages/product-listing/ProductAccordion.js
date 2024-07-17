@@ -11,7 +11,6 @@ const ProductAccordion = ({ product }) => {
 
   return (
     <main className="p-2 md:mx-12 max-w-[65%]">
-      <h2 className="text-xl font-semibold my-4">Accordion</h2>
       <div className="w-full">
         <div
           id="accordion"

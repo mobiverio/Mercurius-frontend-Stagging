@@ -38,8 +38,6 @@ export default function ProductIndex() {
       {product && (
         <>
           <ProductView product={product} />
-          <ProductDescription product={product} />
-          <ProductReview productId={singleProduct} />
           <ProductAccordion product={product} />
         </>
       )}
