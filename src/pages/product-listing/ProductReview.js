@@ -98,12 +98,12 @@ const ProductReview = () => {
         })}
       </div>
       {reviews < DATA.length && (
-        <div className="min-w-[200px] max-w-[300px] mx-auto">
+        <div className="w-10 h-10 border border-[#a7a7a7] rounded-full absolute right-2 bottom-4">
           <button
             onClick={handleReviews}
-            className="flex flex-row gap-x-3 items-center justify-center py-1 px-2 text-center bg-transparent w-full border border-black/70 rounded"
+            className="flex justify-center items-center py-1 px-2 text-center bg-transparent w-full"
           >
-            View More <BsChevronDown />
+            <BsChevronDown size={25} />
           </button>
         </div>
       )}

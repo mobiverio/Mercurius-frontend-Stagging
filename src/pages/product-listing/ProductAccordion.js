@@ -41,7 +41,7 @@ const ProductAccordion = ({ product }) => {
               </svg>
             </button>
             <div
-              className={`accordion-content p-4 text-sm bg-gray-50 text-gray-500 transition-all duration-1000 ${
+              className={`accordion-content text-sm bg-gray-50 text-gray-500 transition-all duration-1000 ${
                 showAccordion === 1 ? "block" : "hidden"
               }`}
             >
@@ -73,7 +73,7 @@ const ProductAccordion = ({ product }) => {
               </svg>
             </button>
             <div
-              className={`accordion-content p-4 text-sm bg-gray-50 text-gray-500 ${
+              className={`accordion-content text-sm bg-gray-50 text-gray-500 ${
                 showAccordion === 2 ? "block" : "hidden"
               }`}
             >
