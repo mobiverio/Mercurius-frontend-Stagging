@@ -1,14 +1,6 @@
 import React, { useState } from "react";
-// import Model from "../../assets/images/img3.png";
 import "../../styles/Styles.css";
-import { Link } from "react-router-dom";
-import {
-  BsStar,
-  BsPlus,
-  BsDash,
-  BsCart3,
-  BsChevronRight,
-} from "react-icons/bs";
+import { BsStar, BsPlus, BsDash, BsCart3 } from "react-icons/bs";
 import useCartStore from "../../zustand/useCartStore";
 
 export const ProductView = ({ product }) => {
@@ -159,9 +151,7 @@ export const ProductView = ({ product }) => {
           </div>
 
           <div className="w-fit sm:w-3/6 text-slate-500 my-3">
-            <p className="text-slate-600 font-semibold my-2">
-              Choose Quantity this is my target
-            </p>
+            <p className="text-slate-600 font-semibold my-2">Quantity</p>
 
             <div className="flex flex-row-reverse items-center gap-1">
               <div className="flex-1">
@@ -174,7 +164,7 @@ export const ProductView = ({ product }) => {
                 </button>
               </div>
               <div className="flex-1">
-                <button className="flex flex-row justify-between items-center border rounded-md w-full px-2 py-[.65rem]">
+                <button className="flex flex-row justify-between items-center border border-[#a7a7a7] rounded-md w-full px-2 py-[.65rem]">
                   <BsDash
                     className="sm:cursor-pointer bg-black text-white"
                     onClick={() => setCounter(counter > 1 ? counter - 1 : 1)}
@@ -197,21 +187,4 @@ export const ProductView = ({ product }) => {
   );
 };
 
-export const ProductDescription = ({ product }) => {
-  return (
-    <div className="px-1 sm:mx-12 my-4 rounded">
-      <div className="w-full md:w-2/3">
-        <Link to="/productDesc">
-          <div className="flex flex-row flex-nowrap items-center justify-between">
-            <h3 className="font-semibold py-2">Product Description</h3>
-            <BsChevronRight />
-          </div>
-        </Link>
-        <hr />
-        <div className="w-full md:w-2/3">
-          <p className="p-2 text-justify text-sm">{product?.description}</p>
-        </div>
-      </div>
-    </div>
-  );
-};
+export default ProductView;

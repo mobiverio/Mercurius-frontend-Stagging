@@ -65,12 +65,13 @@ const DATA = [
   },
 ];
 
-export const Review = () => {
+const ProductReview = () => {
   const [reviews, setReviews] = useState(3);
 
   const handleReviews = () => {
     setReviews(reviews + 3);
   };
+
   return (
     <main className="px-1 md:mx-12 mt-4 mb-24">
       <h3 className="text-[1.1rem] font-semibold">Reviews</h3>
@@ -112,3 +113,5 @@ export const Review = () => {
     </main>
   );
 };
+
+export default ProductReview;

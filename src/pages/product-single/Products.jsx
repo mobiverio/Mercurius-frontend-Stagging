@@ -36,3 +36,5 @@ export const Product = function () {
     </>
   );
 };
+
+export default Product;
