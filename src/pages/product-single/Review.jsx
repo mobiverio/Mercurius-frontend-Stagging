@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../../index.css";
 import { BsStar, BsChevronDown } from "react-icons/bs";
 import Img1 from "../../assets/images/pro1.png";
 import Img2 from "../../assets/images/pro2.png";
@@ -71,7 +72,7 @@ export const Review = () => {
     setReviews(reviews + 3);
   };
   return (
-    <div className="px-1 md:mx-12 mt-4 mb-24">
+    <main className="px-1 md:mx-12 mt-4 mb-24">
       <h3 className="text-[1.1rem] font-semibold">Reviews</h3>
       <div className="relative w-full md:w-2/3">
         <div className="review_bar my-4 p-3 max-h-[60vh] overflow-y-auto bg-gradient-to-b from-white from-[65%]  via-transparent to-[#33333370]">
@@ -85,7 +86,7 @@ export const Review = () => {
                 />
                 <div className="text-[#333]">
                   <div className="flex justify-between mb-1">
-                    <h4 className="font-bold">{product.name}</h4>
+                    <h4 className="interpolate font-bold">{product.name}</h4>
                     <p className="text-sm text-slate-400">{product.date}</p>
                   </div>
                   <div className="flex">
@@ -108,6 +109,6 @@ export const Review = () => {
           </div>
         )}
       </div>
-    </div>
+    </main>
   );
 };

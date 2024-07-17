@@ -11,7 +11,6 @@ import {
 } from "react-icons/bs";
 import useCartStore from "../../zustand/useCartStore";
 
-
 export const ProductView = ({ product }) => {
   const [counter, setCounter] = useState(1); // Ensure counter starts at 1
   const { addToCart } = useCartStore(); // Use the addToCart method from the store
@@ -20,16 +19,16 @@ export const ProductView = ({ product }) => {
     if (counter > 0) {
       addToCart({
         ...product,
-        quantity: counter
+        quantity: counter,
       });
     }
   };
 
   return (
-    <div className="p-2 md:mx-12">
+    <main className="p-2 md:mx-12">
       <div className="flex flex-col md:flex-row bg-white/70">
         {/* Product */}
-        <div className="w-full md:w-[45%] flex flex-col-reverse md:flex-row items-center sm:gap-3">
+        <section className="w-full md:w-[45%] flex flex-col-reverse md:flex-row items-center sm:gap-3">
           <div className="w-fit flex flex-row md:flex-col justify-center items-center gap-3 p-2">
             {[...Array(3)].map((_, index) => (
               <img
@@ -48,11 +47,11 @@ export const ProductView = ({ product }) => {
               alt="/"
             />
           </div>
-        </div>
+        </section>
         {/* Pricing */}
-        <div className="w-full md:w-[54%] sm:p-2 text-sm">
+        <section className="w-full md:w-[54%] sm:p-2 text-sm text-[1rem]">
           <div className="sm:mt-4">
-            <h3 className="text-sm sm:text-3xl font-semibold mb-2">
+            <h3 className="text-sm sm:text-2xl font-semibold mb-2">
               {product?.title}
             </h3>
             {<p className="text-[#333]">Brand: Nike</p>}
@@ -71,10 +70,10 @@ export const ProductView = ({ product }) => {
           </div>
           <hr className="w-full" />
           <div className="pricing my-3">
-            <p className="text-3xl font-bold">
+            <p className="text-2xl font-bold">
               ${product?.price}{" "}
               {product && (
-                <span className="font-light line-through text-[1.3rem] text-slate-400">
+                <span className="font-light line-through text-[1.2rem] text-slate-400">
                   ${product.price * 1.25}{" "}
                   {/* Manipulate the slash price based on the actual price */}
                 </span>
@@ -160,38 +159,43 @@ export const ProductView = ({ product }) => {
           </div>
 
           <div className="w-fit sm:w-3/6 text-slate-500 my-3">
-            <p className="text-slate-600 font-semibold my-2">Choose Quantity</p>
-
-            <p className="flex flex-row justify-between items-center border rounded-md w-full h-8">
-              <BsDash
-                className="bg-slate-200 h-full w-fit cursor-pointer"
-                onClick={() => setCounter(counter > 1 ? counter - 1 : 1)}
-                size="25"
-              />
-              {counter}
-              <BsPlus
-                className="bg-slate-200 h-full w-fit cursor-pointer"
-                onClick={() => setCounter(counter + 1)}
-                size="25"
-              />
+            <p className="text-slate-600 font-semibold my-2">
+              Choose Quantity this is my target
             </p>
+
+            <div className="flex flex-row-reverse items-center gap-1">
+              <div className="flex-1">
+                <button
+                  className="w-full flex justify-center items-center gap-2 text-sm sm:text-[1rem] bg-black py-[.75rem] px-4 text-white my-4 rounded hover:bg-black/90 transition"
+                  onClick={handleAddToCart}
+                >
+                  <BsCart3 className="" size={20} />
+                  Add to Cart
+                </button>
+              </div>
+              <div className="flex-1">
+                <button className="flex flex-row justify-between items-center border rounded-md w-full px-2 py-[.65rem]">
+                  <BsDash
+                    className="sm:cursor-pointer bg-black text-white"
+                    onClick={() => setCounter(counter > 1 ? counter - 1 : 1)}
+                    size="25"
+                  />
+                  {counter}
+                  <BsPlus
+                    className="sm:cursor-pointer bg-black text-white"
+                    onClick={() => setCounter(counter + 1)}
+                    size="25"
+                  />
+                </button>
+              </div>
+            </div>
           </div>
           <hr className="w-full" />
-          <div className="max-w-[200px] mx-auto">
-            <button
-              className="flex justify-center items-center gap-2 text-sm sm:text-[1.2rem] bg-black py-2 px-4 text-white w-full sm:w-[100%] my-4 rounded hover:bg-black/80 transition"
-              onClick={handleAddToCart}
-            >
-              <BsCart3 className="" size={25} />
-              Add to Cart
-            </button>
-          </div>
-        </div>
+        </section>
       </div>
-    </div>
+    </main>
   );
 };
-
 
 export const ProductDescription = ({ product }) => {
   return (
