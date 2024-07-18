@@ -3,14 +3,14 @@ import ProductDescription from "./ProductDescription";
 import ProductReview from "./ProductReview";
 
 const ProductAccordion = ({ product }) => {
-  const [showAccordion, setShowAccordion] = useState(null);
+  const [showAccordion, setShowAccordion] = useState(1);
 
   const toggleAccordion = (index) => {
     setShowAccordion(showAccordion === index ? null : index);
   };
 
   return (
-    <main className="p-2 md:mx-12 max-w-[65%]">
+    <main className="p-2 md:mx-12 w-full md:w-[65%]">
       <div className="w-full">
         <div
           id="accordion"
@@ -19,7 +19,7 @@ const ProductAccordion = ({ product }) => {
           {/* Accordion Item 1 */}
           <div>
             <button
-              className="accordion-btn w-full flex justify-between items-center p-4 focus:outline-none text-gray-500 focus:text-blue-500 transition-all duration-500"
+              className="accordion-btn w-full flex justify-between items-center p-4 focus:outline-none text-gray-500 focus:text-black"
               onClick={() => toggleAccordion(1)}
             >
               <span>Description</span>
@@ -29,7 +29,7 @@ const ProductAccordion = ({ product }) => {
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className={`accordion-icon w-6 h-6 transform transition-transform ${
+                className={`accordion-icon w-4 h-4 transform transition-transform duration-300 ${
                   showAccordion === 1 ? "rotate-45" : ""
                 }`}
               >
@@ -41,7 +41,7 @@ const ProductAccordion = ({ product }) => {
               </svg>
             </button>
             <div
-              className={`accordion-content text-sm bg-gray-50 text-gray-500 transition-all duration-1000 ${
+              className={`accordion-content text-sm bg-gray-50 text-gray-500 transition-all duration-300 ease-in-out ${
                 showAccordion === 1 ? "block" : "hidden"
               }`}
             >
@@ -51,7 +51,7 @@ const ProductAccordion = ({ product }) => {
           {/* Accordion Item 2 */}
           <div>
             <button
-              className="accordion-btn w-full flex justify-between items-center p-4 focus:outline-none text-gray-500 focus:text-blue-500"
+              className="accordion-btn w-full flex justify-between items-center p-4 focus:outline-none text-gray-500 focus:text-black"
               onClick={() => toggleAccordion(2)}
             >
               <span>Review</span>
@@ -61,7 +61,7 @@ const ProductAccordion = ({ product }) => {
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className={`accordion-icon w-6 h-6 transform transition-transform ${
+                className={`accordion-icon w-4 h-4 transform transition-transform duration-300 ${
                   showAccordion === 2 ? "rotate-45" : ""
                 }`}
               >
@@ -73,7 +73,7 @@ const ProductAccordion = ({ product }) => {
               </svg>
             </button>
             <div
-              className={`accordion-content text-sm bg-gray-50 text-gray-500 ${
+              className={`accordion-content text-sm bg-gray-50 text-gray-500 transition-all duration-300 ease-in-out ${
                 showAccordion === 2 ? "block" : "hidden"
               }`}
             >

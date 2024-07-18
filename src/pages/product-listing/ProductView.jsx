@@ -60,7 +60,7 @@ export const ProductView = ({ product }) => {
               {product?.rating?.count}+ sold
             </p>
           </div>
-          <hr className="w-full" />
+          <hr className="w-1/2" />
           <div className="pricing my-3">
             <p className="text-2xl font-bold">
               ${product?.price}{" "}
@@ -150,21 +150,21 @@ export const ProductView = ({ product }) => {
             </div>
           </div>
 
-          <div className="w-fit sm:w-3/6 text-slate-500 my-3">
-            <p className="text-slate-600 font-semibold my-2">Quantity</p>
+          <div className="w-full sm:w-2/3 text-slate-500 my-3">
+            <p className="font-semibold my-2">Quantity</p>
 
-            <div className="flex flex-row-reverse items-center gap-1">
+            <div className="flex flex-row-reverse items-center gap-4">
               <div className="flex-1">
                 <button
-                  className="w-full flex justify-center items-center gap-2 text-sm sm:text-[1rem] bg-black py-[.75rem] px-4 text-white my-4 rounded hover:bg-black/90 transition"
+                  className="w-full flex justify-center items-center text-sm sm:text-[1rem] bg-black py-[.5rem] px-3 text-white my-4 rounded hover:bg-black/90 transition"
                   onClick={handleAddToCart}
                 >
                   <BsCart3 className="" size={20} />
-                  Add to Cart
+                  Add&nbsp;to&nbsp;Cart
                 </button>
               </div>
               <div className="flex-1">
-                <button className="flex flex-row justify-between items-center border border-[#a7a7a7] rounded-md w-full px-2 py-[.65rem]">
+                <button className="flex flex-row justify-between items-center border border-[#a7a7a7] rounded-md w-full px-2 py-[.4rem]">
                   <BsDash
                     className="sm:cursor-pointer bg-black text-white"
                     onClick={() => setCounter(counter > 1 ? counter - 1 : 1)}
@@ -180,7 +180,6 @@ export const ProductView = ({ product }) => {
               </div>
             </div>
           </div>
-          <hr className="w-full" />
         </section>
       </div>
     </main>
