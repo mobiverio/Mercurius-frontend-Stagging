@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-
-import { ProductView, ProductDescription } from "./ProductView";
-import { Review } from "../product-single/Review";
+import ProductView from "./ProductView";
+import ProductAccordion from "./ProductAccordion";
 import { BestSelling } from "../../components/molecules/Selling";
 import { useParams } from "react-router-dom";
 import { getSingleProduct } from "../../api/Axios";
@@ -36,8 +35,7 @@ export default function ProductIndex() {
       {product && (
         <>
           <ProductView product={product} />
-          <ProductDescription product={product} />
-          <Review productId={singleProduct} />
+          <ProductAccordion product={product} />
         </>
       )}
       <BestSelling />

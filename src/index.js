@@ -21,7 +21,7 @@ import GadgetIndex from "./pages/gadgets/GadgetIndex.jsx";
 import SalesIndex from "./pages/sales/SalesIndex.jsx";
 import CartIndex from "./pages/cart/CartIndex";
 import ProductIndex from "./pages/product-listing/ProductIndex.jsx";
-import { Product } from "./pages/product-single/Product.jsx";
+import Product from "./pages/product-single/Products.jsx";
 import BrandProducts from "./pages/brands/BrandProducts.jsx";
 import Profile from "./pages/auth/Profile.jsx";
 
