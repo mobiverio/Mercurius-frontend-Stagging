@@ -85,7 +85,7 @@ export default function Register() {
 
   return (
     <main className="w-full h-full text-sm">
-      <div className=" p-2 sm:px-4 py-8 shadow-2xl lg:w-[80%] mx-auto rounded">
+      <div className=" p-2 sm:px-6 py-8 shadow-2xl lg:w-[80%] max-w-[65.625rem] mx-auto rounded">
         <div className="w-fit mx-auto text-center pb-4 font-mono">
           <h1 className="text-3xl">Mercurius</h1>
           <p className="hidden sm:block">
@@ -201,8 +201,7 @@ export default function Register() {
                 rules={{ required: true }}
                 render={({ field: { value, onChange } }) => (
                   <DatePicker
-                    className="border border-[#00003C] min-w-[100%] w-full my-2 px-4 py-3 outline-none z-40
-                      "
+                    className="border border-[#00003C] w-full my-2 px-4 py-3 outline-none z-40"
                     id="dob"
                     selected={value}
                     onChange={onChange}
