@@ -61,7 +61,7 @@ export default function Register() {
   };
 
   return (
-    <main className="w-full h-dvh text-sm flex justify-center items-center">
+    <main className="w-full h-dvh text-sm flex justify-center sm:items-center">
       <div className="px-4 py-8 shadow-2xl lg:w-[40%] mx-auto rounded">
         <div className="w-fit mx-auto text-center pb-4 font-mono">
           <h1 className="text-3xl">Mercurius</h1>
@@ -107,7 +107,7 @@ export default function Register() {
             ) : (
               <BsEyeSlash
                 onClick={handlePassword}
-                className="absolute right-6 top-[37%] cursor-pointer text-black/60"
+                className="absolute right-4 top-[26%] cursor-pointer text-black/60"
                 size={17}
               />
             )}
@@ -131,15 +131,21 @@ export default function Register() {
               {errors?.password?.message}
             </span>
 
-            <div className="flex justify-between items-center p-2">
-              <p className="">
-                Don't have an account?{" "}
+            <div className="flex justify-between sm:items-center p-2 text-sm">
+              <p className="block sm:hidden">
+                Don't have an account? <br />
                 <Link to="/signup">
                   <span className="font-semibold">Sign Up</span>
                 </Link>
               </p>
-              <p className="font-bold cursor-pointer w-fit p-1">
-                <Link to="/resetPassword">Forgot password?</Link>
+              <p className="hidden sm:block">
+                Don't have an account? <br />
+                <Link to="/signup">
+                  <span className="font-semibold">Sign Up</span>
+                </Link>
+              </p>
+              <p className="font-bold cursor-pointer w-fit">
+                <Link to="/resetPassword">Forgot&nbsp;password?</Link>
               </p>
             </div>
           </div>

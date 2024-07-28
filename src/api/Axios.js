@@ -52,13 +52,16 @@ export const register = async (vals) => {
     notifySuccess("Account Created Successfully");
     return res;
   } catch (err) {
-    if (!err?.res) {
-      notifyError("Failed to connect to server");
-    } else if (err?.status === 409 || err?.status === 500) {
+    if (!err?.response) {
+      notifyError("Network error || Failed to connect to server");
+    } else if (err?.response?.status === 422) {
       notifyError("Email already exists");
     } else {
       notifyError("Registration failed failed");
     }
+
+    console.log(err, "The Error");
+    return err;
   }
 };
 

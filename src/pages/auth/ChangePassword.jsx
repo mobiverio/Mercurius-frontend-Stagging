@@ -54,7 +54,7 @@ const ChangePassword = () => {
   return (
     <form
       onSubmit={handleSubmit(handleUpdate)}
-      className="shadow-sm rounded-sm w-[100%] p-4"
+      className="shadow-2xl rounded-sm w-[100%] p-4"
     >
       <label
         className="font-semibold text-xl sm:text-[1.4rem]"
