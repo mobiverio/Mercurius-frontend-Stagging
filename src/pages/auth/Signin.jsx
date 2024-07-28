@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SignInSchema } from "../../utils/formScheme";
@@ -14,7 +14,6 @@ import { loginUser } from "../../api/Axios";
 export default function Register() {
   const [type, setType] = useState("password");
   const [showPassword, setShowPassword] = useState(false);
-  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -31,7 +30,6 @@ export default function Register() {
   const {
     control,
     reset,
-    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm({
