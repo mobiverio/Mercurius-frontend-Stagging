@@ -67,7 +67,7 @@ export default function Register() {
     const res = await register(payload);
     if (res?.status === 201) {
       reset();
-      navigate("/");
+      navigate("/profile");
       setLoading(false);
     }
     setLoading(false);
