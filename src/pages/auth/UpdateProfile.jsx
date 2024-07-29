@@ -93,7 +93,7 @@ const UpdateProfile = () => {
   return (
     <div className="px-3 text-sm sm:text-[1rem]">
       <form onSubmit={handleSubmit(handleUpdate)}>
-        <h3 className="font-semibold text-xl sm:text-[1.4rem]">Profile</h3>
+        <h3 className="font-semibold text-sm sm:text-[1rem]">Profile</h3>
 
         <div className="flex flex-col lg:flex-row items-center justify-between sm:gap-4 relative sm:my-8">
           <div className="relative w-full">

@@ -56,13 +56,10 @@ const ChangePassword = () => {
       onSubmit={handleSubmit(handleUpdate)}
       className="shadow-2xl rounded-sm w-[100%] p-4"
     >
-      <label
-        className="font-semibold text-xl sm:text-[1.4rem]"
-        htmlFor="signIn"
-      >
+      <label className="font-semibold text-sm sm:text-[1rem]" htmlFor="signIn">
         Update Password
       </label>
-      <div className="flex flex-col items-center justify-between gap-4 relative my-8">
+      <div className="flex flex-col items-center justify-between gap-4 relative mt-4">
         <div className="w-full relative">
           <label htmlFor="password">Current password</label>
           <Controller
