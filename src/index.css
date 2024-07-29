@@ -25,7 +25,25 @@ textarea,
 select {
   zoom: reset;
 }
-
+.react-datepicker-wrapper,
+.react-datepicker-wrapper .react-datepicker__input-container,
+.react-datepicker-wrapper .react-datepicker__input-container > input {
+  width: 100%;
+}
+/* .react-datepicker-wrapper,
+.react-datepicker-wrapper .react-datepicker__input-container,
+.react-datepicker-wrapper .react-datepicker__input-container {
+  position: relative;
+}
+.react-datepicker-wrapper,
+.react-datepicker-wrapper .react-datepicker__input-container,
+.react-datepicker-wrapper .react-datepicker__input-container::after {
+  content: "Date of Birth";
+  position: absolute;
+  left: 5px;
+  top: 40%;
+  color: gray;
+} */
 .mercurius {
   background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqzzQIHI0uzxWVZVQBGT4ZCakMlbUf_ir2MQ&s");
   display: inline-block;

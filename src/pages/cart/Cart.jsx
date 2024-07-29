@@ -27,7 +27,7 @@ const Cart = ({ title }) => {
 
   return (
     <main className="p-2 mb-4">
-      <h2 className="font-semibold text-sm sm:text-[1.2rem] mb-4">{title}</h2>
+      <h2 className="font-semibold text-sm sm:text-[1rem] mb-4">{title}</h2>
       <section>
         {cart.length ? (
           <div className="overflow-y-auto w-full max-h-[75vh] cart scrollbar-hide">

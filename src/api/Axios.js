@@ -42,13 +42,26 @@ export const register = async (vals) => {
         phone,
         zip_code,
         city,
-      })
+      }),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
     notifySuccess("Account Created Successfully");
     return res;
   } catch (err) {
-    console.error(err);
-    notifyError("Account creation failed");
+    if (!err?.response) {
+      notifyError("Network error || Failed to connect to server");
+    } else if (err?.response?.status === 422) {
+      notifyError("Email already exists");
+    } else {
+      notifyError("Registration failed failed");
+    }
+
+    console.log(err, "The Error");
+    return err;
   }
 };
 
@@ -113,8 +126,9 @@ export const updatePassword = async (vals) => {
 
 export const getProducts = async () => {
   try {
-    const response = await baseUrl.get("/products");
-    return response?.data;
+    const response = await api.get("/products");
+    console.log(response.data.data);
+    return response?.data?.data;
   } catch (error) {
     console.error("Error fetching products:", error);
     throw error;

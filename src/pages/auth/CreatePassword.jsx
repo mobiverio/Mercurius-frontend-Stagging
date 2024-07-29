@@ -21,7 +21,7 @@ export default function Register() {
           <h1 className="text-3xl">Mercurius</h1>
           <p className="">Elegance Redefined. Innovation Redesigned</p>
         </div>
-        <div className="shadow-md lg:w-1/3 mx-auto flex flex-col justify-center items-center px-4 py-8 rounded">
+        <div className="shadow-2xl lg:w-1/3 mx-auto flex flex-col justify-center items-center px-4 py-8 rounded">
           <div className="w-full">
             <form>
               <label className="font-semibold text-[1.4rem]" htmlFor="signIn">

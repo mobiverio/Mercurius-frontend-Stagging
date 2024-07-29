@@ -43,16 +43,16 @@ const Profile = () => {
 
   return (
     <main className="sm:px-6 md:px-12 mb-8 mt-4">
-      <h3 className="hidden sm:flex justify-end items-center text-sm sm:text-[1rem] px-4">
+      <h3 className="hidden md:flex justify-end items-center text-sm sm:text-[1rem] px-4">
         Welcome {user?.name}
       </h3>
-      <div className="flex flex-row flex-nowrap">
-        <nav className="hidden sm:w-[24%] md:flex flex-col justify-between">
-          <ul className="flex flex-col gap-4 cursor-pointer text-sm sm:text-[1.2rem]">
+      <div className="flex flex-col sm:flex-row">
+        <nav className="sm:w-[24%] flex flex-row sm:flex-col justify-between my-4 px-4 sm:px-0">
+          <ul className="flex flex-row sm:flex-col gap-4 cursor-pointer text-sm sm:text-[1.2rem">
             <li
               className={
                 toggler === 0
-                  ? "w-[30%] border-b-[3px] pb-1 border-[#00003C] text-[#222] transition duration-300"
+                  ? "sm:w-[30%] border-b-[3px] pb-1 border-[#00003C] text-[#222] transition duration-300"
                   : "text-black"
               }
               onClick={() => handleToggle(0)}
@@ -62,7 +62,7 @@ const Profile = () => {
             <li
               className={
                 toggler === 1
-                  ? "w-[30%] border-b-[3px] pb-1 border-[#00003C] text-[#222] transition duration-300"
+                  ? "sm:w-[30%] border-b-[3px] pb-1 border-[#00003C] text-[#222] transition duration-300"
                   : "text-black"
               }
               onClick={() => handleToggle(1)}
@@ -72,7 +72,7 @@ const Profile = () => {
             <li
               className={
                 toggler === 2
-                  ? "w-[30%] border-b-[3px] pb-1 border-[#00003C] text-[#222] transition duration-300"
+                  ? "sm:w-[30%] border-b-[3px] pb-1 border-[#00003C] text-[#222] transition duration-300"
                   : "text-black"
               }
               onClick={() => handleToggle(2)}
@@ -82,7 +82,7 @@ const Profile = () => {
             <li
               className={
                 toggler === 3
-                  ? "w-[60%] border-b-[3px] pb-1 border-[#00003C] text-[#222] transition duration-300"
+                  ? "sm:w-[60%] border-b-[3px] pb-1 border-[#00003C] text-[#222] transition duration-300"
                   : "text-black"
               }
               onClick={() => handleToggle(3)}
@@ -94,7 +94,7 @@ const Profile = () => {
           <button
             type="button"
             onClick={logout}
-            className="border w-fit border-[#00003C] text-[#00003C] hover:bg-[#00003C] hover:text-white transition-colors font-semibold text-sm sm:text-[1rem] my-4 p-2 sm:px-3 sm:py-2 outline-none"
+            className="hidden md:block border w-fit border-[#00003C] text-[#00003C] hover:bg-[#00003C] hover:text-white transition-colors font-semibold text-sm sm:text-[1rem] sm:my-4 p-2 sm:px-3 sm:py-2 outline-none"
           >
             Logout
           </button>

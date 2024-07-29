@@ -128,7 +128,7 @@ export default function Header() {
                     >
                       <BsPerson size={20} />
                       <p className="hidden sm:block font-semibold">
-                        {user !== undefined ? user : `My Account`}
+                        {user !== undefined ? user : `Account`}
                       </p>
                     </Link>
                   </div>
