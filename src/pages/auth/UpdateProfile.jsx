@@ -6,6 +6,8 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { updateProfileSchema } from "../../utils/formScheme";
 import { updateProfile } from "../../api/Axios";
+import { useNavigate } from "react-router-dom";
+import useCartStore from "../../zustand/useCartStore";
 import notifyError from "../../components/toast/notifyError";
 import notifySuccess from "../../components/toast/notifySuccess";
 
@@ -17,6 +19,11 @@ const UpdateProfile = () => {
   const [editMode, setEditMode] = useState(false);
   const [inactive, setInactive] = useState(true);
   const [loading, setLoading] = useState(false);
+  // const [toggler, setToggler] = useState(0);
+
+  const { clearCart } = useCartStore();
+
+  const navigate = useNavigate();
 
   const defaultValues = {
     name: "",
@@ -89,6 +96,23 @@ const UpdateProfile = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
+
+  const logout = () => {
+    setUser(null);
+    setToken("");
+    localStorage.removeItem("loggedInUser");
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("cartItems");
+    clearCart();
+    navigate("/");
+  };
+
+  // useEffect(() => {
+  //   const users = JSON.parse(localStorage.getItem("loggedInUser"));
+  //   const access_token = localStorage.getItem("accessToken");
+  //   setUser(users);
+  //   setToken(access_token);
+  // }, [toggler]);
 
   return (
     <div className="px-3 text-sm sm:text-[1rem]">
@@ -245,6 +269,13 @@ const UpdateProfile = () => {
         </div>
 
         <div className="flex flex-row flex-nowrap justify-end items-center gap-4 sm:gap-8">
+          <button
+            type="button"
+            onClick={logout}
+            className="md:hidden border w-fit border-[#00003C] text-[#00003C] hover:bg-[#00003C] hover:text-white transition-colors font-semibold text-sm sm:text-[1rem] sm:my-4 p-2 sm:px-3 sm:py-2 outline-none"
+          >
+            Logout
+          </button>
           {editMode && (
             <>
               <button

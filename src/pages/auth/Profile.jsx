@@ -43,11 +43,11 @@ const Profile = () => {
 
   return (
     <main className="sm:px-6 md:px-12 mb-8 mt-4">
-      <h3 className="hidden sm:flex justify-end items-center text-sm sm:text-[1rem] px-4">
+      <h3 className="hidden md:flex justify-end items-center text-sm sm:text-[1rem] px-4">
         Welcome {user?.name}
       </h3>
       <div className="flex flex-col sm:flex-row">
-        <nav className="sm:w-[24%] flex flex-row sm:flex-col justify-between my-4 px-4">
+        <nav className="sm:w-[24%] flex flex-row sm:flex-col justify-between my-4 px-4 sm:px-0">
           <ul className="flex flex-row sm:flex-col gap-4 cursor-pointer text-sm sm:text-[1.2rem">
             <li
               className={
