@@ -1,5 +1,5 @@
 // ** React Imports
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 // ** Utility Imports
 import { useForm, Controller } from "react-hook-form";
@@ -10,16 +10,17 @@ import { useNavigate } from "react-router-dom";
 import useCartStore from "../../zustand/useCartStore";
 import notifyError from "../../components/toast/notifyError";
 import notifySuccess from "../../components/toast/notifySuccess";
-
 import { Spinner } from "@plume-ui-react/spinner";
+import { AuthContext } from "../../AppContext/AuthContext";
 
 const UpdateProfile = () => {
-  const [user, setUser] = useState("");
-  const [token, setToken] = useState("");
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [inactive, setInactive] = useState(true);
   const [loading, setLoading] = useState(false);
-  // const [toggler, setToggler] = useState(0);
+
+  const { Auth, setAuth } = useContext(AuthContext);
 
   const { clearCart } = useCartStore();
 
@@ -67,24 +68,23 @@ const UpdateProfile = () => {
 
       if (response.status) {
         const newUserInfo = response?.data?.user;
-        localStorage.setItem("loggedInUser", JSON.stringify(newUserInfo));
+        setAuth({ ...Auth, user: newUserInfo });
         notifySuccess("Profile Updated Successfully");
         setLoading(false);
         handleEdit();
       }
     } catch (err) {
-      console.log(err);
-      notifyError(`Profile Update Failed ${err.message}`);
+      notifyError(`Profile Update Failed || ${err.message}`);
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    const users = JSON.parse(localStorage.getItem("loggedInUser"));
-    const access_token = localStorage.getItem("accessToken");
-    setUser(users);
-    setToken(access_token);
-  }, [editMode]);
+    setUser(Auth?.user);
+    setToken(Auth?.access_token);
+
+    //eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     setValue("name", user?.name || "");
@@ -98,21 +98,11 @@ const UpdateProfile = () => {
   }, [user]);
 
   const logout = () => {
-    setUser(null);
-    setToken("");
-    localStorage.removeItem("loggedInUser");
-    localStorage.removeItem("accessToken");
+    setAuth({});
     localStorage.removeItem("cartItems");
     clearCart();
     navigate("/");
   };
-
-  // useEffect(() => {
-  //   const users = JSON.parse(localStorage.getItem("loggedInUser"));
-  //   const access_token = localStorage.getItem("accessToken");
-  //   setUser(users);
-  //   setToken(access_token);
-  // }, [toggler]);
 
   return (
     <div className="px-3 text-sm sm:text-[1rem]">
@@ -130,7 +120,7 @@ const UpdateProfile = () => {
                 <input
                   className={`${
                     inactive
-                      ? "cursor-not-allowed text-gray-500 border-gray-500"
+                      ? "cursor-not-allowed text-[#333] border-gray-500"
                       : ""
                   } border border-[#00003C] w-full my-2 p-1 sm:my-2 sm:px-4 sm:py-3 outline-none`}
                   type="text"
@@ -152,7 +142,7 @@ const UpdateProfile = () => {
               rules={{ required: true }}
               render={({ field: { value, onChange } }) => (
                 <input
-                  className="cursor-not-allowed border border-gray-500 text-gray-500 w-full my-2 p-1 sm:my-2 sm:px-4 sm:py-3 outline-none"
+                  className="cursor-not-allowed border border-gray-500 text-[#333] w-full my-2 p-1 sm:my-2 sm:px-4 sm:py-3 outline-none"
                   type="email"
                   id="email"
                   placeholder="Email address"
@@ -177,7 +167,7 @@ const UpdateProfile = () => {
                 <input
                   className={`${
                     inactive
-                      ? "cursor-not-allowed text-gray-500 border-gray-500"
+                      ? "cursor-not-allowed text-[#333] border-gray-500"
                       : ""
                   } border border-[#00003C] w-full my-2 p-1 sm:my-2 sm:px-4 sm:py-3 outline-none`}
                   type="text"
@@ -201,7 +191,7 @@ const UpdateProfile = () => {
                 <input
                   className={`${
                     inactive
-                      ? "cursor-not-allowed text-gray-500 border-gray-500"
+                      ? "cursor-not-allowed text-[#333] border-gray-500"
                       : ""
                   } border border-[#00003C] w-full my-2 p-1 sm:my-2 sm:px-4 sm:py-3 outline-none`}
                   type="text"
@@ -228,7 +218,7 @@ const UpdateProfile = () => {
                 <input
                   className={`${
                     inactive
-                      ? "cursor-not-allowed text-gray-500 border-gray-500"
+                      ? "cursor-not-allowed text-[#333] border-gray-500"
                       : ""
                   } border border-[#00003C] w-full my-2 p-1 sm:my-2 sm:px-4 sm:py-3 outline-none`}
                   type="text"
@@ -252,7 +242,7 @@ const UpdateProfile = () => {
                 <input
                   className={`${
                     inactive
-                      ? "cursor-not-allowed text-gray-500 border-gray-500"
+                      ? "cursor-not-allowed text-[#333] border-gray-500"
                       : ""
                   } border border-[#00003C] w-full my-2 p-1 sm:my-2 sm:px-4 sm:py-3 outline-none`}
                   type="text"

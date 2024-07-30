@@ -67,7 +67,14 @@ export const register = async (vals) => {
 
 export const loginUser = async (vals) => {
   try {
-    const res = await api.post("/login", { ...vals });
+    const { email, password } = vals;
+    const res = await api.post("/login", JSON.stringify({ email, password }), {
+      headers: {
+        "Content-Type": "application/json",
+        withCredentials: true,
+      },
+    });
+
     if (res?.data?.status) {
       const { access_token, ...restOfData } = res?.data;
       localStorage.setItem("accessToken", access_token);
@@ -76,12 +83,13 @@ export const loginUser = async (vals) => {
     console.log(res?.data, "action payload");
     return res;
   } catch (err) {
-    if (!err) {
-      notifyError("Failed to connect to server");
-    } else if (err.response.status === 401) {
+    if (!err?.res) {
+      notifyError("No server response");
+    } else if (err?.response?.status === 400) {
+      notifyError("User Credentials not found");
+    } else if (err?.response?.status === 401) {
       notifyError("Email or password Incorrect");
-    }
-    notifyError("Login failed");
+    } else notifyError("Login failed");
   }
 };
 
