@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Disclosure } from "@headlessui/react";
+import { AuthContext } from "../../AppContext/AuthContext";
 
 import {
   BsJustifyLeft,
@@ -27,11 +28,14 @@ const navigation = [
 export default function Header() {
   const { cart } = useCartStore();
   const [user, setUser] = useState(null);
+  const { Auth, setAuth } = useContext(AuthContext);
+
+  console.log(Auth);
 
   useEffect(() => {
-    const getUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    setUser(JSON.parse(localStorage.getItem("loggedInUser")));
 
-    setUser(getUser?.name);
+    //eslint-disable-next-line
   }, []);
 
   const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
@@ -128,7 +132,7 @@ export default function Header() {
                     >
                       <BsPerson size={20} />
                       <p className="hidden sm:block font-semibold">
-                        {user !== undefined ? user : `Account`}
+                        {user !== undefined ? user?.name : `Account`}
                       </p>
                     </Link>
                   </div>

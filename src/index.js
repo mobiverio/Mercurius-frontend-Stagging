@@ -9,6 +9,7 @@ import "@plume-ui-react/spinner/dist/index.css";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import Missing from "./components/molecules/404.js";
+import AuthProvider from "./AppContext/AuthContext";
 
 //Main Screens
 import App from "./App.jsx";
@@ -69,7 +70,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-    <Toaster position={"top-right"} limit={2} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+      <Toaster position={"top-right"} limit={2} />
+    </AuthProvider>
   </React.StrictMode>
 );

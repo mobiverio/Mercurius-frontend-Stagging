@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SignInSchema } from "../../utils/formScheme";
@@ -8,14 +8,17 @@ import { FaFacebook } from "react-icons/fa6";
 import notifySuccess from "../../components/toast/notifySuccess";
 import { Spinner } from "@plume-ui-react/spinner";
 import { Link, useNavigate } from "react-router-dom";
-
 import { loginUser } from "../../api/Axios";
+import { AuthContext } from "../../AppContext/AuthContext";
 
 export default function Register() {
+  const [loading, setLoading] = useState(false);
   const [type, setType] = useState("password");
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const emailRef = useRef();
+
+  const { setAuth } = useContext(AuthContext);
 
   const handlePassword = () => {
     if (type === "password") {
@@ -46,19 +49,21 @@ export default function Register() {
       setLoading(true);
       const { email, password } = data;
       const response = await loginUser({ email, password });
-      if (response?.status) {
-        notifySuccess("Login Successful");
-        navigate("/profile");
-        reset();
-        setLoading(false);
-      } else {
-        setLoading(false);
-      }
+      setAuth(response.data);
+
+      notifySuccess("Login Successful");
+      navigate("/profile");
+      reset();
+      setLoading(false);
     } catch (err) {
       console.log(err);
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    emailRef.current.focus();
+  }, []);
 
   return (
     <main className="w-full h-dvh text-sm flex justify-center sm:items-center">
@@ -87,7 +92,8 @@ export default function Register() {
                   type="email"
                   id="email"
                   placeholder="example@gmail.com"
-                  autoFocus
+                  ref={emailRef}
+                  autoComplete="off"
                   value={value}
                   onChange={onChange}
                 />
@@ -101,7 +107,7 @@ export default function Register() {
             {showPassword ? (
               <BsEye
                 onClick={handlePassword}
-                className="absolute right-6 top-[37%] cursor-pointer text-black/60"
+                className="absolute right-4 top-[26%] cursor-pointer text-black/60"
                 size={17}
               />
             ) : (

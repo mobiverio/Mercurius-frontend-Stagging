@@ -1,5 +1,5 @@
 // ** React Imports
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 // ** React-Router Imports
 import { useNavigate, Link } from "react-router-dom";
@@ -8,38 +8,36 @@ import { useNavigate, Link } from "react-router-dom";
 import UpdateProfile from "./UpdateProfile";
 import ChangePassword from "./ChangePassword";
 import Cart from "../cart/Cart";
+import { AuthContext } from "../../AppContext/AuthContext";
 
 //** Global state Imports
 import useCartStore from "../../zustand/useCartStore";
 
 const Profile = () => {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(null);
   // eslint-disable-next-line no-unused-vars
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState(null);
   const [toggler, setToggler] = useState(0);
   const navigate = useNavigate();
   const { cart, clearCart } = useCartStore();
+  const { Auth } = useContext(AuthContext);
 
   const handleToggle = (index) => {
     setToggler(index);
   };
 
   const logout = () => {
-    setUser(null);
-    setToken("");
-    localStorage.removeItem("loggedInUser");
-    localStorage.removeItem("accessToken");
     localStorage.removeItem("cartItems");
-    clearCart();
+    localStorage.removeItem("loggedInUser");
+    localStorage.removeItem("token");
     navigate("/");
+    clearCart();
   };
 
   useEffect(() => {
-    const users = JSON.parse(localStorage.getItem("loggedInUser"));
-    const access_token = localStorage.getItem("accessToken");
-    setUser(users);
-    setToken(access_token);
-  }, [toggler]);
+    setUser(JSON.parse(localStorage.getItem("loggedInUser")));
+    setToken(localStorage.getItem("token"));
+  }, []);
 
   return (
     <main className="sm:px-6 md:px-12 mb-8 mt-4">
@@ -47,7 +45,7 @@ const Profile = () => {
         Welcome {user?.name}
       </h3>
       <div className="flex flex-col sm:flex-row">
-        <nav className="sm:w-[24%] flex flex-row sm:flex-col justify-between my-4 px-4 sm:px-0">
+        <nav className="w-[25%] flex flex-row md:flex-col justify-between my-4 px-4 sm:px-0">
           <ul className="flex flex-row sm:flex-col gap-4 cursor-pointer text-sm sm:text-[1.2rem">
             <li
               className={
@@ -99,7 +97,7 @@ const Profile = () => {
             Logout
           </button>
         </nav>
-        <div className="shadow-sm rounded-sm w-full">
+        <div className="shadow-lg rounded-sm w-full">
           {toggler === 0 && <UpdateProfile />}
           {toggler === 1 && <Cart title={"Your Cart"} />}
           {toggler === 3 && <ChangePassword />}
