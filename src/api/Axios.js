@@ -75,12 +75,10 @@ export const loginUser = async (vals) => {
       },
     });
 
-    if (res?.data?.status) {
-      const { access_token, ...restOfData } = res?.data;
-      localStorage.setItem("accessToken", access_token);
-      localStorage.setItem("loggedInUser", JSON.stringify(restOfData?.user));
-    }
-    console.log(res?.data, "action payload");
+    localStorage.setItem("loggedInUser", JSON.stringify(res?.data?.user));
+    localStorage.setItem("token", res?.data?.access_token);
+
+    // console.log(res?.data, "action payload");
     return res;
   } catch (err) {
     if (!err?.res) {

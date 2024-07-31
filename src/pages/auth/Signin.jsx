@@ -49,16 +49,12 @@ export default function Register() {
       setLoading(true);
       const { email, password } = data;
       const response = await loginUser({ email, password });
-
       setAuth(response.data);
-      if (response?.status) {
-        notifySuccess("Login Successful");
-        navigate("/profile");
-        reset();
-        setLoading(false);
-      } else {
-        setLoading(false);
-      }
+
+      notifySuccess("Login Successful");
+      navigate("/profile");
+      reset();
+      setLoading(false);
     } catch (err) {
       console.log(err);
       setLoading(false);

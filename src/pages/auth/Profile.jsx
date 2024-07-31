@@ -27,31 +27,17 @@ const Profile = () => {
   };
 
   const logout = () => {
-    setUser(null);
-    setToken(null);
-    localStorage.removeItem("loggedInUser");
-    localStorage.removeItem("accessToken");
     localStorage.removeItem("cartItems");
-    clearCart();
+    localStorage.removeItem("loggedInUser");
+    localStorage.removeItem("token");
     navigate("/");
+    clearCart();
   };
 
   useEffect(() => {
-    setUser(Auth?.user);
-    setToken(Auth?.token);
-    localStorage.setItem("loggedInUser", JSON.stringify(Auth?.user));
-    localStorage.setItem("accessToken", Auth?.token);
-
-    return () => {
-      setToggler(0);
-      setToken("");
-      setUser("");
-      localStorage.removeItem("loggedInUser");
-      localStorage.removeItem("accessToken");
-    };
-
-    //eslint-disable-next-line
-  }, [toggler]);
+    setUser(JSON.parse(localStorage.getItem("loggedInUser")));
+    setToken(localStorage.getItem("token"));
+  }, []);
 
   return (
     <main className="sm:px-6 md:px-12 mb-8 mt-4">

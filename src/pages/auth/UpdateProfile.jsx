@@ -20,10 +20,9 @@ const UpdateProfile = () => {
   const [inactive, setInactive] = useState(true);
   const [loading, setLoading] = useState(false);
 
+  // ** Hooks
   const { Auth, setAuth } = useContext(AuthContext);
-
   const { clearCart } = useCartStore();
-
   const navigate = useNavigate();
 
   const defaultValues = {
@@ -69,6 +68,7 @@ const UpdateProfile = () => {
       if (response.status) {
         const newUserInfo = response?.data?.user;
         setAuth({ ...Auth, user: newUserInfo });
+        localStorage.setItem("loggedInUser", JSON.stringify(newUserInfo));
         notifySuccess("Profile Updated Successfully");
         setLoading(false);
         handleEdit();
@@ -80,8 +80,8 @@ const UpdateProfile = () => {
   };
 
   useEffect(() => {
-    setUser(Auth?.user);
-    setToken(Auth?.access_token);
+    setUser(JSON.parse(localStorage.getItem("loggedInUser")));
+    setToken(localStorage.getItem("token"));
 
     //eslint-disable-next-line
   }, []);
@@ -100,6 +100,8 @@ const UpdateProfile = () => {
   const logout = () => {
     setAuth({});
     localStorage.removeItem("cartItems");
+    localStorage.removeItem("loggedInUser");
+    localStorage.removeItem("token");
     clearCart();
     navigate("/");
   };
